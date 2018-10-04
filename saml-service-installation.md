@@ -1,6 +1,4 @@
-# SAML Service Installation Guide
-
-Install on a CentOS 7 server.
+SAML Services is SAML2.0 Metadata Aggregator created by the Australian Access Federation (AAF). Used in conjunction with the AAF Discovery Service.
 
 
 ## Update System and Install Prerequisite Software
