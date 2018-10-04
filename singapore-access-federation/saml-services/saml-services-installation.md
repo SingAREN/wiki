@@ -3,8 +3,6 @@
 
 # SAML Services Installation 
 
-## Scripts
-
 1. Create a SAML user with home directory as `/opt/saml`.
 
 	```
@@ -17,6 +15,7 @@
 	# yum install httpd mod_ssl git mysql-devel
 	```
 
+## Setup Directories
 1. Clone SAML Services from the AAF Repository.
 
 	```
@@ -106,6 +105,7 @@
 	# ln -s /var/log/aaf/saml/application /opt/saml/repository/log
 	```
 
+## Configure SAML Services
 1. Install Ruby Gem dependencies
 
 	```
@@ -158,7 +158,9 @@
 	# chown root.saml /opt/saml/repository/config/secrets.yml
 	```
 
-1. Install Certificates and keys
+## Setup x509 Keypairs 
+
+1. Install certificates and keys
 	
 	The following keys and certificates need to be created and stored in the directory `/opt/saml/keypairs/`
 
@@ -170,9 +172,10 @@
 
 	Add certificates for any external metadata sources that will feed into the SAML service, e.g. edugain. These will be held in the directory `/opt/saml/keypairs/external-metadata`. File names are up to you.
 
+## Setup Scripts and systemd Service File
 1. Setup the sync.sh and console.sh scripts in `/opt/saml/scripts`.
    
-	Replace [SAML_APP_PASSWORD] with contents of `/opt/saml/keypairs/passwords/saml_app_password` and [KEY] with contents of `/opt/saml/keypairs/passwords/saml_secret_key_base`/
+	Replace `[SAML_APP_PASSWORD]` with contents of `/opt/saml/keypairs/passwords/saml_app_password` and [KEY] with contents of `/opt/saml/keypairs/passwords/saml_secret_key_base`/
    
 	1. `sync.sh`
       
