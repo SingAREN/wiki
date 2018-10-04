@@ -3,6 +3,8 @@
 
 # SAML Services Installation 
 
+## Scripts
+
 1. Create a SAML user with home directory as `/opt/saml`.
 
 	```
