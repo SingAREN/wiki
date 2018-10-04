@@ -173,7 +173,7 @@
 	Add certificates for any external metadata sources that will feed into the SAML service, e.g. edugain. These will be held in the directory `/opt/saml/keypairs/external-metadata`. File names are up to you.
 
 ## Setup Scripts and systemd Service File
-1. Setup the sync.sh and console.sh scripts in `/opt/saml/scripts`.
+1. Setup the `sync.sh` and `console.sh` scripts in `/opt/saml/scripts`. www.google.com
    
 	Replace `[SAML_APP_PASSWORD]` with contents of `/opt/saml/keypairs/passwords/saml_app_password` and [KEY] with contents of `/opt/saml/keypairs/passwords/saml_secret_key_base`/
    
