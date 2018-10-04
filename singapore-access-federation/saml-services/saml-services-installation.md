@@ -253,7 +253,7 @@
 
 ---
 
-## Setup SAML Service database
+# Setup SAML Service database
 
 1. Install MariaDB
 
