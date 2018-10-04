@@ -35,6 +35,7 @@
 		```
 	
 	1. Set directory ownership
+
 		```
 		# chown root.saml /opt/saml/keypairs
 		# chown root.saml /opt/saml/scripts
@@ -42,6 +43,7 @@
 		```
 
 1. Create write-able directories in SAML Repository
+
 	```
 	# mkdir /opt/saml/repository/tmp
 	# mkdir /opt/saml/repository/tmp/pids
