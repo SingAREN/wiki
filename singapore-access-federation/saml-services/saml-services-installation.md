@@ -1,5 +1,7 @@
 <!-- TITLE: SAML Services Installation -->
 <!-- SUBTITLE: A quick summary of SAML Services Installation -->
+<!-- AUTHOR: Terry Smith, AAF -->
+<!-- EDITED BY: Simon Green, SingAREN-->
 
 # SAML Services Installation 
 
