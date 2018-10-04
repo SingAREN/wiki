@@ -67,7 +67,7 @@
 		```
 		# chown saml.saml /opt/saml/repository/schema
 		# chown saml.saml /opt/saml/repository/tmp
-    # chown saml.saml /opt/saml/repository/tmp/logs
+		# chown saml.saml /opt/saml/repository/tmp/logs
 		# chown saml.saml /opt/saml/repository/tmp/pids
 		# chown saml.saml /opt/saml/repository/vendor
 		# chown saml.saml /opt/saml/repository/vendor/torba
