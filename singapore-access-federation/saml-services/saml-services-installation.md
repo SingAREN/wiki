@@ -105,7 +105,7 @@
 	# ln -s /var/log/aaf/saml/application /opt/saml/repository/log
 	```
 
-### Configure SAML Services
+## Configure SAML Services
 1. Install Ruby Gem dependencies
 
 	```
@@ -158,7 +158,7 @@
 	# chown root.saml /opt/saml/repository/config/secrets.yml
 	```
 
-#### Setup x509 Keypairs 
+### Setup x509 Keypairs 
 
 1. Install certificates and keys
 	
