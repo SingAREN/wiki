@@ -1,6 +1,8 @@
 <!-- TITLE: SAML Services Installation -->
 <!-- SUBTITLE: A quick summary of SAML Services Installation -->
 
+# SAML Services Installation 
+
 1. Create a SAML user with home directory as `/opt/saml`.
 
 	```
@@ -253,7 +255,7 @@
 
 ---
 
-# Setup SAML Service database
+# Database Setup
 
 1. Install MariaDB
 
