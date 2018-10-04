@@ -158,7 +158,7 @@
 	# chown root.saml /opt/saml/repository/config/secrets.yml
 	```
 
-### Setup x509 Keypairs 
+## Setup x509 Keypairs 
 
 1. Install certificates and keys
 	
