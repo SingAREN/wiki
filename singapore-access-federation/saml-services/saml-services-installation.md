@@ -431,7 +431,7 @@
 
 ## Cron Jobs
 
-A CRON job is required to regularly refresh the metadata from the various sources. With this install guide there are two source – Federation Registry and edugain. The cron job runs the sync.sh script for each of the sources. It uses their [TAG] to identify the source.
+A CRON job is required to regularly refresh the metadata from the various sources. With this install guide there are two source – Federation Registry and edugain. The cron job runs the `sync.sh` script for each of the sources. It uses their `[TAG]` to identify the source.
 
 1. Create the file `/etc/cron.d/saml`
 
