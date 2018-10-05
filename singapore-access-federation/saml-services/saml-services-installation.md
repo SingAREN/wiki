@@ -158,21 +158,21 @@
 	
 	The following keys and certificates need to be created and stored in the directory **/opt/saml/keypairs/**
 
-	- **signing.crt** and **signing.key**. These are the certificate and key currently used to sign your existing Federation Metadata.
-	-	**apache.crt**, **apache.key** and **intermediate.crt**. These are the certificates and keys for the web server. You need to obtain these from your certificate vendor.
+	- `signing.crt` and `signing.key`. These are the certificate and key currently used to sign your existing Federation Metadata.
+	-	`apache.crt`, `apache.key` and `intermediate.crt`. These are the certificates and keys for the web server. You need to obtain these from your certificate vendor.
 	
 
 14. Install Certificates for external metadata sources
 
-	Add certificates for any external metadata sources that will feed into the SAML service, e.g. edugain. These will be held in the directory **/opt/saml/keypairs/external-metadata**. File names are up to you.
+	Add certificates for any external metadata sources that will feed into the SAML service, e.g. edugain. These will be held in the directory `/opt/saml/keypairs/external-metadata`. File names are up to you.
 
-1. Setup the sync.sh and console.sh scripts in ```/opt/saml/scripts```.
+1. Setup the `sync.sh` and `console.sh` scripts in ```/opt/saml/scripts```.
    
 	Replace `[SAML_APP_PASSWORD]` with contents of ```/opt/saml/keypairs/passwords/saml_app_password``` and `[KEY]` with contents of ```/opt/saml/keypairs/passwords/saml_secret_key_base```/
    
-	1. ```sync.sh```
+	1. `sync.sh`
       
-		````
+		```
 		#!/bin/sh
 		export RBENV_ROOT=/opt/aaf-shared/rbenv
 		export RAILS_ENV=production
@@ -187,9 +187,9 @@
 		
 		cd /opt/saml/repository
 		$RBENV_ROOT/bin/rbenv exec ruby bin/sync.rb $1
-		 ````
+		 ```
 
-	1. ```console.sh```
+	1. `console.sh`
        
        Use same environment variables as sync.sh
 
@@ -211,9 +211,9 @@
 
 1. Create `saml.service` service file
 
-	Create the file ```/lib/systemd/system/saml.service```. Update the `[SAML_APP_PASSWORD]` and `[KEY]` before installing the file.
+	Create the file `/lib/systemd/system/saml.service`. Update the `[SAML_APP_PASSWORD]` and `[KEY]` before installing the file.
 
-	````
+	```
 	[Unit]
 	Description=AAF SAML Service
 	After=syslog.target network.target haproxy.target redis.target
@@ -243,7 +243,7 @@
 	
 	[Install]
 	WantedBy=multi-user.target
-	````
+	```
 
 1. Reload systemctl daemon as a new script has been added.
 	
@@ -298,7 +298,7 @@
 	$ mysql -u root -p
 	```
 
-1. Create the ```saml_app``` database user and provide user with access to the ```saml_production``` database. Change ```[SAML_APP_PASSWORD]``` to the contents of ```/opt/saml/keypairs/passwords/saml_app_password```
+1. Create the `saml_app` database user and provide user with access to the `saml_production` database. Change `[SAML_APP_PASSWORD]` to the contents of `/opt/saml/keypairs/passwords/saml_app_password`
 
 		> CREATE USER 'saml_app' IDENTIFIED BY '[SAML_APP_PASSWORD]';
 		> GRANT USAGE ON *.* TO 'saml_app'@'localhost' IDENTIFIED BY '[SAML_APP_PASSWORD]';
@@ -308,7 +308,7 @@
 
 1. Create the database and tables by using the following rake command. This relies on a number environment variables to be set to allow it to access the database server.
 
-	1. Set environment variables. Change ```[SAML_APP_PASSWORD]``` to the password set at previous step
+	1. Set environment variables. Change `[SAML_APP_PASSWORD]` to the password set at previous step
 			
 		```
 		export RBENV_ROOT=/opt/aaf-shared/rbenv
@@ -348,54 +348,66 @@
 
 1. Set up the Federation Registry as your first metadata source.
 
-	1. 	Obtain the FR API key from the file **/opt/federationregistry/application/config/fr-config.groovy**. 
+	1. 	Obtain the FR API key from the file `/opt/federationregistry/application/config/fr-config.groovy`. 
 	
-	1.  Search for the value aaf.fr.export.key. You will find a long string that you need to copy into the following command. Replace [SECRET] with the key value. 
+	1.  Search for the value aaf.fr.export.key. You will find a long string that you need to copy into the following command. Replace `[SECRET]` with the key value. 
 	
-		Replace [TAG] a short name for the metadata source, for instance ‘sgaf’.
+		Replace `[TAG]` a short name for the metadata source, for instance ‘sgaf’.
 	
-			$ /opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb fr_source \
-			    --hostname manager.[domain-name] \
-			    --secret [SECRET] \
-			    --registration-authority https://[domain-name] \
-	            --registration-policy  https://[domain.name]/policy/ \
-				--lang en \
-				--source_tag [TAG]
-	
+		```
+		$ /opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb fr_source \
+				--hostname manager.[domain-name] \
+				--secret [SECRET] \
+				--registration-authority https://[domain-name] \
+						--registration-policy  https://[domain.name]/policy/ \
+			--lang en \
+			--source_tag [TAG]
+		```
+		
 	3. Load Federation Registry metadata into SAML Service
 	
-		You are now ready to load the federation metadata from your Federation Registry. This is done by running the **sync.sh** script passing it the TAG you chose in the previous step:
+		You are now ready to load the federation metadata from your Federation Registry. This is done by running the `sync.sh` script passing it the TAG you chose in the previous step:
 	
-			$ /opt/saml/scripts/sync.sh [TAG]
+		```
+		$ /opt/saml/scripts/sync.sh [TAG]
+		```
 	
 	1. Add metadata signing key
 	
 		Next load the metadata signing key into the database. You will require access to both the public and private halves of the signing key.
 		
-			$ cd /opt/saml/repository
-			$ /opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb keypair \
-			  --cert /opt/saml/keypairs/signing.crt \
-	          --key /opt/saml/keypairs/signing.key
+		```
+		$ cd /opt/saml/repository
+		$ /opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb keypair \
+				--cert /opt/saml/keypairs/signing.crt \
+				--key /opt/saml/keypairs/signing.key
+		```
 
 1. Setup eduGAIN Feed
 	
 	1. Obtain eduGAIN metadata signing certificate
 
-			$ cd /opt/saml/keypairs
-			$ wget https://technical.edugain.org/mds-2014.cer
-			$ mv mds-2014.cer edugain-mds-2014.cer
+		```
+		$ cd /opt/saml/keypairs
+		$ wget https://technical.edugain.org/mds-2014.cer
+		$ mv mds-2014.cer edugain-mds-2014.cer
+		```
 
 	1. Add eduGAIN configuration to SAML Service
 	
-			$ /opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb raw_entity_source  \
-			  --rank 102 \
-			  --url http://mds.edugain.org/ \
-			  --cert /opt/saml/keypairs/edugain-mds-2014.cer \
-			  --source_tag edugain
+		```
+		$ /opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb raw_entity_source  \
+				--rank 102 \
+				--url http://mds.edugain.org/ \
+				--cert /opt/saml/keypairs/edugain-mds-2014.cer \
+				--source_tag edugain
+		```
 
 	1. Load eduGAIN metadata into SAML Service
 
+			```
 			$ /opt/saml/scripts/sync.sh edugain
+			```
 
 		This may take some time due to the size of the metadata file.
 
@@ -403,10 +415,12 @@
 
 	Now we add a Metadata instance to the database. This is used in the creation of metadata files. For now we only create a tag  for federation metadata and ignore the edugain metadata.
 
+		```
 		/opt/aaf-shared/rbenv/bin/rbenv exec ruby bin/configure.rb md_instance \
 		--cert /opt/saml/keypairs/signing.crt --name  https://FQDN/of/the/metadata.xml \
 		--identifier [TAG] --tag [TAG] --hash sha256 --publisher https://[domain-name] \
 		--lang en
+		```
 
 1. Verify that you can extract metadata from the SAML service. Replace ```[TAG]``` with metadata instance tag. 
 
@@ -419,7 +433,7 @@
 
 A CRON job is required to regularly refresh the metadata from the various sources. With this install guide there are two source – Federation Registry and edugain. The cron job runs the sync.sh script for each of the sources. It uses their [TAG] to identify the source.
 
-1. Create the file ```/etc/cron.d/saml```
+1. Create the file `/etc/cron.d/saml`
 
 	```
 	MAILTO=[ADMIN Email Address]
