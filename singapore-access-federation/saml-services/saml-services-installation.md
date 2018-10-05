@@ -4,9 +4,8 @@
 <!-- EDITED BY: Simon Green, SingAREN-->
 
 # SAML Service Installation Guide
+> Requires AAF Ruby environment and Redis.
 {.is-warning}
-Requires AAF Ruby environment and Redis.
-
 
 ## Install SAML Services
 1. Create a SAML user with home directory as `/opt/saml`.
