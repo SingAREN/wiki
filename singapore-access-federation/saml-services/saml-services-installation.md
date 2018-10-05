@@ -156,7 +156,7 @@
 
 1. Install Certificates and keys
 	
-	The following keys and certificates need to be created and stored in the directory **/opt/saml/keypairs/**
+	The following keys and certificates need to be created and stored in the directory `/opt/saml/keypairs/`:
 
 	- `signing.crt` and `signing.key`. These are the certificate and key currently used to sign your existing Federation Metadata.
 	-	`apache.crt`, `apache.key` and `intermediate.crt`. These are the certificates and keys for the web server. You need to obtain these from your certificate vendor.
@@ -166,7 +166,7 @@
 
 	Add certificates for any external metadata sources that will feed into the SAML service, e.g. edugain. These will be held in the directory `/opt/saml/keypairs/external-metadata`. File names are up to you.
 
-1. Setup the `sync.sh` and `console.sh` scripts in ```/opt/saml/scripts```.
+1. Setup the `sync.sh` and `console.sh` scripts in `/opt/saml/scripts`.
    
 	Replace `[SAML_APP_PASSWORD]` with contents of ```/opt/saml/keypairs/passwords/saml_app_password``` and `[KEY]` with contents of ```/opt/saml/keypairs/passwords/saml_secret_key_base```/
    
@@ -191,7 +191,7 @@
 
 	1. `console.sh`
        
-       Use same environment variables as sync.sh
+       Use same environment variables as `sync.sh`
 
 		```
 		#!/bin/sh
