@@ -8,7 +8,7 @@
 {.is-warning}
 
 ## Install SAML Services
-1. Create a SAML user with home directory as `/opt/saml`.
+1. Create a SAML user with home directory as `/opt/saml`
 
 	```
 	# useradd saml –m –d /opt/saml
