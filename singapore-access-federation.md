@@ -67,7 +67,7 @@ Follow the instructions given by the confirmation emails of both the Organisatio
 > **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
-####`relying-party.xml` configuration example where the files are retrieved externally and loaded into Shibboleth:
+#### `relying-party.xml` configuration example where the files are retrieved externally and loaded into Shibboleth:
 
 ```
 <metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
