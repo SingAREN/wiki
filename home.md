@@ -1,3 +1,10 @@
 ![Singaren Logo Transparency Small](/uploads/images/singaren-logo-transparency-small.png "Singaren Logo Transparency Small" ) 
 
 # Welcome to the SingAREN Technical Wiki
+
+## Our Services
+
+* eduroam
+* Database Mirroring
+* Singapore Access Federation (SGAF)
+* FileSender SG
