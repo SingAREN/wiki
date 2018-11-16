@@ -13,8 +13,41 @@ SingAREN is the Roaming Operator (RO)for eduroam in Singapore and thus complies 
 Contents
 
 1. Connect to eduroam Singapore
-	1.  For Institutions
-	2.  For Users
 2. Participating Institutions in Singapore
 3. Documentation
 4. Contact Us
+
+---
+## Connect to eduroam Singapore
+### For Institutions
+
+In order to enable your users to access eduroam in your campus, you need to maintain an Identity Management System (IdMs), where your users' electronic identities are stored. You also need a RADIUS server, which will have to be connected to your IdMs. To set up an eduroam service point in your institution you have to configure your wireless LAN according to the eduroam requirements.
+
+SingAREN will advise the participating institutions on the procedures of federating with eduroam Federation-Level RADIUS (FLR) server. 
+
+### For Users
+Please refer to Institutions/Configuration for the eduroam configuration instructions of your home institution. 
+
+## Participating Institutions in Singapore
+
+This is the list of institutions in Singapore that offer the eduroam service. Please refer to the eduroam configuration instructions of your home institution and contact your network administrator for more information. 
+
+* ESSEC Asia-Pacific Campus (ESSEC)
+* INSEAD Business School (INSEAD)
+* James Cook University Singapore (JCU)
+* Nanyang Technological University, Singapore (NTU)
+* National Institute of Education, Singapore (NIE)
+* National University of Singapore (NUS)
+* Singapore Institute of Management (SIM)
+* Singapore Institute of Technology (SIT)
+* Singapore Management University (SMU)
+* Singapore University of Technology and Design (SUTD)
+* Singapore University of Social Sciences (SUSS)
+
+## Documentation
+
+### Compliance
+
+[eduroam Compliance Statement](https://www.eduroam.org/wp-content/uploads/2016/05/eduroam_Compliance_Statement_v1_0.pdf)
+
+###
