@@ -49,7 +49,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 
 1. [Create an Organisation](https://manager.sgaf.org.sg/federationregistry/registration/idp) for your institution. Please use the following technical document: Create an Organisation in SGAF,
 2. Wait for the Federation Administrator to approve the new organisation,
-3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your **newly created Organisation** in Identity Provider Description,
+3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your newly created Organisation in Identity Provider Description,
 4. Select the appropriate attributes that the Identity Provider will supply,
 5. Submit request and wait for approval via email.
 
