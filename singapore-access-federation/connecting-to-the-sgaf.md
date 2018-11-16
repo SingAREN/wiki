@@ -25,9 +25,6 @@ Follow the instructions given by the confirmation emails of both the Organisatio
 > **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
----
-
-
 ## ADFS and Single-Metadata-Entity-Ingesting Identity Providers
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
