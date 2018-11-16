@@ -1,4 +1,4 @@
-<!-- TITLE: eduroam -->
+![Eduroam 200 Pix](/uploads/images/eduroam-200-pix.png "Eduroam 200 Pix"){.pagelogo}<!-- TITLE: eduroam -->
 <!-- SUBTITLE: World Wide Education Roaming for Research & Education -->
 
 ![Eduroam 200 Pix](https://raw.githubusercontent.com/SingAREN/wiki/master/uploads/images/eduroam_trans_300pix.png "Eduroam 200 Pix"){.page_logo}
