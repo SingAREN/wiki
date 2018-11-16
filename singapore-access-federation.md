@@ -56,7 +56,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your newly created Organisation in Identity Provider Description,
 4. Select the appropriate attributes that the Identity Provider will supply,
 5. Submit request and wait for approval via email.
-6. Add a MetadataProvider block of type ChainingMetadataProvider for both the SGAF Local and SGAF-signed eduGAIN metadata within the Shibboleth IdP relying-party.xml or equivalent file.
+6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF-signed eduGAIN Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml) and the [SGAF Metadata Signing Certificates](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) within the Shibboleth IdP relying-party.xml or equivalent file.
 	* [Shibboleth IdPv3 MetadataConfiguration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/MetadataConfiguration)
 	* [`relying-party.xml` file example](#relying-party-xml-configuration-example-where-the-files-are-retrieved-externally-and-loaded-into-shibboleth)
 7. Reload the Shibboleth IdP
@@ -100,6 +100,15 @@ Follow the instructions given by the confirmation emails of both the Organisatio
               <metadata:MetadataFilter xsi:type="metadata:SchemaValidation"/>
           </metadata:MetadataFilter>
         </metadata:MetadataProvider></metadata:MetadataProvider>
+        <security:TrustEngine id="shibboleth.MetadataTrustEngine" xsi:type="security:StaticPKIXSignature">
+          <security:ValidationInfo id="AAFCredentials" xsi:type="security:PKIXFilesystem">
+            <security:Certificate>/opt/virtualhome/shibboleth/shibboleth-idp/shibboleth-idp-2.4.4/credentials/metadata.crt</security:Certificate>
+          </security:ValidationInfo>
+          <security:ValidationInfo id="EGCredentials" xsi:type="security:PKIXFilesystem">
+            <security:Certificate>/opt/virtualhome/shibboleth/shibboleth-idp/shibboleth-idp-2.4.4/credentials/metadata.crt</security:Certificate>
+          </security:ValidationInfo>
+        </security:TrustEngine>
+				
 ```
 
 ### ADFS Identity Providers
