@@ -8,7 +8,7 @@
 > **Service Provider (SP) Requirements**
 > * SAML2.0 compatible Service Provider such as Shibboleth SP
 
-> ### Identity Provider (IdP) Requirements
+> **Identity Provider (IdP) Requirements**
 > * SAML2.0 compatible Identity Provider such as ADFS, Shibboleth IdP, etc or a directory service such as AD, LDAP, etc
 >*  Provide at minimum, the following core attributes 
 	>* **displayName** (oid:2.16.840.1.113730.3.1.241)
