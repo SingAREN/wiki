@@ -15,7 +15,7 @@
 4. Select the appropriate attributes that the Identity Provider will supply,
 5. Submit request and wait for approval via email.
 6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF-signed eduGAIN Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml) and the [SGAF Metadata Signing Certificates](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) within the Shibboleth IdP `relying-party.xml` or equivalent file.
-	* Visit the [Shibboleth IdPv3 MetadataConfiguration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/MetadataConfiguration) for information on how to load metadata into the Shibboleth IdP.
+	* [Shibboleth IdPv3 Configuration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/Configuration).
 	* Example [`relying-party.xml` configuration snippet](#relying-party-xml-configuration-snippet-where-the-metadata-and-signing-certificate-files-are-retrieved-externally-and-loaded-into-shibboleth)
 7. Reload the Shibboleth IdP
 8. Once you receive the confirmation email and loaded in the SGAF metadata chain within your IdP, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
@@ -48,7 +48,8 @@ Use the following guide: [Connecting Service and ADFS Identity Providers to the 
 4. Select the attributes that the SP requires and provide reasoning to why the specfic attributes are needed,
 5. Submit request and wait for approval email.
 6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF Metadata Signing Certificate](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) and [Discovery URL](https://ds.sgaf.org.sg/discovery/DS) into the SP.
-	*  For Shibboleth SP v3 add
+	*  [Shibboleth SPv3 Configuration Documentation](https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPGettingStarted)
+	*  SimpleSAMLPHP - Coming Soon!
 7. Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Service Provider.
 8. Follow the instructions given by the confirmation emails of both the Organisation and Service Provider to complete this process.
 9. Follow [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting to the SGAF Proxy. 
