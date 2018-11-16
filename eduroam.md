@@ -53,11 +53,6 @@ This is the list of institutions in Singapore that offer the eduroam service. Pl
 [RADIUS Attribute Issues regarding RFC5580](http://www.eduroam.org/downloads/docs/advisory/eduroamOT-admin-advisory-004.pdf)
 [eduroam service deployment by NTU/CITS](http://www.singaren.net.sg/library/newsroom/NTU-Eduroam.pdf)
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
 
 ## Contact Us
 [Technical Support](mailto://technical-support@singaren.net.sg)
