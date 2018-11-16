@@ -44,7 +44,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 
 
 # Connecting to the SGAF
-## Identity Providers
+## Identity Providers (IdPs)
 ## Service Providers
 # Support
 technical-support@singaren.net.sg
