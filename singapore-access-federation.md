@@ -10,7 +10,7 @@
 
 ### Identity Provider (IdP) Requirements
 * SAML2.0 compatible Identity Provider such as ADFS, Shibboleth IdP, etc or a directory service such as AD, LDAP, etc
-*  **Provide, at minimum, the following core attributes:** 
+*  **Provide**, at minimum, the **following core attributes**: 
 	* **displayName** (oid:2.16.840.1.113730.3.1.241)
 	* **email** (oid:0.9.2342.19200300.100.1.3)
 	* **eduPersonPrincipalName** (oid:1.3.6.1.4.1.5923.1.1.1.6)
