@@ -46,6 +46,10 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 ## Identity Providers (IdPs)
 ### Shibbobleth Identity Providers
 
+> SGAF Mesh Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
+> SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
+> SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS 
+
 1. [Create an Organisation](https://manager.sgaf.org.sg/federationregistry/registration/idp) for your institution. Please use the following technical document: Create an Organisation in SGAF,
 2. Wait for the Federation Administrator to approve the new organisation,
 3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your newly created Organisation in Identity Provider Description,
@@ -59,7 +63,9 @@ Follow the instructions given by the confirmation emails of both the Organisatio
 {.is-info}
 
 ### ADFS Identity Providers
-> Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
+ADFS Identity Providers will need to connect to the SGAF Proxy as ADFS has issues ingesting multi-entity metadata. Thus all ADFS connections within the SGAF will flow through the proxy.
+
+> Must use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
 
 Use the following guide: [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf).
