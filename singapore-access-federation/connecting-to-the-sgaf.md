@@ -58,7 +58,8 @@ Use the following guide: [Connecting Service and ADFS Identity Providers to the 
 ## ADFS and Single-Metadata-Entity-Ingesting SPs
 
 # Miscellaneous
-### `shibboleth2.xml`
+### `shibboleth2.xml` configuration snippet Shibboleth SP
+```
 <ApplicationOverride id="virtualhome" entityID="https://vho.sgaf.singaren.net.sg/shibboleth" attributePrefix="AJP_">
   <Sessions checkAddress="false" consistentAddress="false" handlerSSL="true" cookieProps="https">
     <SSO discoveryProtocol="SAMLDS" ECP="false" discoveryURL="https://ds.sgaf.org.sg/discovery/DS">SAML2 SAML1</SSO>
@@ -74,6 +75,8 @@ Use the following guide: [Connecting Service and ADFS Identity Providers to the 
   <AttributeFilter type="XML" validate="true" path="virtualhome/attribute-policy.xml" />
   <CredentialResolver type="File" key="virtualhome/sp.key" certificate="virtualhome/sp.crt" />
 </ApplicationOverride>
+```
+
 ### `relying-party.xml` configuration snippet where the metadata and signing certificate files are retrieved externally and loaded into Shibboleth:
 
 ```
