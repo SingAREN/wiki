@@ -8,15 +8,6 @@ eduroam stands for Education Roaming. It is a secure roaming access service deve
 
 SingAREN is the Roaming Operator (RO)for eduroam in Singapore and thus complies with the required technical and organisational standards to provide said service. 
 
-
-
-Contents
-
-1. Connect to eduroam Singapore
-2. Participating Institutions in Singapore
-3. Documentation
-4. Contact Us
-
 ---
 ## Connect to eduroam Singapore
 ### For Institutions
