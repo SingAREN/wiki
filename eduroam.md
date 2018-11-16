@@ -47,7 +47,21 @@ This is the list of institutions in Singapore that offer the eduroam service. Pl
 ## Documentation
 
 ### Compliance
-
 [eduroam Compliance Statement](https://www.eduroam.org/wp-content/uploads/2016/05/eduroam_Compliance_Statement_v1_0.pdf)
 
-###
+### Technical - Official 
+[Official eduroam Documentation](https://www.eduroam.org/support/eduroam-documentation/)
+[On-Campus eduroam Deployment - Official GÉANT Wiki](https://wiki.geant.org/display/H2eduroam/How+to+deploy+eduroam+on-site+or+on+campus)
+
+### Technical - Additional 
+[eduroam-US Administrator's Guide](https://www.eduroam.us/admin_guide)
+[Configuring eduroam for Aruba Wireless Controller and ClearPass RADIUS](https://services.geant.net/sites/cbp/Knowledge_Base/Wireless/Documents/cbp-79_guide_to_configuring_eduroam_using_the_aruba_wireless_controller_and_clearpass.pdf)
+[Using Windows NPS as RADIUS in eduroam](https://www.uninett.no/sites/default/files/imce/cbp-13_using-windows-nps-as-radius-in-eduroam_final.pdf)
+[eduroam FreeRADIUS Docker Container](https://github.com/spgreen/eduroam-freeradius-docker)
+
+### Additional Information 
+[RADIUS Attribute Issues regarding RFC5580](http://www.eduroam.org/downloads/docs/advisory/eduroamOT-admin-advisory-004.pdf)
+[eduroam service deployment by NTU/CITS](http://www.singaren.net.sg/library/newsroom/NTU-Eduroam.pdf)
+
+## Contact Us
+[Technical Support](mailto://technical-support@singaren.net.sg)
