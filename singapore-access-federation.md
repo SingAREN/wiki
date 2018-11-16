@@ -42,7 +42,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 * [SGAF SAML Web Single Sign-On Technology Profile](https://www.singaren.net.sg/document/SGAF-SAML-Web-SSO-Technology-Profile.pdf)
 
 
-# Connecting to the SGAF
+# [Connecting to the SGAF](/singapore-access-federation/connecting-to-the-sgaf)
 ## Identity Providers (IdPs)
 ### Shibbobleth Identity Providers
 
