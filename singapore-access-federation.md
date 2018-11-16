@@ -20,3 +20,5 @@
 	>* **eduPersonTargetedID** (oid:1.3.6.1.4.1.5923.1.1.1.10)
 	>* **organizationName** (oid:2.5.4.10)
 
+> **Note:** If your institution only has a **directory service**, a SAML2.0 IdP needs to be installed and connected to the directory service before connecting to the SGAF. Please follow the Shibboleth IdPv3 Installer by AAF Guide.
+{.is-warning}
