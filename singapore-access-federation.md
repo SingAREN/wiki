@@ -18,3 +18,4 @@
 	* **eduPersonAffiliation** (oid:1.3.6.1.4.1.5923.1.1.1.1)
 	* **eduPersonTargetedID** (oid:1.3.6.1.4.1.5923.1.1.1.10)
 	* **organizationName** (oid:2.5.4.10)
+
