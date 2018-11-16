@@ -15,7 +15,7 @@
 	* **email** (oid:0.9.2342.19200300.100.1.3)
 	* **eduPersonPrincipalName** (oid:1.3.6.1.4.1.5923.1.1.1.6)
 	* **eduPersonPrimaryAffiliation** (oid:1.3.6.1.4.1.5923.1.1.1.1)
-  * **eduPersonAffiliation** (oid:1.3.6.1.4.1.5923.1.1.1.1)
+	* **eduPersonAffiliation** (oid:1.3.6.1.4.1.5923.1.1.1.1)
 	* **eduPersonTargetedID** (oid:1.3.6.1.4.1.5923.1.1.1.10)
 	* **organizationName** (oid:2.5.4.10)
 
