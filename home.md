@@ -1,7 +1,7 @@
 <!-- TITLE: SingAREN Technical Wiki -->
 <!-- SUBTITLE: A wiki containing technical information regarding SingAREN services.-->
 
-![Singaren Logo Transparency Small](/uploads/images/singaren-logo-transparency-small.png "Singaren Logo Transparency Small" ) 
+![Singaren Logo Transparency Small](/uploads/images/singaren-logo-transparency-small.png "Singaren Logo Transparency Small" ){.pagelogo}
 
 
 # Our Services
