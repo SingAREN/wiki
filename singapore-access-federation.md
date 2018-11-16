@@ -56,9 +56,16 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your newly created Organisation in Identity Provider Description,
 4. Select the appropriate attributes that the Identity Provider will supply,
 5. Submit request and wait for approval via email.
-6. Add a MetadataProvider block of type ChainingMetadataProvider for both the SGAF Local and SGAF-signed eduGAIN metadata within your Shibboleth IdP relying-party.xml or equivalent file. 
+6. Add a MetadataProvider block of type ChainingMetadataProvider for both the SGAF Local and SGAF-signed eduGAIN metadata within the Shibboleth IdP relying-party.xml or equivalent file. [Shibboleth IdPv3 MetadataConfiguration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/MetadataConfiguration)
+7. Reload the Shibboleth IdP
 
-> `relying-party.xml` configuration example:
+Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
+Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
+
+> **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
+{.is-info}
+
+`relying-party.xml` configuration example:
 
 ```
 <metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
@@ -92,14 +99,6 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
           </metadata:MetadataFilter>
         </metadata:MetadataProvider></metadata:MetadataProvider>
 ```
-
-7. Reload your Shibboleth IdP
-
-Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
-Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
-
-> **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
-{.is-info}
 
 ### ADFS Identity Providers
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
