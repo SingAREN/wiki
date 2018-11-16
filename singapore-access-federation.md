@@ -60,7 +60,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 
 > `relying-party.xml` configuration example:
 
-> ```
+```
 <metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
 
         <metadata:MetadataProvider id="IdPMD" xsi:type="metadata:FilesystemMetadataProvider"
@@ -91,8 +91,9 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
               <metadata:MetadataFilter xsi:type="metadata:SchemaValidation"/>
           </metadata:MetadataFilter>
         </metadata:MetadataProvider></metadata:MetadataProvider>
-> ```
-	
+```
+
+7. Reload your Shibboleth IdP
 
 Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
 Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
