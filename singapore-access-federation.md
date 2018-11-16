@@ -1,7 +1,5 @@
 <!-- TITLE: Singapore Access Federation (SGAF) -->
-<!-- SUBTITLE:  -->
-
-The Singapore Access Federation (SGAF) service is a Federated Identity Management System for Singapore's research and education (R&E) community. SGAF uses SAML2.0 technology to enable scalable, trusted collaborations among Singapore's R&E community. 
+<!-- SUBTITLE: The Singapore Access Federation (SGAF) service is a Federated Identity Management System for Singapore's research and education (R&E) community. SGAF uses SAML2.0 technology to enable scalable, trusted collaborations among Singapore's R&E community. -->
 
 ## Local Entity Requirements to Join the SGAF
 > **General Requirements**
