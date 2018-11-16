@@ -2,14 +2,14 @@
 <!-- SUBTITLE: The Singapore Access Federation (SGAF) service is a Federated Identity Management System for Singapore's research and education (R&E) community. SGAF uses SAML2.0 technology to enable scalable, trusted collaborations among Singapore's R&E community. -->
 
 # Local Entity Requirements to Join the SGAF
-> **General Requirements**
+## General Requirements 
 >* Member of SingAREN
 >* Acceptance of the Singapore Access Federation Rules
 
-> **Service Provider (SP) Requirements**
+## Service Provider (SP) Requirements
 > * SAML2.0 compatible Service Provider such as Shibboleth SP
 
-> **Identity Provider (IdP) Requirements**
+## Identity Provider (IdP) Requirements
 > * SAML2.0 compatible Identity Provider such as ADFS, Shibboleth IdP, etc or a directory service such as AD, LDAP, etc
 >*  Provide at minimum, the following core attributes 
 >    * **displayName** (oid:2.16.840.1.113730.3.1.241)
