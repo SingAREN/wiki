@@ -57,7 +57,7 @@ Once you receive the confirmation email, connect to the Federation Registry and 
 Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
 
 > Note: Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
-{.is_warning}
+{.is-warning}
 ## Service Providers (SPs)
 # Support
 technical-support@singaren.net.sg
