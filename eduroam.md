@@ -22,7 +22,7 @@ SingAREN is the Roaming Operator (RO) for eduroam in Singapore and thus complies
 * [Using Windows NPS as RADIUS in eduroam](https://www.uninett.no/sites/default/files/imce/cbp-13_using-windows-nps-as-radius-in-eduroam_final.pdf)
 * [eduroam FreeRADIUS Docker Container](https://github.com/spgreen/eduroam-freeradius-docker)
 
-## Additional Information 
+## Miscellaneous 
 * [RADIUS Attribute Issues regarding RFC5580](http://www.eduroam.org/downloads/docs/advisory/eduroamOT-admin-advisory-004.pdf)
 * [eduroam service deployment by NTU/CITS](http://www.singaren.net.sg/library/newsroom/NTU-Eduroam.pdf)
 
