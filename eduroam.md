@@ -1,5 +1,5 @@
 <!-- TITLE: eduroam -->
-<!-- SUBTITLE: World Wide Education Roaming for Research & Education -->
+<!-- SUBTITLE: ![Eduroam 200 Pix](/uploads/images/eduroam-200-pix.png "Eduroam 200 Pix") World Wide Education Roaming for Research & Education -->
 
 ![Eduroam 200 Pix](/uploads/images/eduroam-200-pix.png "Eduroam 200 Pix")
 
