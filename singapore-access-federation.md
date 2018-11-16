@@ -56,8 +56,8 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 Once you receive the confirmation email, connect to the Federation Registry and become the administrator for both the Organisation and Identity Provider.
 Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
 
-> Note: Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
-{.is-warning}
+> **Note**: Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
+
 ## Service Providers (SPs)
 # Support
 technical-support@singaren.net.sg
