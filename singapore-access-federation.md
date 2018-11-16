@@ -45,7 +45,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 
 # Connecting to the SGAF
 ## Identity Providers (IdPs)
-### Shibbobleth IdP
+### Shibbobleth Identity Providers
 
 1. [Create an Organisation](https://manager.sgaf.org.sg/federationregistry/registration/idp) for your institution. Please use the following technical document: Create an Organisation in SGAF,
 2. Wait for the Federation Administrator to approve the new organisation,
