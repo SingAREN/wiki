@@ -51,12 +51,17 @@ Use the following guide: [Connecting Service and ADFS Identity Providers to the 
 	*  For Shibboleth SP v3 add
 7. Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Service Provider.
 8. Follow the instructions given by the confirmation emails of both the Organisation and Service Provider to complete this process.
+9. Follow [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting to the SGAF Proxy. 
 
 > **Note:** Your Service Provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
 ## ADFS and Single-Metadata-Entity-Ingesting SPs
+> Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
+{.is-danger}
 
+ADFS and other Single-Metadata-Entity-Ingesting Service Providers will need to connect to the SGAF Proxy as they are unable to load or have a difficult time with multi-entity metadata.
+Use the following guide: [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting to the SGAF Proxy. 
 # Miscellaneous
 ### Shibboleth SP `shibboleth2.xml` configuration snippet for loading metadata and signing certificate
 ```
