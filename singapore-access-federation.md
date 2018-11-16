@@ -58,6 +58,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 5. Submit request and wait for approval via email.
 6. Add a MetadataProvider block of type ChainingMetadataProvider for both the SGAF Local and SGAF-signed eduGAIN metadata within the Shibboleth IdP relying-party.xml or equivalent file.
 	* [Shibboleth IdPv3 MetadataConfiguration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/MetadataConfiguration)
+	* `relying-party.xml` file example
 7. Reload the Shibboleth IdP
 
 Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
@@ -66,7 +67,7 @@ Follow the instructions given by the confirmation emails of both the Organisatio
 > **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
-`relying-party.xml` configuration example:
+####`relying-party.xml` configuration example where the files are retrieved externally and loaded into Shibboleth:
 
 ```
 <metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
