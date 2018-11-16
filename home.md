@@ -6,7 +6,7 @@
 
 # Our Services
 
-* ** [eduroam](/eduroam) **
+* **[eduroam](/eduroam)**
 * Database Mirroring
 * Singapore Access Federation (SGAF)
 * FileSender SG
