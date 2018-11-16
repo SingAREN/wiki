@@ -58,9 +58,9 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 5. Submit request and wait for approval via email.
 6. Add a MetadataProvider block of type ChainingMetadataProvider for both the SGAF Local and SGAF-signed eduGAIN metadata within your Shibboleth IdP relying-party.xml or equivalent file. 
 
-Example:
+> Example:
 
-````
+```
 <metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
 
         <metadata:MetadataProvider id="IdPMD" xsi:type="metadata:FilesystemMetadataProvider"
@@ -91,9 +91,7 @@ Example:
               <metadata:MetadataFilter xsi:type="metadata:SchemaValidation"/>
           </metadata:MetadataFilter>
         </metadata:MetadataProvider></metadata:MetadataProvider>
-				````
-
-
+```
 	
 
 Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
