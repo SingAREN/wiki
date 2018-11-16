@@ -42,7 +42,6 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 * [SGAF SAML Web Single Sign-On Technology Profile](https://www.singaren.net.sg/document/SGAF-SAML-Web-SSO-Technology-Profile.pdf)
 
 
-
 # Connecting to the SGAF
 ## Identity Providers (IdPs)
 ### Shibbobleth Identity Providers
@@ -56,8 +55,12 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
 Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
 
-> **Note**: Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
+> **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 
+### ADFS Identity Providers
+* Use the following guide: [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf).
+
+> **Note:** Once approved, your identity provider will become active in the Singapore Access Federation within 24 hours.
 ## Service Providers (SPs)
 # Support
 technical-support@singaren.net.sg
