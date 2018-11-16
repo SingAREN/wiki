@@ -31,7 +31,7 @@ The **SGAF Metadata Registration Practice Statement (MRPS)** describes the metad
 
 The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that enables Identity Providers and Relying Parties to create and use Web Single Sign-On services with SAML. 
 
-### SGAF Metadata Sources
+### Metadata Repository
 [SGAF Metadata Sources](https://ds.sgaf.org.sg/)
 
 ### Metadata Documents
