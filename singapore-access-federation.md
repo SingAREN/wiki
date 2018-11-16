@@ -1,7 +1,7 @@
 <!-- TITLE: Singapore Access Federation (SGAF) -->
 <!-- SUBTITLE: The Singapore Access Federation (SGAF) service is a Federated Identity Management System for Singapore's research and education (R&E) community. SGAF uses SAML2.0 technology to enable scalable, trusted collaborations among Singapore's R&E community. -->
 
-## Local Entity Requirements to Join the SGAF
+# Local Entity Requirements to Join the SGAF
 > **General Requirements**
 >* Member of SingAREN
 >* Acceptance of the Singapore Access Federation Rules
@@ -23,7 +23,7 @@
 > **Note:** If your institution only has a **directory service**, a SAML2.0 IdP needs to be installed and connected to the directory service before connecting to the SGAF. Please follow the Shibboleth IdPv3 Installer by AAF Guide.
 {.is-warning}
 
-## SGAF Metadata
+# SGAF Metadata
 
 The **SGAF Metadata** is an important part of the SAML Federation. In essence, it is a directory of registered, trusted and approved entities within the SGAF, allowing only Identity Providers (IdP) and Service Providers (SP) found within the metadata to communicate with each other.
 
@@ -31,15 +31,11 @@ The **SGAF Metadata Registration Practice Statement (MRPS)** describes the metad
 
 The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that enables Identity Providers and Relying Parties to create and use Web Single Sign-On services with SAML. 
 
-### Metadata Repository
+## Metadata Repository
 [SGAF Metadata Sources](https://ds.sgaf.org.sg/)
 
-### Metadata Documents
+## Metadata Documents
 * [SGAF Metadata Registration Practice Statement](https://www.singaren.net.sg/document/SGAF-MRPS.pdf)
 * [SGAF SAML Web Single Sign-On Technology Profile](https://www.singaren.net.sg/document/SGAF-SAML-Web-SSO-Technology-Profile.pdf)
 
 
-## This
-## is 
-## a 
-# Test
