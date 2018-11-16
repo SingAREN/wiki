@@ -46,7 +46,8 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 ## Identity Providers (IdPs)
 ### Shibbobleth Identity Providers
 
-> SGAF Mesh Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
+> SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
+> SGAF eduGAIN Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml
 > SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
 > SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS 
 
@@ -55,6 +56,45 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your newly created Organisation in Identity Provider Description,
 4. Select the appropriate attributes that the Identity Provider will supply,
 5. Submit request and wait for approval via email.
+6. Add a MetadataProvider block of type ChainingMetadataProvider for both the SGAF Local and SGAF-signed eduGAIN metadata within your Shibboleth IdP relying-party.xml or equivalent file. 
+
+Example:
+
+````
+<metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
+
+        <metadata:MetadataProvider id="IdPMD" xsi:type="metadata:FilesystemMetadataProvider"
+                                   metadataFile="/opt/virtualhome/shibboleth/shibboleth-idp/shibboleth-idp-2.4.4/metadata/idp-metadata.xml"
+                                   maxRefreshDelay="P1D" />
+
+        <metadata:MetadataProvider id="FedMD" xsi:type="metadata:FilesystemMetadataProvider"
+                                   metadataFile="/opt/virtualhome/shibboleth/shibboleth-idp/shibboleth-idp-2.4.4/metadata/federation-metadata.xml"
+                                   maxRefreshDelay="PT10M">
+          <metadata:MetadataFilter xsi:type="metadata:ChainingFilter">
+            <metadata:MetadataFilter  xsi:type="metadata:RequiredValidUntil" maxValidityInterval="P7D" />
+
+            <metadata:MetadataFilter xsi:type="metadata:EntityRoleWhiteList">
+                <metadata:RetainedRole>samlmd:SPSSODescriptor</metadata:RetainedRole>
+              </metadata:MetadataFilter>
+              <metadata:MetadataFilter xsi:type="metadata:SchemaValidation"/>
+          </metadata:MetadataFilter>
+        </metadata:MetadataProvider>
+        <metadata:MetadataProvider id="EGMD" xsi:type="metadata:FilesystemMetadataProvider"
+                                   metadataFile="/opt/virtualhome/shibboleth/shibboleth-idp/shibboleth-idp-2.4.4/metadata/edugain-metadata.xml"
+                                   maxRefreshDelay="PT10M">
+          <metadata:MetadataFilter xsi:type="metadata:ChainingFilter">
+            <metadata:MetadataFilter  xsi:type="metadata:RequiredValidUntil" maxValidityInterval="P7D" />
+
+            <metadata:MetadataFilter xsi:type="metadata:EntityRoleWhiteList">
+                <metadata:RetainedRole>samlmd:SPSSODescriptor</metadata:RetainedRole>
+              </metadata:MetadataFilter>
+              <metadata:MetadataFilter xsi:type="metadata:SchemaValidation"/>
+          </metadata:MetadataFilter>
+        </metadata:MetadataProvider></metadata:MetadataProvider>
+				````
+
+
+	
 
 Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
 Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
@@ -66,7 +106,8 @@ Follow the instructions given by the confirmation emails of both the Organisatio
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
 
-ADFS Identity Providers will need to connect to the SGAF Proxy as ADFS has issues ingesting multi-entity metadata. Thus all ADFS connections within the SGAF will flow through the proxy. Use the following guide: [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf).
+ADFS Identity Providers will need to connect to the SGAF Proxy as ADFS has issues ingesting multi-entity metadata. Thus all ADFS connections within the SGAF will flow through the proxy. 
+Use the following guide: [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf).
 
 > **Note:** Once approved, your identity provider will become active in the Singapore Access Federation within 24 hours.
 {.is-info}
