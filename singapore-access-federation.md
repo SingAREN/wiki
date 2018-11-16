@@ -25,7 +25,11 @@
 
 ## SGAF Metadata
 
-The SGAF Metadata is an important part of the SAML Federation. In essence, it is a directory of registered, trusted and approved entities within the SGAF, allowing only Identity Providers (IdP) and Service Providers (SP) found within the metadata to communicate with each other. The SGAF Metadata Registration Practice Statement (MRPS) indicates the SGAF metadata management process conducted by the SGAF Federation Operator. The SGAF SAML Web Single Sign-On Technology Profile defines a standard that enables Identity Providers and Relying Parties to create and use Web Single Sign-On services using SAML. 
+The SGAF Metadata is an important part of the SAML Federation. In essence, it is a directory of registered, trusted and approved entities within the SGAF, allowing only Identity Providers (IdP) and Service Providers (SP) found within the metadata to communicate with each other.
+
+The SGAF Metadata Registration Practice Statement (MRPS) describes the metadata management process conducted by the SGAF Federation Operator. 
+
+The SGAF SAML Web Single Sign-On Technology Profile defines a standard that enables Identity Providers and Relying Parties to create and use Web Single Sign-On services with SAML. 
 
 ### SGAF Metadata Sources
 [SGAF Metadata Sources](https://ds.sgaf.org.sg/)
