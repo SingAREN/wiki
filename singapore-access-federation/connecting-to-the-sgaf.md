@@ -1,6 +1,7 @@
 <!-- TITLE: Connecting to the SGAF -->
 <!-- SUBTITLE: How to connect SAML 2.0 entities (IdPs and SPs) to the SGAF -->
 
+![Singaren Logo Transparency Small](/uploads/images/singaren-logo-transparency-small.png "Singaren Logo Transparency Small"){.pagelogo}
 # Identity Providers (IdPs)
 ## Shibbobleth Identity Providers
 
@@ -33,6 +34,8 @@ ADFS and other Single-Metadata-Entity-Ingesting Identity Providers will need to 
 
 > **Note:** Once approved, your identity provider will become active in the Singapore Access Federation within 24 hours.
 {.is-info}
+
+---
 # Service Providers (SPs)
 
 ## Shibboleth v3 and SimpleSAMLPHP SP
