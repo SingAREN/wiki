@@ -67,6 +67,8 @@ Follow the instructions given by the confirmation emails of both the Organisatio
 > **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
+---
+
 #### `relying-party.xml` configuration snippet where the metadata and signing certificate files are retrieved externally and loaded into Shibboleth:
 
 ```
