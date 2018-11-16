@@ -5,8 +5,7 @@
 
 
 # Our Services
-
-* **[eduroam](/eduroam)**
+* ![Eduroam 200 Pix](/uploads/images/eduroam-200-pix.png "Eduroam 200 Pix") [eduroam](/eduroam)
 * Database Mirroring
 * Singapore Access Federation (SGAF)
 * FileSender SG
