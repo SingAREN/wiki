@@ -6,7 +6,7 @@
 * Acceptance of the Singapore Access Federation Rules
 
 ### Service Provider (SP) Requirements
-*     SAML2.0 compatible Service Provider such as Shibboleth SP
+* SAML2.0 compatible Service Provider such as Shibboleth SP
 
 ### Identity Provider (IdP) Requirements
 * SAML2.0 compatible Identity Provider such as ADFS, Shibboleth IdP, etc or a directory service such as AD, LDAP, etc
