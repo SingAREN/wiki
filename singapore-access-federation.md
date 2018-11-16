@@ -46,7 +46,18 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 # Connecting to the SGAF
 ## Identity Providers (IdPs)
 ### Shibbobleth IdP
-1. [Create an Organisation](https://manager.sgaf.org.sg/federationregistry/registration/organization) within the SGAF Federation Manager.
+
+1. Create an Organisation for your institution here. Please use the following technical document: Create an Organisation in SGAF,
+2. Wait for the Federation Administrator to approve the new organisation,
+3. Setup your Shibboleth Identity Provider here using your newly created Organisation in Identity Provider Description,
+4. Select the appropriate attributes that the Identity Provider will supply,
+5. Submit request and wait for approval via email.
+
+Once you receive the confirmation email, connect to the Federation Registry and become the administrator for both the Organisation and Identity Provider.
+Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
+
+> Note: Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
+{.is_warning}
 ## Service Providers (SPs)
 # Support
 technical-support@singaren.net.sg
