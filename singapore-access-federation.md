@@ -49,7 +49,7 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 > SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
 > SGAF eduGAIN Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml
 > SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
-> SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS 
+{.is-info}
 
 1. [Create an Organisation](https://manager.sgaf.org.sg/federationregistry/registration/idp) for your institution. Please use the following technical document: Create an Organisation in SGAF,
 2. Wait for the Federation Administrator to approve the new organisation,
