@@ -56,9 +56,9 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 3. [Register your Shibboleth Identity Provider](https://manager.sgaf.org.sg/federationregistry/registration/idp) using your newly created Organisation in Identity Provider Description,
 4. Select the appropriate attributes that the Identity Provider will supply,
 5. Submit request and wait for approval via email.
-6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF-signed eduGAIN Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml) and the [SGAF Metadata Signing Certificates](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) within the Shibboleth IdP relying-party.xml or equivalent file.
-	* [Shibboleth IdPv3 MetadataConfiguration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/MetadataConfiguration)
-	* [`relying-party.xml` file example](#relying-party-xml-configuration-example-where-the-files-are-retrieved-externally-and-loaded-into-shibboleth)
+6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF-signed eduGAIN Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml) and the [SGAF Metadata Signing Certificates](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) within the Shibboleth IdP `relying-party.xml` or equivalent file.
+	* Visit the [Shibboleth IdPv3 MetadataConfiguration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/MetadataConfiguration) for information on how to load metadata into the Shibboleth IdP.
+	* Example [`relying-party.xml` metadata and signing certificate loading](#relying-party-xml-configuration-example-where-the-files-are-retrieved-externally-and-loaded-into-shibboleth)
 7. Reload the Shibboleth IdP
 
 Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
