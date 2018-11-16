@@ -1,7 +1,7 @@
 <!-- TITLE: eduroam -->
 <!-- SUBTITLE: World Wide Education Roaming for Research & Education -->
 
-![eduroam logo transparent background120 Pix](https://github.com/SingAREN/wiki/blob/master/uploads/images/eduroam_trans_120pix.png "eduroam logo transparent background120 Pix"){.pagelogo}
+![eduroam](https://github.com/SingAREN/wiki/blob/master/uploads/images/eduroam_trans_120pix.png "eduroam logo transparent background120 Pix"){.pagelogo}
 
 eduroam stands for Education Roaming. It is a secure roaming access service developed for the international research and education community, pioneered by the European research and education community. It provides users with authenticated network access to the Internet through a single Wi-Fi profile and set of credentials. eduroam is used extensively by institutes of higher learning, research centres and libraries in more than 50 economies worldwide. 
 
