@@ -63,8 +63,7 @@
             <security:Certificate>/opt/virtualhome/shibboleth/shibboleth-idp/shibboleth-idp-2.4.4/credentials/metadata.crt</security:Certificate>
           </security:ValidationInfo>
         </security:TrustEngine>
-				
-```
+				```
 
 # ADFS and Single-Metadata-Entity-Ingesting IdPs
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
