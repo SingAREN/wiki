@@ -1,5 +1,5 @@
 <!-- TITLE: Connect An Identity Provider To The SGAF -->
-<!-- SUBTITLE: A quick summary of Connect An Identity Provider To The SGAF -->
+<!-- SUBTITLE: How to connect SAML 2.0 enabled Identity Providers to the SGAF -->
 
 # Shibbobleth Identity Providers
 
