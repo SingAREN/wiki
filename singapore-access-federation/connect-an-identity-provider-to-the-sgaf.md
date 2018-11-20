@@ -73,7 +73,6 @@
 ADFS and other Single-Metadata-Entity-Ingesting Identity Providers will need to connect to the SGAF Proxy as they are unable to load or have a difficult time with multi-entity metadata.
 * Use the following guide: [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf).
 
-> **Note:** Once approved, your identity provider will become active in the Singapore Access Federation within 24 hours.
+> **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
-
 
