@@ -15,7 +15,7 @@
 5. Submit request and wait for approval via email.
 6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF-signed eduGAIN Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml) and the [SGAF Metadata Signing Certificates](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) within the Shibboleth IdP `relying-party.xml` or equivalent file.
 	* [Shibboleth IdPv3 Configuration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/Configuration).
-	* Example [`relying-party.xml` configuration snippet](#relying-party-xml-configuration-snippet-where-the-metadata-and-signing-certificate-files-are-retrieved-externally-and-loaded-into-shibboleth)
+	* Example [`relying-party.xml` configuration snippet](#relying-party-xml-example)
 7. Reload the Shibboleth IdP
 8. Once you receive the confirmation email and loaded in the SGAF metadata chain within your IdP, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
 9. Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
@@ -23,7 +23,7 @@
 > **Note:** Your identity provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
-## `relying-party.xml` Example
+## `relying-party.xml` MetadataProvider snippet
 ```
 <metadata:MetadataProvider id="ShibbolethMetadata" xsi:type="metadata:ChainingMetadataProvider">
 
