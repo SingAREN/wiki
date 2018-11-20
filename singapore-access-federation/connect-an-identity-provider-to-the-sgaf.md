@@ -1,5 +1,5 @@
 <!-- TITLE: Connect An Identity Provider To The SGAF -->
-<!-- SUBTITLE: A quick summary of Connect An Identity Provider To The Sgaf -->
+<!-- SUBTITLE: A quick summary of Connect An Identity Provider To The SGAF -->
 
 # Shibbobleth Identity Providers
 
