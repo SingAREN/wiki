@@ -46,5 +46,5 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 * [Connect An Identity Provider To The SGAF](/singapore-access-federation/connect-an-identity-provider-to-the-sgaf)
 * [Connect A Service Provider To The SGAF](/singapore-access-federation/connect-a-service-provider-to-the-sgaf)
 
-# Support
-technical-support@singaren.net.sg
+# Contact
+Please contact technical-support@singaren.net.sg if you are experiencing any technical issues related to the SGAF.
