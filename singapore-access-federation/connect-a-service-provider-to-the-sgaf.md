@@ -15,7 +15,7 @@
 5. Submit request and wait for approval email.
 6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF Metadata Signing Certificate](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) and [Discovery URL](https://ds.sgaf.org.sg/discovery/DS) into the SP.
 	*  [Shibboleth SPv3 Configuration Documentation](https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPGettingStarted)
-		* [ `shibboleth2.xml` configuration snippet]() for loading in metadata sources, metadata signing certificates and the discovery service.
+		* [ `shibboleth2.xml` configuration snippet](#shibboleth-2-xml-configuration-snippet) for loading in metadata sources, metadata signing certificates and the discovery service.
 	*  SimpleSAMLPHP - Coming Soon!
 7. Once you receive the confirmation email, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Service Provider.
 8. Follow the instructions given by the confirmation emails of both the Organisation and Service Provider to complete this process.
@@ -24,7 +24,7 @@
 > **Note:** Your Service Provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
-## `shibboleth2.xml` configuration snippet 
+## `shibboleth2.xml` Configuration Snippet 
 ```
 <ApplicationOverride id="virtualhome" entityID="https://vho.sgaf.singaren.net.sg/shibboleth" attributePrefix="AJP_">
   <Sessions checkAddress="false" consistentAddress="false" handlerSSL="true" cookieProps="https">
