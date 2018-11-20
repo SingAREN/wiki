@@ -1,5 +1,5 @@
 <!-- TITLE: Connect a Service Provider to the SGAF -->
-<!-- SUBTITLE: A quick summary of Connect A Service Provider To The SGAF -->
+<!-- SUBTITLE: How to connect SAML 2.0 enabled Service Providers to the SGAF -->
 
 # Shibboleth v3 and SimpleSAMLPHP Service Providers
 
