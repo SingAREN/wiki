@@ -65,7 +65,7 @@
         </security:TrustEngine>
 ```
 
-# ADFS and Single-Metadata-Entity-Ingesting IdPs
+# ADFS and Single-Metadata-Entity-Ingesting Identity Providers
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
 
