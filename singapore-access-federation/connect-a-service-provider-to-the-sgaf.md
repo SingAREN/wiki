@@ -1,7 +1,7 @@
 <!-- TITLE: Connect a Service Provider to the SGAF -->
 <!-- SUBTITLE: A quick summary of Connect A Service Provider To The SGAF -->
 
-# Shibboleth v3 and SimpleSAMLPHP SP
+# Shibboleth v3 and SimpleSAMLPHP Service Providers
 
 > SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
 > SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
@@ -41,7 +41,7 @@
   <CredentialResolver type="File" key="virtualhome/sp.key" certificate="virtualhome/sp.crt" />
 </ApplicationOverride>
 ```
-# ADFS and Single-Metadata-Entity-Ingesting SPs
+# ADFS and Single-Metadata-Entity-Ingesting Service Providers
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
 
