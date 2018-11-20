@@ -15,7 +15,7 @@
 5. Submit request and wait for approval via email.
 6. Load the [SGAF Local Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml), [SGAF-signed eduGAIN Metadata](https://ds.sgaf.org.sg/distribution/metadata/sgaf-edugain.xml) and the [SGAF Metadata Signing Certificates](https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem) within the Shibboleth IdP `relying-party.xml` or equivalent file.
 	* [Shibboleth IdPv3 Configuration Documentation](https://wiki.shibboleth.net/confluence/display/IDP30/Configuration).
-	* Example [`relying-party.xml` configuration snippet](#relying-party-xml-example)
+	* Example [`relying-party.xml` configuration snippet](#relying-party-xml-metadata-provider-snippet)
 7. Reload the Shibboleth IdP
 8. Once you receive the confirmation email and loaded in the SGAF metadata chain within your IdP, connect to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and become the administrator for both the Organisation and Identity Provider.
 9. Follow the instructions given by the confirmation emails of both the Organisation and Identity Provider to complete this process.
