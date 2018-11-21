@@ -21,7 +21,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	* MCrypt (php-mcrypt)
 	* Basic PDO database support (php-pdo) for storing sessions (at least SQLite3).
 	* Optionally, also MySQL support (php-mysql)
- 
+  
  
 	  ```
 		# yum install httpd mod_ssl php php-mcrypt php-xml php-pdo
