@@ -238,68 +238,68 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	>   `01 * * * * curl --cacert /etc/pki/tls/certs/localhost.crt --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1 `
 	>   * or
 	>   `01 * * * * curl --insecure --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1`
-	>  And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
+	> * And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
 
-                And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
-        You can force the job to run immediately by clicking on one of the hourly link at the bottom of the page (or pasting the cron-job URL into your browser - but the GUI link gives more output).
-        To see the output from the metadata refresh itself, go to https://sp.example.org/simplesaml/module.php/metarefresh/fetch.php
+	* You can force the job to run immediately by clicking on one of the hourly link at the bottom of the page (or pasting the cron-job URL into your browser - the GUI link gives more output).
+  * To see the output from the metadata refresh itself, go to https://sp.example.org/simplesaml/module.php/metarefresh/fetch.php
 
-    After confirming the cron job works (wait for up to an hour to receive a confirmation email to the SimpleSAMLphp technical contact email address), edit config/module_cron.phpand to avoid getting a confirmation email each time the cron-job runs, set
-        either 'debug_message' => FALSE, (to suppress the confirmation debug message)
-        or 'sendemail' => FALSE, (to suppress all email messages from the cron module)
-        However, they will have the same effect - as any error messages from metarefresh do not propagate to the cron module and are only visible in Apache error logs (/var/log/httpd/ssl_error_log)
+* After confirming the cron job works (wait for up to an hour to receive a confirmation email to the SimpleSAMLphp technical contact email address), edit `config/module_cron.php` and to avoid getting a confirmation email each time the cron-job runs, set
+	* either `'debug_message' => FALSE,` (to suppress the confirmation debug message)
+	* or `'sendemail' => FALSE,` (to suppress all email messages from the cron module)
+	* However, they will have the same effect - as any error messages from metarefresh do not propagate to the cron module and are only visible in Apache error logs (`/var/log/httpd/ssl_error_log`)
 
-Configure the SP to use the Tuakiri Discovery Service
+# Configure the SP to use the SGAF Discovery Service
 
-    Edit config/authsources.php and set 'discoURL'to either:
-        Tuakiri-Production: 'https://directory.tuakiri.ac.nz/ds/DS'
-        or Tuakiri-TEST: 'https://directory.test.tuakiri.ac.nz/ds/DS'
+* Edit `config/authsources.php` and set `'discoURL'` to:
+        Tuakiri-Production: https://ds.sgaf.org.sg/discovery/DS'
 
-I.e., either
+	```
+	                'discoURL' => 'https://ds.sgaf.org.sg/discovery/DS',
+	```
 
-                'discoURL' => 'https://directory.tuakiri.ac.nz/ds/DS',
-
-or
-
-                'discoURL' => 'https://directory.test.tuakiri.ac.nz/ds/DS',
-
-Configure Additional Tuakiri Attributes
+# Configure Additional SGAF Attributes
 
 From the list of attributes used within Tuakiri and the list of Attributes supported by SimpleSAMLphp in the default configuration, the following need to be explicitly added:
 
-    auEduPersonSharedToken
-    homeOrganizationType
-    eduPersonAssurance
+* auEduPersonSharedToken
+* homeOrganizationType
+* eduPersonAssurance
 
-    Create attributemap/tuakiri-attrs.phpwith the following contents (adding on to what already exists in attributemap/oid2name.php)
+* Create `attributemap/sgaf-attrs.php` with the following contents (adding on to what already exists in `attributemap/oid2name.php`)
 
-    <?php   
-    $attributemap = array(
-            'urn:oid:1.3.6.1.4.1.25178.1.2.10' => 'schacHomeOrganizationType',
-            'urn:oid:1.3.6.1.4.1.5923.1.1.1.11' => 'eduPersonAssurance',
-            'urn:oid:1.3.6.1.4.1.27856.1.2.5' => 'auEduPersonSharedToken',
-    );      
-    ?>     
+	```
+	<?php
+	$attributemap = array(
+					'urn:oid:1.3.6.1.4.1.25178.1.2.10' => 'schacHomeOrganizationType',
+					'urn:oid:1.3.6.1.4.1.5923.1.1.1.11' => 'eduPersonAssurance',
+					'urn:oid:1.3.6.1.4.1.27856.1.2.5' => 'auEduPersonSharedToken',
+	);      
+	?> 
+	```
+	
+* Edit `config/config-metarefresh.php` and add a reference to this file in the template for IdPs downloaded via metarefresh:
 
-    Edit config/config-metarefresh.phpand add a reference to this file in the template for IdPs downloaded via metarefresh:
+	```
+	                                        'template' => array(
+	                                                'tags'  => array('sgaf'),
+	                                                'authproc' => array(
+	                                                        51 => array('class' => 'core:AttributeMap', 'oid2name', 'sgaf-attrs'),
+	                                                ),
+	                                        ),
+	```
 
-                                            'template' => array(
-                                                    'tags'  => array('tuakiri'),
-                                                    'authproc' => array(
-                                                            51 => array('class' => 'core:AttributeMap', 'oid2name', 'tuakiri-attrs'),
-                                                    ),
-                                            ),
+* To also configure friendly attribute names, add the following after the first line of dictionaries/attributes.definition.json (note that eduPersonAssurance already has an entry there, does not need to be duplicated)
 
-    To also configure friendly attribute names, add the following after the first line of dictionaries/attributes.definition.json (note that eduPersonAssurance already has an entry there, does not need to be duplicated)
+	```
+	        "attribute_schachomeorganizationtype": {
+	                "en": "Home organization type"
+	        },
+					"attribute_auedupersonsharedtoken": {
+									"en": "Shared token"
+					},
+	```
 
-        "attribute_schachomeorganizationtype": {
-                "en": "Home organization type"
-        },
-        "attribute_auedupersonsharedtoken": {
-                "en": "Shared token"
-        },
-
-Clean up SP configuration
+# Clean up SP configuration
 
 Remove (comment-out) pre-configured IdPs and SPs
 
