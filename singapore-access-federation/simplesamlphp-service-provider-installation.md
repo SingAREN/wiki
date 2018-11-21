@@ -28,7 +28,9 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 * Configure SELinux: if your system has SELinux enabled, allow Apache to send email (otherwise, invocation of sendmail(postfix) from PHP breaks):
 	
-	`setsebool -P httpd_can_sendmail on`
+	```
+	setsebool -P httpd_can_sendmail on
+	```
 	
 	* And if using SELinux, also install the policycoreutils-python package to get the semanagecommand which we will need later:
 		
