@@ -17,6 +17,7 @@ This documentation covers Shibboleth SP 3.x. It has been tested on CentOS7 (x86_
 Before starting to build and configure the Shibboleth Service Provider, assure that the following pre-requisites are met:
 
 * CentOS 7 Minimal Installation
+* NTP
 * Apache with mod_ssl
 
 	```
@@ -32,7 +33,7 @@ Before starting to build and configure the Shibboleth Service Provider, assure t
 		# firewall-cmd --reload
 		```
 
-	* Allow outbound traffic on TCP port 8443 for the Shibboleth daemon (shibd) to connect to every remote SGAF Identity Provider (IdP) in the federation for attribute fetching.
+	* Allow outbound traffic on TCP port 8443 for the Shibboleth daemon (`shibd`) to connect to every remote SGAF Identity Provider (IdP) in the federation for attribute fetching.
 	
 # Install Shibboleth
 * Setup Shibboleth YUM repository and install Shibboleth from YUM:
@@ -79,4 +80,15 @@ The registration process is self-explanatory. The key points are:
 	* Within the `<Sessions>` element:
 		* Make the session handler use SSL. Set `handlerSSL="true"`
 		> **Recommended**
-		> Go even further and in the `<Sessions>` element, change the `handlerURL` from a relative one (`"/Shibboleth.sso"`) to an absolute URL - `handlerURL="https://sp.example.org/Shibboleth.sso"`. Use the hostname used when registering the SP within the SGAF Federation Registry. This makes sure that the sure is always issuing correct endpoint URLs in outgoing requests, even when users refer to the server with an alternative name. This is particurlaly important when there are multiple hostnames resolving to your server (such as ones prefixed with "www." nad one without).
+		> Go even further  in the `<Sessions>` element and change the `handlerURL` from a relative one (`"/Shibboleth.sso"`) to an absolute URL - i.e. `handlerURL="https://sp.example.org/Shibboleth.sso"`. Use the hostname used when registering the SP within the SGAF Federation Registry. This makes sure that the sure is always issuing correct endpoint URLs in outgoing requests, even when users refer to the server with an alternative name. This is particurlaly important when there are multiple hostnames resolving to your server (such as ones prefixed with "www." nad one without).
+	*  Change the `SupportContact` attribute to be a more meaningful value than `root@localhost`. Users will see the appropriate support contact if any errors occur during SP access.
+	*  Load the federation metadata
+		*  Add the **following** (or equivalent) section just above the commented sample `MetadataProvider` element.
+		```
+		<MetadataProvider type="XML" uri="https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml"
+				backingFilePath="sgaf-metadata.xml" reloadInterval="7200">
+			<MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
+			<MetadataFilter type="Signature" certificate="sgaf-metadata-cert.pem"/>
+		</MetadataProvider>
+		```
+		
