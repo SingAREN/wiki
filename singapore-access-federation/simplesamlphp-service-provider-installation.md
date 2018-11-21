@@ -20,8 +20,8 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	* XML DOM (php-xml)
 	* MCrypt (php-mcrypt)
 	* Basic PDO database support (php-pdo) for storing sessions (at least SQLite3).
-	* Optionally, also MySQL support (php-mysql) <br><br>
- 
+	* Optionally, also MySQL support (php-mysql)
+
 	  ```
 		# yum install httpd mod_ssl php php-mcrypt php-xml php-pdo
 		```
@@ -102,8 +102,8 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 # Configuring SP
 
-We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
-
+> We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
+{.is-warning}
     Create a certificate (self-signed for 20 years)
 
     cd /opt/simplesamlphp/cert
