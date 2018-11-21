@@ -333,11 +333,12 @@ Start registering a new SP
 	> **Single Logout Redirect Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
 	> **Single Logout SOAP Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
 	>
+	>
 	> **Discovery Response**: https://sp.example.org/simplesaml/module.php/saml/sp/discoresp.php
 	{.is-info}
 	
 	> Leave other fields blank!
-{.is-warning}
+	{.is-warning}
 
 * **Certificate**: paste in the contents of cert/saml.crt
 
