@@ -119,7 +119,6 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
   * ... and enter all information requested ("." to skip) - the crucial part is your hostname.
 
 * Make the private key readable only to the user SimpleSAMLphp runs as (apache)
-* 
 	```
 	# chown apache.apache /opt/simplesamlphp/cert/saml.{crt,pem}
 	# chmod 600 /opt/simplesamlphp/cert/saml.pem
@@ -206,10 +205,10 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	> * Set the 'validateFingerprint' to the fingerprint value of the metadata issuing certificate
 		> * SGAF: 06:85:C5:89:2F:38:83:98:77:1B:A4:5D:58:A4:06:3A:A4:C1:CE:45
     > * To calculate the fignerprint yourself:
-			> * Download the metadata signing certificate
-			> * and get the fingerprint value with:
-      >
-      >  `$ openssl x509 -fingerprint -noout -in metadata-cert.pem`
+				> * Download the metadata signing certificate
+				> * and get the fingerprint value with:
+				>
+				>  `$ openssl x509 -fingerprint -noout -in metadata-cert.pem`
 
     Edit config/config.php and add an extra entry into 'metadata.sources'
 
