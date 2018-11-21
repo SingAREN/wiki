@@ -1,5 +1,5 @@
-<!-- TITLE: SimpleSAMLPHP Service Provider Installation -->
-<!-- SUBTITLE: A quick summary of SimpleSAMLPHP Service Provider Installation -->
+<!-- TITLE: SimpleSAMLphp Service Provider Installation -->
+<!-- SUBTITLE: A quick summary of SimpleSAMLphp Service Provider Installation -->
 
 
 
