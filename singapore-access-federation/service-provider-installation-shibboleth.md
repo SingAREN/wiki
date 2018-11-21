@@ -43,7 +43,23 @@ yum install httpd mod_ssl
 # yum install shibboleth
 ```
 
-# Federation Membership
+Shibboleth is now installed and needs to be configured.
+# Registering Shibboleth SP into SGAF
+Installing a Shibboleth SP only becomes useful after registering the SP into the SGAF.
 
+The registration process is self-explanatory. The key points are:
+
+* Navigate to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry) and select **Create a Service Provider**.
+* **Step 1**: Select your 'Organization' and enter a Name, Description and Service URL for the SP you are registering within the SGAF.
+* **Step 2**: Enter as many Additional Details as available - this will allow the SGAF to properly advertise the service through the service catalogue.
+* **Step 3**: Even though this is a Shibboleth 3.x SP Installation, please select the **Shibboleth Serivce Provider (2.4.x)** under **SAML Configuration**. Enter the base URL for your system, i.e. https://sp.example.org. The Federation Registry will automatically create all of the SAML 2.0 endpoints.
+* **Step 4**: Paste in the back-channel certificate generated when installing the Shibboleth package, this is generally self-signed and does not need to be validated by a remote CA. The certificate should be located in `/etc/shibboleth/sp-cert.pem`.
+> **Note:**
+> The CN in the certificate must match the hostname of the service being registered. If this is an alias and your system thinks of itself with a different hostname, you will need to generate a new certificate with the correct hostname.
+> Run the following command and make sure to replace `sp.example.org` with the hostname of your SP.
+> ```
+	$ cd /etc/shibboleth
+	# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth
+	```
 
 
