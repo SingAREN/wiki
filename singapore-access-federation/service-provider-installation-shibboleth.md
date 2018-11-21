@@ -23,16 +23,17 @@ Before starting to build and configure the Shibboleth Service Provider, assure t
 yum install httpd mod_ssl
 ```
 
-Firewall Settings:
-* Allow inbound web server traffic on TCP port 80 and 443 
+*Firewall Settings:
+	* Allow inbound web server traffic on TCP port 80 and 443 
 	
-	```
-	# firewall-cmd --add-service=http --permanent
-	# firewall-cmd --add-service=https --permanent
-	# firewall-cmd --reload
-	```
+		```
+		# firewall-cmd --add-service=http --permanent
+		# firewall-cmd --add-service=https --permanent
+		# firewall-cmd --reload
+		```
+
+	* Allow outbound traffic on TCP port 8443 for the Shibboleth daemon (shibd) to connect to every remote SGAF Identity Provider (IdP) in the federation for attribute fetching.
 	
-* Allow outbound traffic on TCP port 8443 for the Shibboleth daemon (shibd) to connect to every remote SGAF Identity Provider (IdP) in the federation for attribute fetching.
-> **Note:**
-> All outgoing ports are open by default on a base CentOS 7 installation.
-{.is-info}
+	> **Note:**
+	> All outgoing ports are open by default on a base CentOS 7 installation.
+	{.is-info}
