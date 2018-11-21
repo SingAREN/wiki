@@ -23,7 +23,7 @@ Before starting to build and configure the Shibboleth Service Provider, assure t
 yum install httpd mod_ssl
 ```
 
-*Firewall Settings:
+* Firewall Settings:
 	* Allow inbound web server traffic on TCP port 80 and 443 
 	
 		```
