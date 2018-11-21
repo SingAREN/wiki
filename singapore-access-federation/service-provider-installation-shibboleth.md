@@ -67,5 +67,15 @@ The registration process is self-explanatory. The key points are:
 
 > **Note**
 > It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
-
+{.is-info}
 # Configuration
+* Download the SGAF metadata signing certificate
+
+	```
+	# wget https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem -O /etc/shibboleth/sgaf-metadata-cert.pem
+	```
+
+* Edit `/etc/shibboleth/shibboleth2.xml`:
+	* Replace all instanaces of `sp.example.org` with your hostname
+	* Within the `<Sessions>` element:
+		* Make the session handler use SSL. Set `handlerSSL="true"`
