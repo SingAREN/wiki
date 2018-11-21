@@ -302,9 +302,9 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 
 Remove (comment-out) pre-configured IdPs and SPs
 
-    Edit metadata/saml20-idp-remote.php - remove pre-configured openidp.feide.no
-    Edit metadata/saml20-sp-remote.php - remove pre-configured saml2sp.example.org and google.com
-    Edit metadata/shib13-sp-remote.php - remove pre-configured sp.shiblab.feide.no
+* Edit `metadata/saml20-idp-remote.php` - remove pre-configured openidp.feide.no
+* Edit `metadata/saml20-sp-remote.php` - remove pre-configured saml2sp.example.org and google.com
+* Edit `metadata/shib13-sp-remote.php` - remove pre-configured sp.shiblab.feide.no
 
 # Register into Federation Registry
 
