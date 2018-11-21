@@ -12,18 +12,18 @@ This wiki entry provides a simple sequence of steps to setup a Shibboleth SP to 
 
 This documentation covers Shibboleth SP 3.x. It has been tested on CentOS7 (x86_64) but should work on other RedHat based systems.
 
-# Download and Installation
-## Pre-requisites
+# Pre-requisites
 
 Before starting to build and configure the Shibboleth Service Provider, assure that the following pre-requisites are met:
 
-* Install Apache with mod_ssl
+* CentOS 7 Minimal Installation
+* Apache with mod_ssl
 
 ```
 yum install httpd mod_ssl
 ```
 
-* Firewall Settings:
+* Following Firewall Settings:
 	* Allow inbound web server traffic on TCP port 80 and 443 
 	
 		```
@@ -34,6 +34,16 @@ yum install httpd mod_ssl
 
 	* Allow outbound traffic on TCP port 8443 for the Shibboleth daemon (shibd) to connect to every remote SGAF Identity Provider (IdP) in the federation for attribute fetching.
 	
-	> **Note:**
-	> All outgoing ports are open by default on a base CentOS 7 installation.
-	{.is-info}
+# Install Shibboleth
+* Setup Shibboleth YUM repository and install Shibboleth from YUM:
+
+```
+# wget http://download.opensuse.org/repositories/security:/shibboleth/CentOS_7/security:shibboleth.repo -P /etc/yum.repos.d
+# yum makecache
+# yum install shibboleth
+```
+
+# Federation Membership
+
+
+
