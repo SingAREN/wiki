@@ -294,9 +294,9 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 	        "attribute_schachomeorganizationtype": {
 	                "en": "Home organization type"
 	        },
-					"attribute_auedupersonsharedtoken": {
-									"en": "Shared token"
-					},
+	        "attribute_auedupersonsharedtoken": {
+	                "en": "Shared token"
+	        },
 	```
 
 # Clean up SP configuration
