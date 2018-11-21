@@ -92,11 +92,15 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 * And give Apache write access to the `data` directory (this also means setting the SELinux context if SELinux is enabled on your system):
 
 	```
-	mkdir /opt/simplesamlphp/data
-	chown apache.apache /opt/simplesamlphp/data
-	# Set SELinux context to give Apache RW access - if SELinux is enabled on your system
+	# mkdir /opt/simplesamlphp/data
+	# chown apache.apache /opt/simplesamlphp/data
+	```
+	* Set SELinux context to give Apache RW access - if SELinux is enabled on your system
+	```
 	chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/data//
-	# And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
+	```
+	* And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
+	```
 	semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
 	```
 
@@ -142,10 +146,10 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 * Create a directory to cache the downloaded federation metadata (writable by Apache - this also means setting the SELinux context if SELinux is enabled on your system):
 
-		```
-		# mkdir /opt/simplesamlphp/metadata/metarefresh-sgaf
-		# chown apache.apache /opt/simplesamlphp/metadata/metarefresh-sgaf
-		```
+	```
+	# mkdir /opt/simplesamlphp/metadata/metarefresh-sgaf
+	# chown apache.apache /opt/simplesamlphp/metadata/metarefresh-sgaf
+	```
 	
 	* Set SELinux context to give Apache RW access - if SELinux is enabled on your system
 
@@ -175,24 +179,24 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	
 * Set output directory and format (use 'serialize'format):
 
-```
+	```
                                 'outputDir'     => 'metadata/metarefresh-sgaf/',
                                 'outputFormat' => 'serialize',
-```
+	```
 
 * Set expiry date to 7 days to match SGAF
 
-```
+	```
                                 'expireAfter'           => 60*60*24*7, // Maximum 7 days cache time.
-```
+	```
 
 * Change the list of accepted certificates to the metadata signing certificate downloaded above:
 
-```
+	```
                                                 'certificates' => array(
                                                         'sgaf-metadata-cert.pem',
                                                 ),
-```
+	```
 
 * Remove/comment-out the validateFingerprint entry (see note below for explanation)
 	
