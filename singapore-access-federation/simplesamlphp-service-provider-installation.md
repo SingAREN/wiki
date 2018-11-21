@@ -14,7 +14,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 # Prerequisites
 
-* A web server (Apache installed) with PHP (5.4.0+)
+* A web server (Apache 2.4+ installed) with PHP (5.4.0+)
 	* To meet the PHP version requirement, the OS has to be CentOS/RHEL 7 
 * The following PHP modules:
 	* XML DOM (php-xml)
@@ -23,42 +23,50 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	* Optionally, also MySQL support (php-mysql)
  
 	  ```
-		yum install httpd mod_ssl php php-mcrypt php-xml php-pdo
+		# yum install httpd mod_ssl php php-mcrypt php-xml php-pdo
 		```
 
 * Configure SELinux: if your system has SELinux enabled, allow Apache to send email (otherwise, invocation of sendmail(postfix) from PHP breaks):
 	
 	```
-	setsebool -P httpd_can_sendmail on
+	# setsebool -P httpd_can_sendmail on
 	```
 	
 	* And if using SELinux, also install the policycoreutils-python package to get the semanagecommand which we will need later:
 		
-		yum install policycoreutils-python
+		```
+		# yum install policycoreutils-python
+		```
+		
+# Basic steps
 
-Basic steps
+* Download simpleSAMLphp from https://simplesamlphp.org/download (1.16.2 as of September 2018)
+	* Install into /opt and not /var as instructed in the SimpleSAMLphp manual.
+	* In the web server space, SimpleSAMLphp will be accesible as /simplesaml
 
-    Download simpleSAMLphp from https://simplesamlphp.org/download (1.14.8 as of August 2016)
-        Install into /opt and not /var as instructed in the SimpleSAMLphp manual.
+		```
+		# cd /opt
+		# tar xzf ~/inst/simplesamlphp-1.16.2.tar.gz
+		# mv simplesamlphp-1.16.2 simplesamlphp
+		```
 
-        In the web server space, SimpleSAMLphp will be accesible as /simplesaml
+* Create SimpleSAMLPHP Apache configuration
 
-        cd /opt
-        tar xzf ~/inst/simplesamlphp-1.14.4.tar.gz
-        mv simplesamlphp-1.14.4 simplesamlphp
+	```
+	# touch /etc/httpd/conf.d/simplesaml.conf
+	```
+	
+* Within the `/etc/httpd/conf.d/simplesaml.conf` configuration, add the following:
+	* Alias the SimpleSAMLPHP directory as `/simplesaml`:
+	```
+	Alias /simplesaml /opt/simplesamlphp/www
+	```
+	* Explicitly grant permission to the directory - otherwise, Apache will reject to serve the SimpleSAMLphp code as default access in Apache 2.4 is Require all denied::
 
-    Alias this directory as /simplesaml - create /etc/httpd/conf.d/simplesaml.conf with:
-
-    Alias /simplesaml /opt/simplesamlphp/www
-
-     
-
-        And on systems with Apache 2.4 (like CentOS or RHEL 7), explicitly grant permission to the directory - otherwise, Apache would reject to server the SimpleSAMLphp code - default access in Apache 2.4 is Require all denied: add this to the /etc/httpd/conf.d/simplesaml.conf file created above:
-
-        <Directory /opt/simplesamlphp/www>
-          AllowOverride none
-          Require all granted
-        </Directory>
+	<Directory /opt/simplesamlphp/www>
+		AllowOverride none
+		Require all granted
+	</Directory>
 
     Do some basic changes to /opt/simplesamlphp/config/config.php:
         Set auth.adminpassword to a new password.
