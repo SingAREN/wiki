@@ -4,6 +4,7 @@
 
 
 Author: Vlad Mencl, REANNZ
+Original: https://tuakiri.ac.nz/confluence/display/Tuakiri/Installing+a+SimpleSAMLphp+SP#InstallingaSimpleSAMLphpSP-Loadingthefederationmetadata
 Edited by: Simon Green, SGAF
 
 SimpleSAMLphp is an alternative SP implementation that can be used in place of Shibboleth SP - and can be particularly suitable on hosted servers without root access or the ability to install full software packages. This page documents the basic install of SimpleSAMLphp Service Provider and the configuration steps necessary to integrate the SP into SGAF.
@@ -250,8 +251,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 # Configure the SP to use the SGAF Discovery Service
 
-* Edit `config/authsources.php` and set `'discoURL'` to:
-        Tuakiri-Production: https://ds.sgaf.org.sg/discovery/DS'
+* Edit `config/authsources.php` and set `'discoURL'` to SGAF-Production: https://ds.sgaf.org.sg/discovery/DS':
 
 	```
 	                'discoURL' => 'https://ds.sgaf.org.sg/discovery/DS',
@@ -307,9 +307,9 @@ Remove (comment-out) pre-configured IdPs and SPs
     Edit metadata/saml20-sp-remote.php - remove pre-configured saml2sp.example.org and google.com
     Edit metadata/shib13-sp-remote.php - remove pre-configured sp.shiblab.feide.no
 
-Register into Federation Registry
+# Register into Federation Registry
 
-The Tuakiri Federation Registry (FR) has in the initial setup only pre-configured support for Shibboleth SP implementation, not SimpleSAMLphp. Without the pre-configured support, it is necessary to enter all endpoints URLs manually. There is an ongoing project to add support to FR to support SimpleSAMLphp, until then, please use the Advanced Registration form as described in this section.
+The SGAF Federation Registry (FR) has in the initial setup only pre-configured support for Shibboleth SP implementation, not SimpleSAMLphp. Without the pre-configured support, it is necessary to enter all endpoints URLs manually. There is an ongoing project to add support to FR to support SimpleSAMLphp, until then, please use the Advanced Registration form as described in this section.
 
 As a reference point, the metadata for your SP can be accessed at https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp?output=xhtml
 
@@ -343,12 +343,13 @@ Access the Federation Registry at the correct URL for the respective federation:
 
     Review the SP registration form and submit it for approval.
 
-Testing
+# Testing
 
 Test authentication by going to https://sp.example.org/simplesaml/module.php/core/authenticate.php?as=default-sp
 
 Or, to test integration with a simple application, create a PHP file with the following contents within your document space:
 
+```
 <!DOCTYPE html>
 <HTML>
 <PRE>
@@ -380,8 +381,9 @@ if (isset($attributes['eduPersonTargetedID'])) {
 ?>
 </PRE>
 </HTML>
+```
 
-References
+# References
 
     Initial documentation written by Bevan Rudge: https://wiki.auckland.ac.nz/display/nesiproj/Integrating+Tuakiri+with+SimpleSAMLphp
     SimpleSAMLphp installation manual: http://simplesamlphp.org/docs/stable/simplesamlphp-install
