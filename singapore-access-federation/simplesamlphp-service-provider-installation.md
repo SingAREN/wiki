@@ -24,6 +24,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	* Optionally, also MySQL support (php-mysql)
 
 	  ```
+		# yum install epel-release
 		# yum install httpd mod_ssl php php-mcrypt php-xml php-pdo
 		```
 
