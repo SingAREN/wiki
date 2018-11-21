@@ -58,8 +58,8 @@ The registration process is self-explanatory. The key points are:
 > The CN in the certificate must match the hostname of the service being registered. If this is an alias and your system thinks of itself with a different hostname, you will need to generate a new certificate with the correct hostname.
 > Run the following command and make sure to replace `sp.example.org` with the hostname of your SP.
 > ```
-	$ cd /etc/shibboleth
-	# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth
-	```
+>	$ cd /etc/shibboleth
+>	# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth
+>	```
 
 
