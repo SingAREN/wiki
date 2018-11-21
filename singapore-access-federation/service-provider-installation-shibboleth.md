@@ -61,5 +61,6 @@ The registration process is self-explanatory. The key points are:
 >	$ cd /etc/shibboleth
 >	# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth
 >	```
-
+	
+* **Step 5**: Select the attribute needed by the SP and mark which of them are 'Required' or 'Optional'. For each attribute, give a good exaplanation for why they attribute is needed. This information will later be displayed to users as justification for why the information is being released.
 
