@@ -85,10 +85,10 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 * Configure a SQL session store to store sessions in a local database (even if just a sqlite3 file) instead of PHPsessions.
 * Edit `config.php` and set the following:
 
-		```
-		'store.type' => 'sql',
-		'store.sql.dsn' => 'sqlite:/opt/simplesamlphp/data/sqlitedatabase.sq3',
-		```
+	```
+	        'store.type' => 'sql',
+	        'store.sql.dsn' => 'sqlite:/opt/simplesamlphp/data/sqlitedatabase.sq3',
+	```
 		
 * And give Apache write access to the `data` directory (this also means setting the SELinux context if SELinux is enabled on your system):
 
@@ -98,11 +98,11 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	```
 	* Set SELinux context to give Apache RW access - if SELinux is enabled on your system
 	```
-	chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/data//
+	# chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/data//
 	```
 	* And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
 	```
-	semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
+	# semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
 	```
 
 # Configuring SP
@@ -114,7 +114,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 	```
   $ cd /opt/simplesamlphp/cert
-  $ openssl req -newkey rsa:2048 -new -x509 -days 7304 -nodes -out saml.crt -keyout saml.pem
+  # openssl req -newkey rsa:2048 -new -x509 -days 7304 -nodes -out saml.crt -keyout saml.pem
 	```
   
   * ... and enter all information requested ("." to skip) - the crucial part is your hostname.
@@ -128,10 +128,10 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 * Edit `/opt/simplesamlphp/config/authsources.php` and add references to the certificate to the default-sp definition:
 
 	```
-	'default-sp' => array(
-					'saml:SP',
-					'privatekey' => 'saml.pem',
-					'certificate' => 'saml.crt',
+	        'default-sp' => array(
+	                'saml:SP',
+	                'privatekey' => 'saml.pem',
+	                'certificate' => 'saml.crt',
 	```
 # Loading the federation metadata
 * Enable and configure the `metarefresh` and `cron` modules:
