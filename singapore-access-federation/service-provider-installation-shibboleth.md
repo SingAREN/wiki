@@ -37,13 +37,12 @@ Before starting to build and configure the Shibboleth Service Provider, assure t
 # Install Shibboleth
 * Setup Shibboleth YUM repository and install Shibboleth from YUM:
 
-```
-# wget http://download.opensuse.org/repositories/security:/shibboleth/CentOS_7/security:shibboleth.repo -P /etc/yum.repos.d
-# yum makecache
-# yum install shibboleth
-```
+	```
+	# wget http://download.opensuse.org/repositories/security:/shibboleth/CentOS_7/security:shibboleth.repo -P /etc/yum.repos.d
+	# yum makecache
+	# yum install shibboleth
+	```
 
-Shibboleth is now installed and needs to be configured.
 # Registering Shibboleth SP into SGAF
 Installing a Shibboleth SP only becomes useful after registering the SP into the SGAF.
 
