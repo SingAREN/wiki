@@ -201,10 +201,11 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	>For historical and archival purposes, the instructions are included here - but can be ignored in favour of using the above certificates setting:
 	> * Set the 'validateFingerprint' to the fingerprint value of the metadata issuing certificate
 		> * SGAF: 06:85:C5:89:2F:38:83:98:77:1B:A4:5D:58:A4:06:3A:A4:C1:CE:45
-            To calculate the fignerprint yourself:
-                Download the metadata signing certificate and get the fingerprint value with:
-
-                      openssl x509 -fingerprint -noout -in metadata-cert.pem 
+    > * To calculate the fignerprint yourself:
+			> * Download the metadata signing certificate
+			> * and get the fingerprint value with:
+      >
+      >  `$ openssl x509 -fingerprint -noout -in metadata-cert.pem`
 
     Edit config/config.php and add an extra entry into 'metadata.sources'
 
