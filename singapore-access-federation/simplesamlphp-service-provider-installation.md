@@ -85,8 +85,8 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 * Edit `config.php` and set the following:
 
 		```
-			'store.type' => 'sql',
-			'store.sql.dsn' => 'sqlite:/opt/simplesamlphp/data/sqlitedatabase.sq3',
+		'store.type' => 'sql',
+		'store.sql.dsn' => 'sqlite:/opt/simplesamlphp/data/sqlitedatabase.sq3',
 		```
 		
 * And give Apache write access to the `data` directory (this also means setting the SELinux context if SELinux is enabled on your system):
@@ -105,92 +105,104 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 > We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 {.is-warning}
 
-    Create a certificate (self-signed for 20 years)
+* Create a certificate (self-signed for 20 years)
 
-    cd /opt/simplesamlphp/cert
-    openssl req -newkey rsa:2048 -new -x509 -days 7304 -nodes -out saml.crt -keyout saml.pem
+	```
+  $ cd /opt/simplesamlphp/cert
+  $ openssl req -newkey rsa:2048 -new -x509 -days 7304 -nodes -out saml.crt -keyout saml.pem
+	```
+  
+  * ... and enter all information requested ("." to skip) - the crucial part is your hostname.
 
-        ... and enter all information requested ("." to skip) - the crucial part is your hostname.
+* Make the private key readable only to the user SimpleSAMLphp runs as (apache)
+* 
+	```
+	# chown apache.apache /opt/simplesamlphp/cert/saml.{crt,pem}
+	# chmod 600 /opt/simplesamlphp/cert/saml.pem
+	```
+	
+* Edit `/opt/simplesamlphp/config/authsources.php` and add references to the certificate to the default-sp definition:
 
-    Make the private key readable only to the user SimpleSAMLphp runs as (apache)
+	```
+	'default-sp' => array(
+					'saml:SP',
+					'privatekey' => 'saml.pem',
+					'certificate' => 'saml.crt',
+	```
+# Loading the federation metadata
+* Enable and configure the `metarefresh` and `cron` modules:
 
-    chown apache.apache /opt/simplesamlphp/cert/saml.{crt,pem}
-    chmod 600 /opt/simplesamlphp/cert/saml.pem
+	```
+	$ cd /opt/simplesamlphp
+	# touch modules/metarefresh/enable
+	# cp modules/metarefresh/config-templates/*.php config/
+	# touch modules/cron/enable
+	# cp modules/cron/config-templates/*.php config/
+	```
 
-    Edit /opt/simplesamlphp/config/authsources.php and add references to the certificate to the default-sp definition:
+* Create a directory to cache the downloaded federation metadata (writable by Apache - this also means setting the SELinux context if SELinux is enabled on your system):
 
-            'default-sp' => array(
-                    'saml:SP',
-                    'privatekey' => 'saml.pem',
-                    'certificate' => 'saml.crt',
+		```
+		# mkdir /opt/simplesamlphp/metadata/metarefresh-sgaf
+		# chown apache.apache /opt/simplesamlphp/metadata/metarefresh-sgaf
+		```
+	
+	* Set SELinux context to give Apache RW access - if SELinux is enabled on your system
 
-Loading the federation metadata
+		```
+		# chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/metadata/metarefresh-sgaf/
+		```
 
-    Enable and configure the metarefresh and cron modules:
+	* And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
 
-    cd /opt/simplesamlphp
-    touch modules/metarefresh/enable
-    cp modules/metarefresh/config-templates/*.php config/
-    touch modules/cron/enable
-    cp modules/cron/config-templates/*.php config/
+		```
+		semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/metadata/metarefresh-sgaf(/.*)?'
+		```
 
-    Create a directory to cache the downloaded federation metadata (writable by Apache - this also means setting the SELinux context if SELinux is enabled on your system):
+* Download the metadata signing certificate for the federation metadata into `/opt/simplesamlphp/cert/sgaf-metadata-cert.pem`:
 
-    mkdir /opt/simplesamlphp/metadata/metarefresh-tuakiri
-    chown apache.apache /opt/simplesamlphp/metadata/metarefresh-tuakiri
-    # Set SELinux context to give Apache RW access - if SELinux is enabled on your system
-    chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/metadata/metarefresh-tuakiri/
-    # And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
-    semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/metadata/metarefresh-tuakiri(/.*)?'
+	```
+	# wget https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem -O /opt/simplesamlphp/cert/sgaf-metadata-cert.pem
+	```
+        
+* Edit config/config-metarefresh.php:
+	* Replace `'kalmar'` with the federation name (`'sgaf'`)
+	* Set the download URL:
 
-    Download the metadata signing certificate for the federation metadata into /etc/shibboleth:
+	```
+   'src' => 'https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml',
+	```
+	
+* Set output directory and format (use 'serialize'format):
 
-        For Tuakiri, run:
-
-        wget https://directory.tuakiri.ac.nz/metadata/tuakiri-metadata-cert.pem -O /opt/simplesamlphp/cert/tuakiri-metadata-cert.pem
-
-        or for Tuakiri-TEST, run:
-
-        wget https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-cert.pem -O /opt/simplesamlphp/cert/tuakiri-test-metadata-cert.pem
-
-    Edit config/config-metarefresh.php:
-        Replace 'kalmar' with the federation name ('tuakiri')
-
-        Set the download URL - either for Tuakiri Production:
-
-           'src' => 'https://directory.tuakiri.ac.nz/metadata/tuakiri-metadata-signed.xml',
-
-        Or Tuakiri-TEST:
-
-           'src' => 'https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml',
-
-        Set output directory and format (use 'serialize'format):
-
-                                'outputDir'     => 'metadata/metarefresh-tuakiri/',
+```
+                                'outputDir'     => 'metadata/metarefresh-sgaf/',
                                 'outputFormat' => 'serialize',
+```
 
-        Set expiry date to 7 days to match Tuakiri
+* Set expiry date to 7 days to match SGAF
 
+```
                                 'expireAfter'           => 60*60*24*7, // Maximum 7 days cache time.
+```
 
-        Change the list of accepted certificates to the metadata signing certificate downloaded above (use tuakiri-test-metadata-cert.pem for Tuakiri-TEST:
+* Change the list of accepted certificates to the metadata signing certificate downloaded above:
 
+```
                                                 'certificates' => array(
-                                                        'tuakiri-metadata-cert.pem',
+                                                        'sgaf-metadata-cert.pem',
                                                 ),
+```
 
-        Remove/comment-out the validateFingerprint entry (see note below for explanation)
-
-        Older versions of SimpleSAMLphp did not support directly referring to a certificate and instead required embedding the certificate fingerprint in the configuration.
-
-        For historical and archival purposes, the instructions are included here - but can be ignored in favour of using the above certificates setting:
-            Set the 'validateFingerprint' to the fingerprint value of the metadata issuing certificate
-                Tuakiri-PROD: 06:85:C5:89:2F:38:83:98:77:1B:A4:5D:58:A4:06:3A:A4:C1:CE:45
-                Tuakiri-TEST: 5E:90:2D:F9:D9:5A:5A:95:BF:58:4D:02:AD:29:35:64:CC:BF:76:45
+* Remove/comment-out the validateFingerprint entry (see note below for explanation)
+	
+	>Older versions of SimpleSAMLphp did not support directly referring to a certificate and instead required embedding the certificate fingerprint in the configuration
+	>
+	>For historical and archival purposes, the instructions are included here - but can be ignored in favour of using the above certificates setting:
+	> * Set the 'validateFingerprint' to the fingerprint value of the metadata issuing certificate
+		> * SGAF: 06:85:C5:89:2F:38:83:98:77:1B:A4:5D:58:A4:06:3A:A4:C1:CE:45
             To calculate the fignerprint yourself:
-                Download the metadata signing certificate (for Tuakiri-PROD and Tuakiri-TEST, they are linked from the instructions on registering an SP into Tuakiri)
-
-                and get the fingerprint value with:
+                Download the metadata signing certificate and get the fingerprint value with:
 
                       openssl x509 -fingerprint -noout -in metadata-cert.pem 
 
