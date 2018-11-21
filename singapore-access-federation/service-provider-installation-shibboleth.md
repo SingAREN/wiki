@@ -1,4 +1,4 @@
-<!-- TITLE: Service Provider Installation: Shibboleth 3.x+ -->
+<!-- TITLE: Service Provider Installation: Shibboleth 3 -->
 <!-- SUBTITLE: A quick summary of Service Provider Installation Shibboleth -->
 
 # Introduction
@@ -33,6 +33,6 @@ Firewall Settings:
 	```
 	
 * Allow outbound traffic on TCP port 8443 for the Shibboleth daemon (shibd) to connect to every remote SGAF Identity Provider (IdP) in the federation for attribute fetching.
-	> Note:
-	> All outgoing ports are open by default on a base CentOS 7 installation.
-	{.is-info}
+> Note:
+> All outgoing ports are open by default on a base CentOS 7 installation.
+{.is-info}
