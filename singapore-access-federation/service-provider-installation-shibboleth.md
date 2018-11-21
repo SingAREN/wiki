@@ -82,7 +82,7 @@ Edit the `/etc/shibboleth/shibboleth2.xml` file:
 	* Make the session handler use SSL. Set `handlerSSL="true"`
 		* **Recommended**: Go even further  in the `<Sessions>` element and change the `handlerURL` from a relative one (`"/Shibboleth.sso"`) to an absolute URL - i.e. `handlerURL="https://sp.example.org/Shibboleth.sso"`. Use the hostname used when registering the SP within the SGAF Federation Registry. This makes sure that the sure is always issuing correct endpoint URLs in outgoing requests, even when users refer to the server with an alternative name. This is particurlaly important when there are multiple hostnames resolving to your server (such as ones prefixed with "www." and one without).
 *  Change the `SupportContact` attribute to be a more meaningful value than `root@localhost`. Users will see the appropriate support contact if any errors occur during SP access.
-* Load the federation metadata by adding the **following** (or equivalent) section just above the commented `MetadataProvider` sample element.
+* **Load the SGAF Metadata** by adding the **following** (or equivalent) section just above the commented `MetadataProvider` sample element.
 	
 	```
 	<MetadataProvider type="XML" uri="https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml"
@@ -91,6 +91,6 @@ Edit the `/etc/shibboleth/shibboleth2.xml` file:
 		<MetadataFilter type="Signature" certificate="sgaf-metadata-cert.pem" verifyBackup="false"/>
 	</MetadataProvider>
 	```
-* Configure Session Initiator by locating the `<SSO>` element
+* **Configure Session Initiator** by locating the `<SSO>` element
 	* Remove reference to the default `idp.example.org` - delete the entityID attribute
 	* Configure the Discovery Service URL in the `discoveryURL` attribute as follows: `discoveryURL="https://ds.sgaf.org.sg/discovery/DS"`
