@@ -203,40 +203,41 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	>
 	>For historical and archival purposes, the instructions are included here - but can be ignored in favour of using the above certificates setting:
 	> * Set the 'validateFingerprint' to the fingerprint value of the metadata issuing certificate
-	>   * SGAF: 06:85:C5:89:2F:38:83:98:77:1B:A4:5D:58:A4:06:3A:A4:C1:CE:45
+	>   * SGAF: `D9:F7:F5:5B:F4:D6:9A:BC:3F:34:18:91:B0:B7:1A:FA:B9:93:DE:F1`
 	>     * To calculate the fignerprint yourself:
-	>       * Download the metadata signing certificate
-	>       * and get the fingerprint value with:
+	>       * Download the metadata signing certificate and get the fingerprint value with:
 	>         `$ openssl x509 -fingerprint -noout -in metadata-cert.pem`
 
-    Edit config/config.php and add an extra entry into 'metadata.sources'
+* Edit config/config.php and add an extra entry into 'metadata.sources'
+	```
+	   array('type' => 'serialize', 'directory' => 'metadata/metarefresh-sgaf'),
+	```
+	
+* Now go with your browser to your SimpleSAMLphp page: https://sp.example.org/simplesaml/
+	* and go to the Configuration page (log in with the Administrator password).
+	* and from there to "Cron module information page"
 
-       array('type' => 'serialize', 'directory' => 'metadata/metarefresh-tuakiri'),
+* Edit config/module_cron.php and change the secret 'key' from the default of 'secret'to a different password (to prevent potential abuse of the cron URL):
+	```
+					'key' => 'top-secret',
+	```
+	
+* Paste the hourly cron job entry (invoking curl to localhost) into root's crontab.:
 
-    Now go with your browser to your SimpleSAMLphp page: https://sp.example.org/simplesaml/
-        and go to the Configuration page (log in with the Administrator password).
-        and from there to "Cron module information page"
-
-    Edit config/module_cron.php and change the secret 'key' from the default of 'secret'to a different password (to prevent potential abuse of the cron URL):
-
-            'key' => 'top-secret',
-
-    Paste the hourly cron job entry (invoking curl to localhost) into root's crontab:
-
-    01 * * * * curl --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1
-
-        (run "crontab -e" and paste the line into the editor)
-            If you have changed the cron password as instructed above, the line would be different than shown here.
-            If your web server is running with a self-signed HTTPS certificate, you would need to tell curl to either trust the local host certificate, or switch off certificate checking altogether.
-                Otherwise, with the --silent option, curl would just silently fail)
-
-                So use either
-
-                01 * * * * curl --cacert /etc/pki/tls/certs/localhost.crt --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1
-
-                or
-
-                01 * * * * curl --insecure --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1
+	```
+	01 * * * * curl --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1
+	```
+	
+	* (run "crontab -e" and paste the line into the editor)
+		> ** Note - Invoking curl **
+		> 1. If you have changed the cron password as instructed above, the line would be different than shown here.
+    > 2. If your web server is running with a self-signed HTTPS certificate, you would need to tell curl to either trust the local host certificate, or switch off certificate checking altogether.
+    >   * Otherwise, with the --silent option, curl would just silently fail)
+    >   * So use either
+		>     ```01 * * * * curl --cacert /etc/pki/tls/certs/localhost.crt --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1 ```
+    >  * or
+    >  ``` 01 * * * * curl --insecure --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1```
+    >  And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
 
                 And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
         You can force the job to run immediately by clicking on one of the hourly link at the bottom of the page (or pasting the cron-job URL into your browser - but the GUI link gives more output).
