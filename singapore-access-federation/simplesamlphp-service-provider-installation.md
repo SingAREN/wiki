@@ -326,15 +326,14 @@ Start registering a new SP
 * Enter the details about your SP (name, description, service URL)
 * Select Advanced Registration and enter the following information (drawing from your SP metadata and using the mapping as in the image above), replacing sp.example.org with the hostname of your SP:
 
-> **Entity Descriptor ID**: https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp
-> **Assertion Consuming Service (Post)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 0)
-> **Assertion Consuming Service (Artifact)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 2)
->
-> **Single Logout Redirect Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
-> **Single Logout SOAP Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
->
-> **Discovery Response**: https://sp.example.org/simplesaml/module.php/saml/sp/discoresp.php
-{.is-info}
+* **Entity Descriptor ID**: https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp
+* **Assertion Consuming Service (Post)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 0)
+* **Assertion Consuming Service (Artifact)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 2)
+
+* **Single Logout Redirect Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+* **Single Logout SOAP Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+
+* **Discovery Response**: https://sp.example.org/simplesaml/module.php/saml/sp/discoresp.php
 
 * Leave other fields blank
 
