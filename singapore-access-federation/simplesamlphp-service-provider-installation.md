@@ -317,31 +317,32 @@ For reference, please also see the attached image mapping SimpleSAMLphp metadata
 
 Access the Federation Registry at the correct URL for the respective federation:
 
-    Tuakiri (Production): https://registry.tuakiri.ac.nz/federationregistry/
-    Tuakiri-TEST: https://registry.test.tuakiri.ac.nz/federationregistry/
+* SGAF: https://manager.sgaf.org.sg/federationregistry/
 
-    Start registering a new SP
-    Enter your personal details
-    Select your organization (Create an Organization first if not already listed)
-    Enter the details about your SP (name, description, service URL)
-    If SimpleSAMLphp is not listed as a supported implementation, select Advanced Registration and enter the following information (drawing from your SP metadata and using the mapping as in the image above), replacing sp.example.org with the hostname of your SP:
+Start registering a new SP
 
-    Entity Descriptor ID: https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp
-    Assertion Consuming Service (Post): https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 0)
-    Assertion Consuming Service (Artifact): https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 2)
+* Enter your personal details
+* Select your organization (Create an Organization first if not already listed)
+* Enter the details about your SP (name, description, service URL)
+* Select Advanced Registration and enter the following information (drawing from your SP metadata and using the mapping as in the image above), replacing sp.example.org with the hostname of your SP:
 
-    Single Logout Redirect Endpoint: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
-    Single Logout SOAP Endpoint: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+> **Entity Descriptor ID**: https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp
+> **Assertion Consuming Service (Post)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 0)
+> **Assertion Consuming Service (Artifact)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 2)
+>
+> **Single Logout Redirect Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+> **Single Logout SOAP Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+>
+> **Discovery Response**: https://sp.example.org/simplesaml/module.php/saml/sp/discoresp.php
+{.is-info}
 
-    Discovery Response: https://sp.example.org/simplesaml/module.php/saml/sp/discoresp.php
+* Leave other fields blank
 
-    Leave other fields blank
+* **Certificate**: paste in the contents of cert/saml.crt
 
-    Certificate: paste in the contents of cert/saml.crt
+* **Attributes**: select the attributes needed by your SP (and give a reason for requesting each of the attributes)
 
-    Attributes: select the attributes needed by your SP (and give a reason for requesting each of the attributes)
-
-    Review the SP registration form and submit it for approval.
+Review the SP registration form and submit it for approval.
 
 # Testing
 
