@@ -104,6 +104,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 
 > We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 {.is-warning}
+
     Create a certificate (self-signed for 20 years)
 
     cd /opt/simplesamlphp/cert
