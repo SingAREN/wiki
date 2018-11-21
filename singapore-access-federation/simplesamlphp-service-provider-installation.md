@@ -340,7 +340,7 @@ Start registering a new SP
 > Leave other fields blank!
 {.is-warning}
 
-* **Certificate**: paste in the contents of cert/saml.crt
+* **Certificates**: paste in the contents of `cert/saml.crt`
 
 * **Attributes**: select the attributes needed by your SP (and give a reason for requesting each of the attributes)
 
