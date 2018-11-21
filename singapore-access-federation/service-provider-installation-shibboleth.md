@@ -57,11 +57,15 @@ The registration process is self-explanatory. The key points are:
 > **Note:**
 > The CN in the certificate must match the hostname of the service being registered. If this is an alias and your system thinks of itself with a different hostname, you will need to generate a new certificate with the correct hostname.
 > Run the following command and make sure to replace `sp.example.org` with the hostname of your SP.
-> ```
->	$ cd /etc/shibboleth
->	# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth
-> ```
-```
-```
-* **Step 5**: Select the attribute needed by the SP and mark which of them are 'Required' or 'Optional'. For each attribute, give a good exaplanation for why they attribute is needed. This information will later be displayed to users as justification for why the information is being released.
+> 
+>`$ cd /etc/shibboleth`
+>`# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth`
+{.is-info}
 
+* **Step 5**: Select the attribute needed by the SP and mark which of them are 'Requested' and if they are 'Required' or not. For each attribute, give a good exaplanation for why they attribute is needed. This information will later be displayed to users as justification for why the information is being released.
+* **Step 6**: Click Submit and wait for a confirmation email.
+
+> **Note**
+> It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
+
+# Configuration
