@@ -90,4 +90,7 @@ The registration process is self-explanatory. The key points are:
 			<MetadataFilter type="Signature" certificate="sgaf-metadata-cert.pem" verifyBackup="false"/>
 		</MetadataProvider>
 		```
-		
+	* Configure Session Initiator by locating the `<SSO>` element
+		* Remove reference to the default `idp.example.org` - delete the entityID attribute
+		* Configure the Discovery Service URL in the `discoveryURL` attribute as follows: `discoveryURL="https://ds.sgaf.org.sg/discovery/DS"`
+		* 
