@@ -19,9 +19,9 @@ Before starting to build and configure the Shibboleth Service Provider, assure t
 * CentOS 7 Minimal Installation
 * Apache with mod_ssl
 
-```
-yum install httpd mod_ssl
-```
+	```
+	yum install httpd mod_ssl
+	```
 
 * Following Firewall Settings:
 	* Allow inbound web server traffic on TCP port 80 and 443 
