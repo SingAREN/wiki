@@ -348,47 +348,46 @@ Test authentication by going to https://sp.example.org/simplesaml/module.php/cor
 
 Or, to test integration with a simple application, create a PHP file with the following contents within your document space:
 
-```
-<!DOCTYPE html>
-<HTML>
-<PRE>
-<?php
+	```
+	<!DOCTYPE html>
+	<HTML>
+	<PRE>
+	<?php
 
-// load the SimpleSAMLphp classes
-require_once('/opt/simplesamlphp/lib/_autoload.php');
+	// load the SimpleSAMLphp classes
+	require_once('/opt/simplesamlphp/lib/_autoload.php');
 
-// select the default authentication source
-$as = new SimpleSAML_Auth_Simple('default-sp');
+	// select the default authentication source
+	$as = new SimpleSAML_Auth_Simple('default-sp');
 
-// require authentication
-$as->requireAuth();
+	// require authentication
+	$as->requireAuth();
 
-// get the attributes
-$attributes = $as->getAttributes();
+	// get the attributes
+	$attributes = $as->getAttributes();
 
-// print the attributes and the NameID
-print_r($attributes);
-print_r($as->getAuthData('saml:sp:NameID'));
+	// print the attributes and the NameID
+	print_r($attributes);
+	print_r($as->getAuthData('saml:sp:NameID'));
 
-// print out eduPersonTargetedID (which is a DOM XML NameID node as of SimpleSAMLphp 1.14)
-if (isset($attributes['eduPersonTargetedID'])) {
-  $eptid = $attributes['eduPersonTargetedID'][0]->item(0);
-  $nameID = new SAML2_XML_saml_NameID($eptid);
-  print_r($nameID);
-};
+	// print out eduPersonTargetedID (which is a DOM XML NameID node as of SimpleSAMLphp 1.14)
+	if (isset($attributes['eduPersonTargetedID'])) {
+		$eptid = $attributes['eduPersonTargetedID'][0]->item(0);
+		$nameID = new SAML2_XML_saml_NameID($eptid);
+		print_r($nameID);
+	};
 
-?>
-</PRE>
-</HTML>
-```
+	?>
+	</PRE>
+	</HTML>
+	```
 
 # References
-
-    Initial documentation written by Bevan Rudge: https://wiki.auckland.ac.nz/display/nesiproj/Integrating+Tuakiri+with+SimpleSAMLphp
-    SimpleSAMLphp installation manual: http://simplesamlphp.org/docs/stable/simplesamlphp-install
-    SimpleSAMLphp SP quick start manual: http://simplesamlphp.org/docs/stable/simplesamlphp-sp
-    SimpleSAMLphp SP configuration reference: https://simplesamlphp.org/docs/stable/saml:sp
-    SimpleSAMLphp documentation on integrating into a federation: http://simplesamlphp.org/docs/stable/simplesamlphp-ukaccess
-    SimpleSAMLphp metadata refresh documentation: http://simplesamlphp.org/docs/stable/simplesamlphp-automated_metadata
+Initial documentation written by Bevan Rudge: https://wiki.auckland.ac.nz/display/nesiproj/Integrating+Tuakiri+with+SimpleSAMLphp
+SimpleSAMLphp installation manual: http://simplesamlphp.org/docs/stable/simplesamlphp-install
+SimpleSAMLphp SP quick start manual: http://simplesamlphp.org/docs/stable/simplesamlphp-sp
+SimpleSAMLphp SP configuration reference: https://simplesamlphp.org/docs/stable/saml:sp
+SimpleSAMLphp documentation on integrating into a federation: http://simplesamlphp.org/docs/stable/simplesamlphp-ukaccess
+SimpleSAMLphp metadata refresh documentation: http://simplesamlphp.org/docs/stable/simplesamlphp-automated_metadata
 
  
