@@ -79,9 +79,8 @@ The registration process is self-explanatory. The key points are:
 	* Replace all instanaces of `sp.example.org` with your hostname
 	* Within the `<Sessions>` element:
 		* Make the session handler use SSL. Set `handlerSSL="true"`
-	> **Recommended**
-	> Go even further  in the `<Sessions>` element and change the `handlerURL` from a relative one (`"/Shibboleth.sso"`) to an absolute URL - i.e. `handlerURL="https://sp.example.org/Shibboleth.sso"`. Use the hostname used when registering the SP within the SGAF Federation Registry. This makes sure that the sure is always issuing correct endpoint URLs in outgoing requests, even when users refer to the server with an alternative name. This is particurlaly important when there are multiple hostnames resolving to your server (such as ones prefixed with "www." nad one without).
-	{.is-critical}
+			* **Recommended**: Go even further  in the `<Sessions>` element and change the `handlerURL` from a relative one (`"/Shibboleth.sso"`) to an absolute URL - i.e. `handlerURL="https://sp.example.org/Shibboleth.sso"`. Use the hostname used when registering the SP within the SGAF Federation Registry. This makes sure that the sure is always issuing correct endpoint URLs in outgoing requests, even when users refer to the server with an alternative name. This is particurlaly important when there are multiple hostnames resolving to your server (such as ones prefixed with "www." nad one without).
+
 	*  Change the `SupportContact` attribute to be a more meaningful value than `root@localhost`. Users will see the appropriate support contact if any errors occur during SP access.
 	*  Load the federation metadata
 		*  Add the **following** (or equivalent) section just above the commented sample `MetadataProvider` element.
