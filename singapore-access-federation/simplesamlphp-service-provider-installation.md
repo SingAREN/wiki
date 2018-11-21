@@ -386,6 +386,7 @@ if (isset($attributes['eduPersonTargetedID'])) {
 </HTML>
 ```
 
+---
 # References
 Initial documentation written by Bevan Rudge: https://wiki.auckland.ac.nz/display/nesiproj/Integrating+Tuakiri+with+SimpleSAMLphp
 SimpleSAMLphp installation manual: http://simplesamlphp.org/docs/stable/simplesamlphp-install
