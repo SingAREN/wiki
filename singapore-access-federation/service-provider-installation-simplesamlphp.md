@@ -34,7 +34,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	# setsebool -P httpd_can_sendmail on
 	```
 	
-	* And if using SELinux, also install the policycoreutils-python package to get the semanagecommand which we will need later:
+	* And if using SELinux, also install the `policycoreutils-python` package to get the `semanage` command which we will need later:
 		
 		```
 		# yum install policycoreutils-python
