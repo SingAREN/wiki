@@ -1,4 +1,4 @@
-<!-- TITLE: SimpleSAMLphp Service Provider Installation -->
+<!-- TITLE: Service Provider Installation: SimpleSAMLphp -->
 <!-- SUBTITLE: A quick summary of SimpleSAMLphp Service Provider Installation -->
 
 
