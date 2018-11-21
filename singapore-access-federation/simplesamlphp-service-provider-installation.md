@@ -63,39 +63,44 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	```
 	* Explicitly grant permission to the directory - otherwise, Apache will reject to serve the SimpleSAMLphp code as default access in Apache 2.4 is Require all denied::
 
-	<Directory /opt/simplesamlphp/www>
-		AllowOverride none
-		Require all granted
-	</Directory>
+		```
+		<Directory /opt/simplesamlphp/www>
+			AllowOverride none
+			Require all granted
+		</Directory>
+		```
+		
+* Do some basic changes to `/opt/simplesamlphp/config/config.php`:
+	* Set `auth.adminpassword` to a new password.
+	* Set `secretsalt` to a new random string (can also generate with openssl)
+		
+		```
+		$ openssl rand -base64 24
+		```
 
-    Do some basic changes to /opt/simplesamlphp/config/config.php:
-        Set auth.adminpassword to a new password.
+	* Set technical contact name and email address.
+	* Optionally, set timezone to `Asia/Singapore` - or leave as NULL to rely on OS
 
-        Set secretsalt to a new random string (can also generate with "
+* Configure a SQL session store to store sessions in a local database (even if just a sqlite3 file) instead of PHPsessions.
+* Edit `config.php` and set the following:
 
-        openssl rand -base64 24
+		```
+			'store.type' => 'sql',
+			'store.sql.dsn' => 'sqlite:/opt/simplesamlphp/data/sqlitedatabase.sq3',
+		```
+		
+* And give Apache write access to the `data` directory (this also means setting the SELinux context if SELinux is enabled on your system):
 
-        ")
-        Set technical contact name and email address.
-        Optionally, set timezone to 'Pacific/Auckland' - or leave as NULL to rely on OS
+	```
+	mkdir /opt/simplesamlphp/data
+	chown apache.apache /opt/simplesamlphp/data
+	# Set SELinux context to give Apache RW access - if SELinux is enabled on your system
+	chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/data//
+	# And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
+	semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
+	```
 
-    Configure a SQL session store to store sessions in a local database (even if just a sqlite3 file) instead of PHPsessions.
-
-    Edit config.php and set the following:
-
-            'store.type' => 'sql',
-            'store.sql.dsn' => 'sqlite:/opt/simplesamlphp/data/sqlitedatabase.sq3',
-
-    And give Apache write access to the "data" directory (this also means setting the SELinux context if SELinux is enabled on your system):
-
-    mkdir /opt/simplesamlphp/data
-    chown apache.apache /opt/simplesamlphp/data
-    # Set SELinux context to give Apache RW access - if SELinux is enabled on your system
-    chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/data//
-    # And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
-    semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
-
-Configuring SP
+# Configuring SP
 
 We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 
