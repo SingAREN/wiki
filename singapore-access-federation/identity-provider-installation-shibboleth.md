@@ -177,7 +177,7 @@ rm /root/.lock-idp-bootstrap && ./bootstrap.sh
 
 The bootstrap process will now start over and attempt to configure your server to operate as a Shibboleth IdP.
 
-## Registration with the federation
+## Registering the IdP Within the SGAF
 
 Once completed the bootstrap process will output information specific to your installation which you will use to register your Shibboleth IdP with the federation. Please follow the onscreen information in order to complete the registration process.
 
