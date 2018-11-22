@@ -206,14 +206,14 @@ If you:
 * Wish to use TLS connections; or
 * Have an advanced deployment scenario for your directory infrastructure:
 	1. **Locate local configuration files**
-		You **MUST** make any changes you require below within:
-		```
-		/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>/idp/conf
-		```
-		and **NOT**
-		```
-    /opt/shibboleth-idp/conf
-		```
+	You **MUST** make any changes you require below within:
+	```
+	/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>/idp/conf
+	```
+	and **NOT**
+	```
+	/opt/shibboleth-idp/conf
+	```
 		
 		which is the default path documented in external resources. All specific config file names, e.g. ldap.properties, remain the same.
 
