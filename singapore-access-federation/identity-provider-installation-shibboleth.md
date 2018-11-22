@@ -341,9 +341,9 @@ Executing the update
 
 **To update your Shibboleth IdP run the command:**
 
-	```
-	/opt/shibboleth-idp-installer/repository/update_idp.sh
-	```
+```
+/opt/shibboleth-idp-installer/repository/update_idp.sh
+```
 
 ## Upgrading your Shibboleth IdP version
 In order to upgrade your versions to the latest vetted releases you need to add the -u switch to the update_idp.sh command:
