@@ -160,3 +160,12 @@ Please view the following Shibboleth SP documentation for further information:
 	```
 
 # Testing
+Place a script inside the protected directory. PHP example script such as the following is good enough:
+
+```php
+<?php print_r($_SERVER) ?>
+```
+
+Access the protected directory/script (http://your.server/secure) from your browser, this should trigger a complete SSO cycle where you can authenticate on your IdP
+Upon successful authentication, the page should display all received attributes. Make sure you have non empty Shib-Application-ID amongst other attributes (if your IdP release them).
+Check your `shibd.log` to see if there are attributes received or errors encountered
