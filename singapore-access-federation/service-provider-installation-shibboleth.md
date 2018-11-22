@@ -1,6 +1,7 @@
 <!-- TITLE: Service Provider Installation: Shibboleth 3 -->
 <!-- SUBTITLE: A quick summary of Service Provider Installation Shibboleth -->
 
+Original Documentation
 # Introduction
 There is a lot of documentation on how to install a Shibboleth 3.x Service Provider (SP) as shown by the following:
 
@@ -56,10 +57,11 @@ The registration process is self-explanatory. The key points are:
 > Run the following command and make sure to replace `sp.example.org` with the hostname of your SP.
 > 
 >`$ cd /etc/shibboleth`
->`# ./keygen.sh -f -h sp.example.org -e https://sp.example.org/shibboleth`
+>`# ./keygen.sh -f -n sp-signing -u shibd -g shibd -y 20 -h sp.example.org -e https://sp.example.org/shibboleth`
+>`# ./keygen.sh -f -n sp-encrypt -u shibd -g shibd -y 20 -h sp.example.org -e https://sp.example.org/shibboleth`
 {.is-info}
 
-* **Step 5**: Select the attribute needed by the SP and mark which of them are 'Requested' and if they are 'Required' or not. For each attribute, give a good exaplanation for why they attribute is needed. This information will later be displayed to users as justification for why the information is being released.
+* **Step 5**: Select the attribute needed by the SP and mark which of them are **Requested** and if they are **Required**. For each attribute, give a good exaplanation for why the attribute is needed as it will be displayed to users as justification for why the information is being released.
 * **Step 6**: Click Submit and wait for a confirmation email.
 
 > **Note**
@@ -98,5 +100,61 @@ Edit the `/etc/shibboleth/shibboleth2.xml` file:
 * The Shibboleth SP installations needs to be configured to map attributes received from teh IdP in `/etc/shibboleth/attribute-map.xml`. Change the attribute mapping definition by either editing the file and uncommencting attributes to be accepted.
 
 > In addition to mapping received attributes to local names (and thus accepting them), it is also possible to conigure filtering rules in `attribute-policy.xml`. In most cases, this can be left as-is as the default rules provide the necessary filtering for SGAF attributes.
->Addtional information can be found at [Shibboleth SP3 AttributeFilter](https://wiki.shibboleth.net/confluence/display/SP3/AttributeFilter) official documentation.
+>Addtional information can be found at the [Shibboleth SP3 AttributeFilter](https://wiki.shibboleth.net/confluence/display/SP3/AttributeFilter) official documentation.
 {.is-warning}
+
+# Logging
+Shibboleth SP has two separate components (the `shibd` daemon and the mod_shib module running inside Apache), and they also have separate logging configuration and destinations.
+
+* The shibd daemon logs primarily into `/var/log/shibboleth/shibd.log` (with transaction details in `/var/log/shibboleth/transaction.log`)
+	* Logging configuration is in `/etc/shibboleth/shibd.logger`
+	* Log files should be owned by shibd (the user account `shibd` daemon runs under)
+* The `mod_shib` Apache module logs into syslog (as facility `LOCAL0`).
+	* Logging configuration in `/etc/shibboleth/native.logger`
+
+# Protect a Resource
+You can protect a resource with Shibboleth SP by adding the following directives into your Apache configuration. By default, a sample configuration snippet protecting the /secure URL on the server is included in /etc/httpd/conf.d/shib.conf:
+A resource can be protected by Shibboleth SP by using the following directives within your Apache configuration. The Shibboleth SP installation provides a sample configuration snippet within `/etc/httpd/conf.d/shib.conf` that protects the `/secure` URL on the server:
+
+```
+<Location /secure>
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  require shib-session
+</Location>
+```
+
+You can add additional access control directives either to this file or anywhere else in the Apache configuration, as it fits with your application.
+
+Another frequently used technique is lazy sessions - access is granted also for unauthenticated users, but if a session exists, the attributes in the session are passed through to the application - and the application can then make access control decision (and initiate a login where needed).
+
+Applying lazy sessions (making the Shibboleth sessions visible) to the whole application can be achieved e.g. with:
+
+```
+<Location />
+  AuthType shibboleth
+  ShibRequestSetting requireSession 0
+  require shibboleth
+</Location>
+```
+
+> **Lazy Sessions**
+> The login needs to be triggered by ensuring that the application redirects the user to a Shibboleth SP Session Initiator such as the default relative URL `/Shibboleth.sso/Login`.
+
+Please view the following Shibboleth SP documentation for further information:
+
+* [Protect a Resource](https://wiki.shibboleth.net/confluence/display/SP3/ProtectContent)
+* [Protect a Resource with Apache Directives](https://wiki.shibboleth.net/confluence/display/SP3/htaccess)
+* [Shibboleth SP Apache Module Configuration Reference](https://wiki.shibboleth.net/confluence/display/SP3/Apache)
+* [Shibboleth SP Configuration Reference](https://wiki.shibboleth.net/confluence/display/SP3/Configuration)
+* [Intergrating Shibboleth SP with Your Application](https://wiki.shibboleth.net/confluence/display/SP3/ApplicationIntegration)
+
+# Finishing Up
+* Start up Apache and Shibboleth SP:
+
+	```
+	# systemctl enable httpd shibd
+	# systemctl start httpd shibd
+	```
+
+# Testing
