@@ -38,11 +38,11 @@ In some commercial environments you may need to have the server enabled for thes
 
 In this case please speak to your system administrators and have this configured before continuing.
 
-1. You MUST have SSH access to the server
-2. You MUST be able to execute commands as root on the system without limitation
-3. The server MUST be routable from the public internet with a static IP. Often this means configuring the IP on a local network interface directly but advanced environments may handle this differently.
-4. The static IP MUST have a publicly resolvable DNS entry. Typically of the form idp.example.edu.sg
-5.. The server MUST be able to communicate with the wider internet without blockage due to firewall rules. All publicly routable servers MUST be accessible for:
+* You MUST have SSH access to the server
+* You MUST be able to execute commands as root on the system without limitation
+* The server MUST be routable from the public internet with a static IP. Often this means configuring the IP on a local network interface directly but advanced environments may handle this differently.
+* The static IP MUST have a publicly resolvable DNS entry. Typically of the form idp.example.edu.sg
+* The server MUST be able to communicate with the wider internet without blockage due to firewall rules. All publicly routable servers MUST be accessible for:
 
 	| Port  |                 Purpose                    |
 	| ----- | --------------------------------- |
