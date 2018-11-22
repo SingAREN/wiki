@@ -77,16 +77,15 @@ In this case please speak to your system administrators and have this configured
 
 **Optional Checklist**
 
-1. An account which can bind to and run queries against your corporate directory service. You’ll require the following pieces of information from your directory administrator:
+An account which can bind to and run queries against your corporate directory service. You’ll require the following pieces of information from your directory administrator:
 	1. IP Address / DNS entry for your LDAP server and connection port
 	1. Base DN for user objects within your directory
 	1. The Bind DN of the account you wish to connect to the directory with
 	1. The password for the above account
 	1. An LDAP filter attribute, often uid If you:
-
-	*	Don’t have LDAP details available;
-	*	Wish to use TLS connections; or
-	*	Have an advanced deployment scenario for your directory infrastructure.
+		*	Don’t have LDAP details available;
+		*	Wish to use TLS connections; or
+		*	Have an advanced deployment scenario for your directory infrastructure.
 
 You’ll need to undertake further customisation during the installation process when prompted. Each of these scenarios are outside of the installer’s scope.
 
