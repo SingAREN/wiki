@@ -120,6 +120,7 @@ For future review all installer output is logged to:
 The following commands MUST be executed as the **root** user. Start the process from `/root`.
 
 1. Run the command:
+
 	```
 	curl https://raw.githubusercontent.com/spgreen/shibboleth-idp-installer/\
 	SGAF-Implementation/bootstrap.sh > bootstrap.sh && chmod u+x bootstrap.sh
@@ -243,3 +244,125 @@ Access your Shibboleth IdP record within Federation Registry and navigate to SAM
 
 1. Add the contents of `/opt/shibboleth/shibboleth-idp/current/credentials/idp-backchannel.crt` as a certificate for signing.
 1. Add the contents of `/opt/shibboleth/shibboleth-idp/current/credentials/idp-encryption.crt` as an encryption certificate.
+
+# Customisation
+
+**Ensuring your Shibboleth IdP is functioning**
+
+Before undertaking any customisation of your Shibboleth IdP and after each change you make to customise your Shibboleth IdP we recommend testing to ensure everything is functioning correctly.
+
+To facilitate this the SGAF provides a useful tool, called the SGAF Attribute Validator (created by AAF). This tool will ensure that your IdP is working correctly with backend security processes and that it is capable of providing the attributes your users may be asked to present when accessing federated services.
+
+A ‘private’ browser session as the best tool for working with SGAF Attribute Validator. Different browsers will have different names for ‘private’ mode, e.g. Incognito Mode.
+To access SGAF Attribute Validator:
+
+- Production: [https://manager.sgaf.org.sg/attributevalidator/](https://manager.sgaf.org.sg/attributevalidator/) 
+
+Follow the flow to login, ensuring you choose your new Shibboleth IdP when prompted by the Discovery Service.
+
+### How the Shibboleth IdP installer manages your configuration
+
+**IMPORTANT:** All modifiable configuration is housed in the directory:
+
+	/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>
+
+The structure of your configuration directory will look like the following:
+ 
+````
+.
+├── apache
+│   ├── idp.conf
+│   ├── intermediate.crt
+│   ├── server.crt
+│   └── server.key
+└── idp
+    ├── branding
+    │   ├── css
+    │   │   ├── consent.css
+    │   │   └── main.css
+    │   ├── error-messages.properties
+    │   ├── images
+    │   │   ├── logo-mobile.png
+    │   │   └── logo.png
+    │   └── views
+    │       ├── attribute-release.vm
+    │       ├── error.vm
+    │       ├── expiring-password.vm
+    │       ├── login-error.vm
+    │       ├── login.vm
+    │       ├── logout-response.vm
+    │       ├── logout.vm
+    │       └── resolvertest.vm
+    ├── conf
+    │   ├── attribute-filter.xml
+    │   ├── attribute-resolver.xml
+    │   ├── global.xml
+    │   ├── idp.properties
+    │   ├── ldap.properties
+    │   ├── metadata-based-attribute-filter.xml
+    │   ├── metadata-providers.xml
+    │   └── services.xml
+    ├── logging
+    │   └── logback.xml
+    └── sys
+        └── jetty-profile
+````
+
+If you make configuration changes directly within `/opt/shibboleth/shibboleth-idp`, `/etc/httpd` or elsewhere your installation will become unsupported and you may have difficulties when upgrading.
+
+### Customising your Shibboleth IdP
+From the configuration directory you can make changes to customise the following areas as appropriate for your environment:
+- Apache certificates and configuration
+- IdP configuration (xml / properties)
+- IdP branding (velocity templates, css and images).
+
+#### Customisations recommended by SingAREN for operating a production Shibboleth IdP
+Here are some of the areas you should customise when preparing a Shibboleth IdP for a production environment:
+
+- The Shibboleth IdP MUST use valid certificates, verified by a widely trusted CA, for your Apache webserver
+- The use of EV certificates is RECOMMENDED
+- Ensure all attributes on the SGAF Attribute Validator are shown with green ticks to indicate successful release
+- Branding should be consistent with your organisations corporate branding, images, logos, colour schems, etc
+- Corporate links, eg Accessibility, Copyright, Disclaimers, Privacy, etc should be consistent with the corporate site
+- The name known by your users for their username / password should be consistently used on the IdP login page
+- Links to a corporate terms of use or similar page
+- Link provided to recover lost password, manage passwords or other credentials, etc
+- Display of the SingAREN logo and links to the SGAF information such as the service catalogue
+- Guidance for users about effectively logging out, particularly when using publicly accessible computers
+- Minimise and preferably eliminate the use of technical jargon
+- Showing the name of the service the user is logging into, possibly the logo as well if it is available
+
+### Updating the Shibboleth IdP with customisations
+#### Actions undertaken during an update
+
+The update process will perform the following:
+
+1.	Update underlying operating system packages to ensure any security issues are addressed
+2.	Apply any configuration changes made within the assets directory for: * Shibboleth IdP * Jetty * Apache HTTPD
+3.	RESTART all dependent processes.
+You MUST have a tested rollback plan in place before running an update to ensure any unanticipated changes can be reversed.
+
+You MUST have a tested rollback plan in place before running an update to ensure any unanticipated changes can be reversed.
+Executing the update
+To update your Shibboleth IdP run the command:
+
+	/opt/shibboleth-idp-installer/repository/update_idp.sh
+
+### Upgrading your Shibboleth IdP version
+In order to upgrade your versions to the latest vetted releases you need to add the -u switch to the update_idp.sh command:
+
+	/opt/shibboleth-idp-installer/repository/update_idp.sh -u
+
+By supplying the -u switch the following occurs in addition to the normal update process:
+1.	Upgrade to the most recent version of the installer:
+	- The update will be retrieved from: `https://github.com/spgreen/shibboleth-idp-installer.git`
+	- It will be based on the most recent production release
+
+
+2.	Upgrade, if necessary, to the most recently vetted versions of:
+	- Shibboleth IdP
+	- Jetty
+
+
+**Next Step**
+Once you’ve finalised customisations please continue to the operation stage.
