@@ -140,6 +140,7 @@ Applying lazy sessions (making the Shibboleth sessions visible) to the whole app
 
 > **Lazy Sessions**
 > The login needs to be triggered by ensuring that the application redirects the user to a Shibboleth SP Session Initiator such as the default relative URL `/Shibboleth.sso/Login`.
+{.is-warning}
 
 Please view the following Shibboleth SP documentation for further information:
 
