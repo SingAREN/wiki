@@ -160,7 +160,7 @@ Please view the following Shibboleth SP documentation for further information:
 	```
 
 # Testing
-Place a script inside the protected directory. PHP example script such as the following is good enough:
+* Place a script inside the protected directory. The following PHP example script will work:
 
 	```php
 	<?php print_r($_SERVER) ?>
