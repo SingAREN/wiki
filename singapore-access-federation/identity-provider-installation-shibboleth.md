@@ -322,50 +322,52 @@ From the configuration directory you can make changes to customise the following
 
 Here are some of the areas you should customise when preparing a Shibboleth IdP for a production environment:
 
-1. The Shibboleth IdP MUST use valid certificates, verified by a widely trusted CA, for your Apache webserver
-1. The use of EV certificates is **RECOMMENDED**
-1. Ensure all attributes on the SGAF Attribute Validator are shown with green ticks to indicate successful release
-1. Branding should be consistent with your organisations corporate branding, images, logos, colour schems, etc
-1. Corporate links, eg Accessibility, Copyright, Disclaimers, Privacy, etc should be consistent with the corporate site
-1. The name known by your users for their username / password should be consistently used on the IdP login page
-1. Links to a corporate terms of use or similar page
-1. Link provided to recover lost password, manage passwords or other credentials, etc
-1. Display of the SingAREN logo and links to the SGAF information such as the service catalogue
-1. Guidance for users about effectively logging out, particularly when using publicly accessible computers
-1. Minimise and preferably eliminate the use of technical jargon
-1. Showing the name of the service the user is logging into, possibly the logo as well if it is available
+* The Shibboleth IdP MUST use valid certificates, verified by a widely trusted CA, for your Apache webserver
+* The use of EV certificates is **RECOMMENDED**
+* Ensure all attributes on the SGAF Attribute Validator are shown with green ticks to indicate successful release
+* Branding should be consistent with your organisations corporate branding, images, logos, colour schems, etc
+* Corporate links, eg Accessibility, Copyright, Disclaimers, Privacy, etc should be consistent with the corporate site
+* The name known by your users for their username / password should be consistently used on the IdP login page
+* Links to a corporate terms of use or similar page
+* Link provided to recover lost password, manage passwords or other credentials, etc
+* Display of the SingAREN logo and links to the SGAF information such as the service catalogue
+* Guidance for users about effectively logging out, particularly when using publicly accessible computers
+* Minimise and preferably eliminate the use of technical jargon
+* Showing the name of the service the user is logging into, possibly the logo as well if it is available
 
-### Updating the Shibboleth IdP with customisations
-#### Actions undertaken during an update
-
+## Updating the Shibboleth IdP with customisations
+**Actions undertaken during an update**
 The update process will perform the following:
 
 1.	Update underlying operating system packages to ensure any security issues are addressed
 2.	Apply any configuration changes made within the assets directory for: * Shibboleth IdP * Jetty * Apache HTTPD
 3.	RESTART all dependent processes.
+
 You MUST have a tested rollback plan in place before running an update to ensure any unanticipated changes can be reversed.
 
 You MUST have a tested rollback plan in place before running an update to ensure any unanticipated changes can be reversed.
 Executing the update
 To update your Shibboleth IdP run the command:
 
-	/opt/shibboleth-idp-installer/repository/update_idp.sh
+```
+/opt/shibboleth-idp-installer/repository/update_idp.sh
+```
 
-### Upgrading your Shibboleth IdP version
+## Upgrading your Shibboleth IdP version
 In order to upgrade your versions to the latest vetted releases you need to add the -u switch to the update_idp.sh command:
 
-	/opt/shibboleth-idp-installer/repository/update_idp.sh -u
+```
+/opt/shibboleth-idp-installer/repository/update_idp.sh -u
+```
 
-By supplying the -u switch the following occurs in addition to the normal update process:
+By supplying the `-u` switch the following occurs in addition to the normal update process:
+
 1.	Upgrade to the most recent version of the installer:
-	- The update will be retrieved from: `https://github.com/spgreen/shibboleth-idp-installer.git`
-	- It will be based on the most recent production release
-
+	* The update will be retrieved from: `https://github.com/spgreen/shibboleth-idp-installer.git`
+	* It will be based on the most recent production release
 
 2.	Upgrade, if necessary, to the most recently vetted versions of:
-	- Shibboleth IdP
-	- Jetty
+	* Shibboleth IdP
+	* Jetty
 
-
-**Next Step**
-Once you’ve finalised customisations please continue to the operation stage.
+# Operations
