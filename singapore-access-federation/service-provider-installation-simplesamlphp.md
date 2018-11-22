@@ -234,12 +234,12 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	> **Note - Invoking curl**
 	> 1. If you have changed the cron password as instructed above, the line would be different than shown here.
 	> 2. If your web server is running with a self-signed HTTPS certificate, you would need to tell curl to either trust the local host certificate, or switch off certificate checking altogether.
-	>   * Otherwise, with the --silent option, curl would just silently fail)
-	>   * So use either
-	>   `01 * * * * curl --cacert /etc/pki/tls/certs/localhost.crt --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1 `
-	>   * or
-	>   `01 * * * * curl --insecure --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1`
-	> * And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
+	>     * Otherwise, with the --silent option, curl would just silently fail
+	>     * So use either
+	>     `01 * * * * curl --cacert /etc/pki/tls/certs/localhost.crt --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1 `
+	>     * or
+	>     `01 * * * * curl --insecure --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1`
+	>     * And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
 
 	* You can force the job to run immediately by clicking on one of the hourly link at the bottom of the page (or pasting the cron-job URL into your browser - the GUI link gives more output).
   * To see the output from the metadata refresh itself, go to https://sp.example.org/simplesaml/module.php/metarefresh/fetch.php
