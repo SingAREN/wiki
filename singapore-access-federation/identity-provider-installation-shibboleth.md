@@ -198,7 +198,7 @@ After completing the registration process, you will receive an email from the fe
 
 For further assistance please contact technical-support@singaren.net.sg
 
-## Finalise Installation
+## Finalising the Installation
 
 1. **Configure LDAP connectivity**
 
@@ -369,3 +369,103 @@ By supplying the `-u` switch the following occurs in addition to the normal upda
 	* Jetty
 
 # Operations
+Following completion of all the previous stages the Shibboleth IdP enters an operational phase.
+
+Administrators should be aware of the following concerns for the ongoing operation of the Shibboleth IdP.
+
+## Common Commands
+
+* Apply configuration changes to the IdP
+	```
+	# /opt/shibboleth-idp-installer/repository/update_idp
+	```
+* Restart the IdP (Jetty)
+	```
+	# systemctl restart idp
+	```
+* Restart apache
+	```
+	# systemctl restart httpd
+	```
+* Restart ntpd
+	```
+	# systemctl restart ntpd
+	```
+* Restart firewall
+	```
+	# systemctl restart firewalld
+	```
+
+## Filesystem structure
+
+The structure of the filesystem after a successful install is as follows:
+
+```
+	/opt
+	├── jetty
+	│   └── jetty-distribution-9.2.10.v20150310   # Jetty installation
+	├── keypairs                                  # TLS assets for Apache
+	│   ├── intermediate.crt
+	│   ├── server.crt
+	│   └── server.key
+	├── shibboleth
+	│   ├── jetty                                 # Jetty base for Shib IdP
+	│   ├── shibboleth-idp
+	│   │   └── shibboleth-idp-3.1.1              # Shibboleth instance
+	│   └── shibboleth-src                        # Shib Installation files
+	│       ├── install-3.1.1.exp
+	│       ├── install-3.1.1.sh
+	│       └── shibboleth-identity-provider-3.1.1
+	└── shibboleth-idp-installer	
+	    ├── repository                            #Holds conf and source code
+	    └── build                                 #Installer work directory 
+	/var
+	└── log
+	    ├── shibboleth                            #Shibb specific logs
+	    ├── httpd                                 #Apache logs
+	    └── jetty                                 #Jetty base logs
+```
+
+## Backup / Resilience
+The IdP installer provides no backup or monitoring of the platform.
+Deployers SHOULD:
+
+Undertake regular backups of:
+* The entire VM
+* The local mariadb instance
+* Key directories, including, but not limited to:
+	1.	`/opt/shibboleth-idp-installer`
+	2.	`/opt/keypairs`
+	3.	`/opt/shibboleth`
+	4.	`/etc/httpd`
+* Monitor service availability
+* Monitor platform concerns, such as disk space and load averages
+
+**Future Customisations**
+
+You can return to the customisation stage in the future to make further changes.
+
+
+# About the AAF IdP Installer
+The AAF IdP installer, a tool developed by the AAF is aimed at easing the effort required to install and maintain a Shibboleth IdP, a key component enabling users within your organisation to access the services within the federation.
+
+All software will requires maintenance over its life time. Continuous maintenance of your IdP will allow you to;
+
+* reduce the risk of security incidents,
+* enable new features when they become available,
+* and ensure technical compliance
+
+For new subscribers bring identities to the federation the installer will allow you to technically connect your users to services with minimal effort. Again the installer will ensure you are running the latest version of the IdP.
+
+### Technical details
+The installer uses software called [Ansible](http://www.ansible.com/) a goal-oriented configuration management tool that is secure and agentless. An AAF GitHub repository holds the configuration information. This is used by Ansible to reliably and repeatably configure the IdP avoiding the potential failures from scripting, script-based systems or manually management. All that is needed is your local information. The installer passes this to Ansible which then installs or upgrades your IdP. <em>SingAREN has modified the necessary files within the AAF GitHub repository to allow Shibboleth IdP v3 installation specifically for the SGAF environment. </em>
+
+### Updates
+As new versions of the Shibboleth IdP or any of the underpinning software become available the AAF creates a new branch in the GitHub repository and apply changes. All changes go through a though testing and review process before being committed to the repository. On completion of testing a new version of the installer is released.
+When a new installer is released notifications will be announced via various channels. SingAREN will modify the updates accordingly for the SGAF environment.
+On receipt of such a notification it’s time to plan for your local IdP upgrades. First in your test environment to be sure there are no issues and local configuration options continue to work. Next, with approval of your change board upgrade your production IdP.
+
+### General
+The IdP Installer is a tool to assist you maintain your IdP. If the tool is not meeting your requirements or you would like to see some improvements we welcome your [feedback](http://ausaccessfed.github.io/shibboleth-idp-installer/about/feedback.html).
+
+If there are any issues experienced when running the tool the SGAF technical support will be happy to assist.
