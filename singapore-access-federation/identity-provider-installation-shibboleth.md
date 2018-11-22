@@ -65,9 +65,9 @@ In this case please speak to your system administrators and have this configured
 	| 8443 | Backchannel, client verified TLS connections, used within SAML flows |
 
 1. Environment data for your IdP
-	a. Production environment for SGAF
-	b. Organisation Name
-	c. Organization base domain e.g. example.edu.sg
+	1. Production environment for SGAF
+	1. Organisation Name
+	1. Organization base domain e.g. example.edu.sg
 
 Optional Checklist
 
