@@ -1,13 +1,14 @@
 <!-- TITLE: Identity Provider Installation: Shibboleth v3 -->
 <!-- SUBTITLE: A quick summary of Identity Provider Installation Shibboleth -->
 
-
-| Guide Version | 1.1 |
-| Installer Version | 1.3.1 |
-| Shibboleth IdP Version | 3.3.1 |
-| Author | Australian Access Federation |
-| Edited by | Simon Green, SingAREN |
-| Publication Date | 5 July 2017 |
+```
+Guide Version: 1.1
+Installer Version: 1.3.1
+Shibboleth IdP Version: 3.3.1
+Author: Australian Access Federation
+Edited by: Simon Green, SingAREN
+Publication Date: 5 July 2017
+```
 
 # Introduction
 The Shibboleth IdP Installer automates the install of version 3 for the Shibboleth IdP on a **dedicated** Redhat or CentOS 7 server.
