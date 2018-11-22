@@ -327,7 +327,6 @@ Here are some of the areas you should customise when preparing a Shibboleth IdP 
 * Minimise and preferably eliminate the use of technical jargon
 * Showing the name of the service the user is logging into, possibly the logo as well if it is available
 
-### Updating the Shibboleth IdP with customisations
 **Actions undertaken during an update**
 The update process will perform the following:
 
@@ -339,11 +338,12 @@ You MUST have a tested rollback plan in place before running an update to ensure
 
 You MUST have a tested rollback plan in place before running an update to ensure any unanticipated changes can be reversed.
 Executing the update
-To update your Shibboleth IdP run the command:
 
-```
-/opt/shibboleth-idp-installer/repository/update_idp.sh
-```
+**To update your Shibboleth IdP run the command:**
+
+	```
+	/opt/shibboleth-idp-installer/repository/update_idp.sh
+	```
 
 ## Upgrading your Shibboleth IdP version
 In order to upgrade your versions to the latest vetted releases you need to add the -u switch to the update_idp.sh command:
