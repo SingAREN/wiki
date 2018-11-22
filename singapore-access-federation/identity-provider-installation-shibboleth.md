@@ -35,7 +35,6 @@ This server MUST NOT be used for any other purpose in the future.
 Redhat systems also require EPEL in order to continue and the above is one option you MAY use to achieve this. In some commercial environments you may need to have the server enabled for these packages via Satellite.
 
 In this case please speak to your system administrators and have this configured before continuing.
-
 1. You MUST have SSH access to the server
 1. You MUST be able to execute commands as root on the system without limitation
 1. The server MUST be routable from the public internet with a static IP. Often this means configuring the IP on a local network interface directly but advanced environments may handle this differently.
