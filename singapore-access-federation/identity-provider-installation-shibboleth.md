@@ -177,7 +177,7 @@ rm /root/.lock-idp-bootstrap && ./bootstrap.sh
 
 The bootstrap process will now start over and attempt to configure your server to operate as a Shibboleth IdP.
 
-## Registering the IdP Within the SGAF
+## Registering into the SGAF
 
 Once completed the bootstrap process will output information specific to your installation which you will use to register your Shibboleth IdP with the federation. Please follow the onscreen information in order to complete the registration process.
 
@@ -255,13 +255,10 @@ Access the [SGAF Attribute Validator](https://manager.sgaf.org.sg/attributevalid
 
 Follow the flow to login, ensuring you choose your new Shibboleth IdP when prompted by the Discovery Service.
 
-## How the Shibboleth IdP installer manages your configuration
+**How the Shibboleth IdP installer manages your configuration**
 
-**IMPORTANT:** All modifiable configuration is housed in the directory:
-
-```
-/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>
-```
+> **IMPORTANT:** All modifiable configuration is housed in the directory `/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>`.
+{.is-warning}
 
 The structure of your configuration directory will look like the following:
  
