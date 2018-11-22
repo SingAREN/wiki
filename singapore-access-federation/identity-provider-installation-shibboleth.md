@@ -49,11 +49,11 @@ In this case please speak to your system administrators and have this configured
 
 	* Each of the following commands MUST succeed when run on your server:
 		
-	```
-	$ curl http://example.edu
-	$ curl https://example.edu
-	```
-		
+		```
+		$ curl http://example.edu
+		$ curl https://example.edu
+		```
+
 1. The server MUST be accessible from the wider internet without blockage due to firewall rules for:
 
 	| Port   |                                              Purpose                                                    |
