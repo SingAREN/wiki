@@ -106,7 +106,7 @@ The installation process:
 1. Install NTP for time synchronisation.
 	* Opens local firewall ports `80`, `443` and `8443`.
 
-## Event logging
+**Event Logging**
 
 The installer provides a detailed set of information indicating the steps it has under taken on your server. You MAY disregard this output if the process completes successfully.
 
@@ -119,7 +119,6 @@ For future review all installer output is logged to:
 ## Running the Installer
 
 The following commands MUST be executed as the **root** user. Start the process from `/root`.
-
 1. Run the command:
 
 	```
