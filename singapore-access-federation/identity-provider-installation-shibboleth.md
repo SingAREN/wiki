@@ -257,7 +257,7 @@ Follow the flow to login, ensuring you choose your new Shibboleth IdP when promp
 
 **How the Shibboleth IdP installer manages your configuration**
 
-> **IMPORTANT:** All modifiable configuration is housed in the directory `/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>`.
+> **Important:** All modifiable configuration is housed in the directory `/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>`.
 {.is-warning}
 
 The structure of your configuration directory will look like the following:
@@ -327,7 +327,7 @@ Here are some of the areas you should customise when preparing a Shibboleth IdP 
 * Minimise and preferably eliminate the use of technical jargon
 * Showing the name of the service the user is logging into, possibly the logo as well if it is available
 
-## Updating the Shibboleth IdP with customisations
+### Updating the Shibboleth IdP with customisations
 **Actions undertaken during an update**
 The update process will perform the following:
 
