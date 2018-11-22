@@ -66,19 +66,26 @@ The registration process is self-explanatory. The key points are:
 > It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
 {.is-info}
 # Configuration
-* Download the SGAF metadata signing certificate
-
-	```
-	# wget https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem -O /etc/shibboleth/sgaf-metadata-cert.pem
-	```
-
-## shibboleth2.xml Configuration
 Edit the `/etc/shibboleth/shibboleth2.xml` file:
 * Replace all instanaces of `sp.example.org` with your hostname
 * Within the `<Sessions>` element:
 	* Make the session handler use SSL. Set `handlerSSL="true"`
 		* **Recommended**: Go even further  in the `<Sessions>` element and change the `handlerURL` from a relative one (`"/Shibboleth.sso"`) to an absolute URL - i.e. `handlerURL="https://sp.example.org/Shibboleth.sso"`. Use the hostname used when registering the SP within the SGAF Federation Registry. This makes sure that the sure is always issuing correct endpoint URLs in outgoing requests, even when users refer to the server with an alternative name. This is particurlaly important when there are multiple hostnames resolving to your server (such as ones prefixed with "www." and one without).
-*  Change the `SupportContact` attribute to be a more meaningful value than `root@localhost`. Users will see the appropriate support contact if any errors occur during SP access.
+* **Configure Session Initiator** by locating the `<SSO>` element
+	* Remove reference to the default `idp.example.org` - delete the entityID attribute
+	* Configure the Discovery Service URL in the `discoveryURL` attribute as follows:
+		
+		```
+		discoveryURL="https://ds.sgaf.org.sg/discovery/DS"
+		```
+* In `AttributeExtractor`, set `reloadChanges="true"`
+* Customise attributes within the `<Errors>` element to configure the error handling pages that are rendered to the user should an error occur. Definitely change the `supportContact` attribute to a more meaningful value than `root@localhost`.
+* Download the SGAF metadata signing certificate into `/etc/shibboleth/`:
+
+	```
+	# wget https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem -O /etc/shibboleth/sgaf-metadata-cert.pem
+	```
+	
 * **Load the SGAF Metadata** by adding the **following** (or equivalent) section just above the commented `MetadataProvider` sample element:
 	
 	```
@@ -88,6 +95,10 @@ Edit the `/etc/shibboleth/shibboleth2.xml` file:
 		<MetadataFilter type="Signature" certificate="sgaf-metadata-cert.pem" verifyBackup="false"/>
 	</MetadataProvider>
 	```
-* **Configure Session Initiator** by locating the `<SSO>` element
-	* Remove reference to the default `idp.example.org` - delete the entityID attribute
-	* Configure the Discovery Service URL in the `discoveryURL` attribute as follows: `discoveryURL="https://ds.sgaf.org.sg/discovery/DS"`
+* The Shibboleth SP installations needs to be configured to map attributes received from teh IdP in `/etc/shibboleth/attribute-map.xml`. Change the attribute mapping definition by either editing the file and uncommencting attributes to be accepted.
+	> In addition to mapping received attributes to local names (and thus accepting them), it is also possible to conigure filtering rules in `attribute-policy.xml`
+	>
+	> In most cases, this can be left as-is as the default rules provide the necessary filtering for SGAF attributes.
+	> 
+	> Addtional information can be found at [Shibboleth SP3 AttributeFilter](https://wiki.shibboleth.net/confluence/display/SP3/AttributeFilter) official documentation.
+	{.is-warning}
