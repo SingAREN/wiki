@@ -267,7 +267,7 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 
 * Create `attributemap/sgaf-attrs.php` with the following contents (adding on to what already exists in `attributemap/oid2name.php`)
 
-	```
+	```php
 	<?php
 	$attributemap = array(
 					'urn:oid:1.3.6.1.4.1.25178.1.2.10' => 'schacHomeOrganizationType',
