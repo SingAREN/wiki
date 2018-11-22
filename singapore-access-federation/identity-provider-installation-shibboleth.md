@@ -56,7 +56,7 @@ In this case please speak to your system administrators and have this configured
 	$ curl https://example.edu
 	```
 		
-    The server MUST be accessible from the wider internet without blockage due to firewall rules for:
+1. The server MUST be accessible from the wider internet without blockage due to firewall rules for:
 
 Port	Purpose
 80	Outbound HTTP connections
