@@ -115,6 +115,7 @@ For future review all installer output is logged to:
 ```
 
 **Running the installer**
+
 The following commands MUST be executed as the **root** user. Start the process from `/root`.
 
 1. Run the command:
@@ -194,57 +195,51 @@ After completing the registration process, you will receive an email from the fe
 
 For further assistance please contact technical-support@singaren.net.sg
 
-**Installation finalisation steps**
+**Finalise Install**
 
-1. Configure LDAP connectivity
+1. **Configure LDAP connectivity**
 
 If you provided basic LDAP details to the bootstrap process you MAY skip this section.
 
 If you:
 
-    Wish to use TLS connections; or
-
-    Have an advanced deployment scenario for your directory infrastructure:
-
-    1. Locate local configuration files
-
-    You MUST make any changes you require below within:
-
-    /opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>/idp/conf
-
-    and NOT
-
+* Wish to use TLS connections; or
+* Have an advanced deployment scenario for your directory infrastructure:
+	1. **Locate local configuration files**
+		You **MUST** make any changes you require below within:
+		```
+		/opt/shibboleth-idp-installer/repository/assets/<HOST_NAME>/idp/conf
+		```
+		and **NOT**
+		```
     /opt/shibboleth-idp/conf
+		```
+		
+		which is the default path documented in external resources. All specific config file names, e.g. ldap.properties, remain the same.
 
-    which is the default path documented in external resources. All specific config file names, e.g. ldap.properties, remain the same.
+	2. **Configure LDAP options**
 
-    2. Configure LDAP options
+		Please see the Shibboleth IdP LDAP documentation for a description of all available LDAP options. Undertake configuration changes or certificate additions to the server as necessary.
 
-    Please see the Shibboleth IdP LDAP documentation for a description of all available LDAP options. Undertake configuration changes or certificate additions to the server as necessary.
+	3. **Apply Changes**
 
-    3. Apply Changes
+		After changing LDAP configuration you MUST run the command:
 
-    After changing LDAP configuration you MUST run the command:
-
-    /opt/shibboleth-idp-installer/repository/update_idp.sh
-
+		```
+		/opt/shibboleth-idp-installer/repository/update_idp.sh
+		```
     This will merge the changes as required and reload the Shibboleth IdP to apply them.
 
-2. Receive Shibboleth IdP Approval
+2. **Receive Shibboleth IdP Approval**
+	You will receive a second email following approval by the SGAF.
 
-Following approval by the AAF you’ll receive a second email.
+	Please wait for at least 4 hours after receiving this email, so backend processes and data sync is completed before undertaking the instructions it contains to gain administrative rights over your Shibboleth IdP within SGAF management tools.
 
-Please wait for at least 4 hours after receiving this email, so backend processes and data sync is definitely completed, before undertaking the instructions it contains to gain administrative rights over your Shibboleth IdP within AAF management tools.
-
-3. Add Backchannel certificates
+3. **Add Backchannel certificates**
 
 The final installation step involves providing your backchannel certificates to the SGAF management tool, Federation Registry.
 
 Access your Shibboleth IdP record within Federation Registry and navigate to SAML -> Certificates
 
-    Add the contents of /opt/shibboleth/shibboleth-idp/current/credentials/idp-backchannel.crt as a certificate for signing.
-    Add the contents of /opt/shibboleth/shibboleth-idp/current/credentials/idp-encryption.crt as an encryption certificate.
-
-Next Step
-
-Once you’ve finalised installation please continue to the customisation stage where we’ll test your installation and show you how to tune things as necessary for your environment.
+1. Add the contents of `/opt/shibboleth/shibboleth-idp/current/credentials/idp-backchannel.crt` as a certificate for signing.
+1. Add the contents of `/opt/shibboleth/shibboleth-idp/current/credentials/idp-encryption.crt` as an encryption certificate.
