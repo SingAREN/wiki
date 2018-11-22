@@ -112,9 +112,9 @@ The installer provides a detailed set of information indicating the steps it has
 
 For future review all installer output is logged to:
 
-```
-/opt/shibboleth-idp-installer/activity.log
-```
+	```
+	/opt/shibboleth-idp-installer/activity.log
+	```
 
 ## Running the Installer
 
