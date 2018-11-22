@@ -58,15 +58,16 @@ In this case please speak to your system administrators and have this configured
 		
 1. The server MUST be accessible from the wider internet without blockage due to firewall rules for:
 
-Port	Purpose
-80	Outbound HTTP connections
-443	Outbound HTTPS connections
-8443	Backchannel, client verified TLS connections, used within SAML flows
+	| Port   |                                              Purpose                                                    |
+	| ------ | --------------------------------------------------------------------------- |
+	|   80   |                              Outbound HTTP connections                                    |
+	|  443  |                             Outbound HTTPS connections                                   |
+	| 8443 | Backchannel, client verified TLS connections, used within SAML flows |
 
-    Environmental data for your IdP
-        Production environment for SGAF
-        Organisation Name
-        Organization base domain e.g. example.edu.sg
+1. Environment data for your IdP
+	a. Production environment for SGAF
+	b. Organisation Name
+	c. Organization base domain e.g. example.edu.sg
 
 Optional Checklist
 
