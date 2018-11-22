@@ -106,17 +106,17 @@ The installation process:
 1. Install NTP for time synchronisation.
 	* Opens local firewall ports `80`, `443` and `8443`.
 
-**Event logging**
+## Event logging
 
 The installer provides a detailed set of information indicating the steps it has under taken on your server. You MAY disregard this output if the process completes successfully.
 
 For future review all installer output is logged to:
 
-	```
-	/opt/shibboleth-idp-installer/activity.log
-	```
+```
+/opt/shibboleth-idp-installer/activity.log
+```
 
-**Running the installer**
+## Running the Installer
 
 The following commands MUST be executed as the **root** user. Start the process from `/root`.
 
@@ -182,7 +182,7 @@ rm /root/.lock-idp-bootstrap && ./bootstrap.sh
 
 The bootstrap process will now start over and attempt to configure your server to operate as a Shibboleth IdP.
 
-**Registration with the federation**
+## Registration with the federation
 
 Once completed the bootstrap process will output information specific to your installation which you will use to register your Shibboleth IdP with the federation. Please follow the onscreen information in order to complete the registration process.
 
@@ -198,7 +198,7 @@ After completing the registration process, you will receive an email from the fe
 
 For further assistance please contact technical-support@singaren.net.sg
 
-**Finalise Install**
+## Finalise Installation
 
 1. **Configure LDAP connectivity**
 
