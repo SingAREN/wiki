@@ -231,7 +231,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	
 	* (run "crontab -e" and paste the line into the editor)
 
-	> ** Note - Invoking curl **
+	> **Note - Invoking curl**
 	> 1. If you have changed the cron password as instructed above, the line would be different than shown here.
 	> 2. If your web server is running with a self-signed HTTPS certificate, you would need to tell curl to either trust the local host certificate, or switch off certificate checking altogether.
 	>   * Otherwise, with the --silent option, curl would just silently fail)
@@ -267,7 +267,7 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 
 * Create `attributemap/sgaf-attrs.php` with the following contents (adding on to what already exists in `attributemap/oid2name.php`)
 
-	```php
+	```
 	<?php
 	$attributemap = array(
 					'urn:oid:1.3.6.1.4.1.25178.1.2.10' => 'schacHomeOrganizationType',
