@@ -32,9 +32,7 @@ This server MUST NOT be used for any other purpose in the future.
 	
 **Additional requirements for RedHat 7 servers**
 
-Redhat systems also require EPEL in order to continue and the above is one option you MAY use to achieve this.
-
-In some commercial environments you may need to have the server enabled for these packages via Satellite.
+Redhat systems also require EPEL in order to continue and the above is one option you MAY use to achieve this. In some commercial environments you may need to have the server enabled for these packages via Satellite.
 
 In this case please speak to your system administrators and have this configured before continuing.
 
