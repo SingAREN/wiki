@@ -21,35 +21,12 @@ Once you’re ready to get started please continue to the requirements checklist
 # Requirements Checklist
 You MUST NOT continue to installation until you’ve worked through the checklist below. Environment preparation is critical to a successful outcome.
 
-**Required Checklist**
 
-* A **dedicated** CentOS 7 or Redhat 7 server (virtual or physical), with the following minimum specifications:
-	* 2 CPU
-	* 2GB RAM
-	* 10GB+ partition for OS
-
-This server MUST NOT be used for any other purpose in the future.
-
-**Additional requirements for CentOS 7 servers**
-
-* Install the EPEL Repository
-
-	```
-	# yum -y install epel-release
-	```
-	
 **Additional requirements for RedHat 7 servers**
 
 Redhat systems also require EPEL in order to continue and the above is one option you MAY use to achieve this. In some commercial environments you may need to have the server enabled for these packages via Satellite.
 
 In this case please speak to your system administrators and have this configured before continuing.
-1. Perform a `# yum -y update` (system wide package upgrade). Please note that the installer uses yum for the installation of all system components (except Jetty and Shibboleth IdP).
-1. Install all required dependencies via `yum` (`git`, `ansible`, `mariadb`, `apache` etc). With the previous step in mind, bootstrap will always use the latest versions of these packages.
-1. Create self-signed keys for Apache. These are for initial testing of the IdP and are replaced when further customising the Shibboleth IdP.
-1. Install Apache.
-1. Install Jetty with Shibboleth IdP. Jetty runs on port `8080` and creates the Shibboleth IdP web app context `/idp`. Apache configuration serves this on port `443` through a reverse proxy. Jetty also listens on port `8443` to support ECP.
-1. Install a MariaDB instance. A database is created (name: `idp_db`, user: `idp_admin`) with [these schemas](https://github.com/spgreen/shibboleth-idp-installer/tree/SGAF-Implementation/templates/db) populated.
-1. Install NTP for time synchronisation.
 
 1. You MUST have SSH access to the server
 1. You MUST be able to execute commands as root on the system without limitation
