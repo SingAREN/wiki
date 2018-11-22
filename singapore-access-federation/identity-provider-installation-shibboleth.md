@@ -361,11 +361,9 @@ In order to upgrade your versions to the latest vetted releases you need to add 
 ```
 
 By supplying the `-u` switch the following occurs in addition to the normal update process:
-
 1.	Upgrade to the most recent version of the installer:
 	* The update will be retrieved from: `https://github.com/spgreen/shibboleth-idp-installer.git`
 	* It will be based on the most recent production release
-
 2.	Upgrade, if necessary, to the most recently vetted versions of:
 	* Shibboleth IdP
 	* Jetty
