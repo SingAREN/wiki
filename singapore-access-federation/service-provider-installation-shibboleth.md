@@ -97,7 +97,8 @@ Edit the `/etc/shibboleth/shibboleth2.xml` file:
 		<MetadataFilter type="Signature" certificate="sgaf-metadata-cert.pem" verifyBackup="false"/>
 	</MetadataProvider>
 	```
-* The Shibboleth SP installations needs to be configured to map attributes received from teh IdP in `/etc/shibboleth/attribute-map.xml`. Change the attribute mapping definition by either editing the file and uncommencting attributes to be accepted.
+
+The Shibboleth SP installations needs to be configured to map attributes received from teh IdP in `/etc/shibboleth/attribute-map.xml`. Change the attribute mapping definition by either editing the file and uncommencting attributes to be accepted.
 > **attribute-policy.xml**
 > In addition to mapping received attributes to local names (and thus accepting them), it is also possible to conigure filtering rules in `attribute-policy.xml`. In most cases, this can be left as-is as the default rules provide the necessary filtering for SGAF attributes.
 >Addtional information can be found at the [Shibboleth SP3 AttributeFilter](https://wiki.shibboleth.net/confluence/display/SP3/AttributeFilter) official documentation.
