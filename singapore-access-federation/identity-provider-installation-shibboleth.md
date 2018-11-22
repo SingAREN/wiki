@@ -110,11 +110,7 @@ The installation process:
 
 The installer provides a detailed set of information indicating the steps it has under taken on your server. You MAY disregard this output if the process completes successfully.
 
-For future review all installer output is logged to:
-
-```
-/opt/shibboleth-idp-installer/activity.log
-```
+For future review all installer output is logged to `/opt/shibboleth-idp-installer/activity.log`
 
 ## Running the Installer
 
