@@ -48,6 +48,9 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 
 # Entity Installation
 ## Identity Provder
+
+* [Shibboleth IdP 3](/singapore-access-federation/identity-provider-installation-shibboleth)
+
 ## Service Provider
 
 * [Shibboleth SP 3](/singapore-access-federation/service-provider-installation-shibboleth)
