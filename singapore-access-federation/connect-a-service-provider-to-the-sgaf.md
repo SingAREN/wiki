@@ -1,21 +1,17 @@
 <!-- TITLE: Connect a Service Provider to the SGAF -->
 <!-- SUBTITLE: How to connect SAML 2.0 enabled Service Providers to the SGAF -->
 
-# Shibboleth v3
 > SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
 > SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
 > SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS
+> SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
+# Shibboleth v3
 
 * Shibboleth Service Provider SGAF - [Registration](/singapore-access-federation/service-provider-installation-shibboleth#sgaf-registeration)
 * Shibboleth Service Provider SGAF - [Configuration](/singapore-access-federation/service-provider-installation-shibboleth#sgaf-configuration)
 
 # SimpleSAMLphp
-> SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
-> SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
-> SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS
-{.is-danger}
-
 * Service Provider Installation: SimpleSAMLphp - [Configuration](/singapore-access-federation/service-provider-installation-simplesamlphp#sgaf-configuration).
 * Service Provider Installation: SimpleSAMLphp - [Registration](/singapore-access-federation/service-provider-installation-simplesamlphp#sgaf-registration).
 # ADFS/Others
