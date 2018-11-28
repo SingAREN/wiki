@@ -69,6 +69,248 @@ The Shibboleth SP installations needs to be configured to map attributes receive
 {.is-warning}
 
 # SimpleSAMLphp
+
+## Configuration
+
+> We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
+{.is-warning}
+
+* Create a certificate (self-signed for 20 years)
+
+	```
+  $ cd /opt/simplesamlphp/cert
+  # openssl req -newkey rsa:2048 -new -x509 -days 7304 -nodes -out saml.crt -keyout saml.pem
+	```
+  
+  * ... and enter all information requested ("." to skip) - the crucial part is your hostname.
+
+* Make the private key readable only to the user SimpleSAMLphp runs as (apache)
+	```
+	# chown apache.apache /opt/simplesamlphp/cert/saml.{crt,pem}
+	# chmod 600 /opt/simplesamlphp/cert/saml.pem
+	```
+	
+* Edit `/opt/simplesamlphp/config/authsources.php` and add references to the certificate to the default-sp definition:
+
+	```
+	        'default-sp' => array(
+	                'saml:SP',
+	                'privatekey' => 'saml.pem',
+	                'certificate' => 'saml.crt',
+	```
+
+
+* Enable and configure the `metarefresh` and `cron` modules:
+
+	```
+	$ cd /opt/simplesamlphp
+	# touch modules/metarefresh/enable
+	# cp modules/metarefresh/config-templates/*.php config/
+	# touch modules/cron/enable
+	# cp modules/cron/config-templates/*.php config/
+	```
+
+* Create a directory to cache the downloaded federation metadata (writable by Apache - this also means setting the SELinux context if SELinux is enabled on your system):
+
+	```
+	# mkdir /opt/simplesamlphp/metadata/metarefresh-sgaf
+	# chown apache.apache /opt/simplesamlphp/metadata/metarefresh-sgaf
+	```
+	
+	* Set SELinux context to give Apache RW access - if SELinux is enabled on your system
+
+		```
+		# chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/metadata/metarefresh-sgaf/
+		```
+
+	* And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
+
+		```
+		semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/metadata/metarefresh-sgaf(/.*)?'
+		```
+
+* Download the metadata signing certificate for the federation metadata into `/opt/simplesamlphp/cert/sgaf-metadata-cert.pem`:
+
+	```
+	# wget https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem -O /opt/simplesamlphp/cert/sgaf-metadata-cert.pem
+	```
+        
+* Edit config/config-metarefresh.php:
+	* Replace `'kalmar'` with the federation name (`'sgaf'`)
+	* Set the download URL:
+
+	```
+   'src' => 'https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml',
+	```
+	
+* Set output directory and format (use 'serialize'format):
+
+	```
+                                'outputDir'     => 'metadata/metarefresh-sgaf/',
+                                'outputFormat' => 'serialize',
+	```
+
+* Set expiry date to 7 days to match SGAF
+
+	```
+                                'expireAfter'           => 60*60*24*7, // Maximum 7 days cache time.
+	```
+
+* Change the list of accepted certificates to the metadata signing certificate downloaded above:
+
+	```
+                                                'certificates' => array(
+                                                        'sgaf-metadata-cert.pem',
+                                                ),
+	```
+
+* Remove/comment-out the validateFingerprint entry (see note below for explanation)
+	
+	>Older versions of SimpleSAMLphp did not support directly referring to a certificate and instead required embedding the certificate fingerprint in the configuration
+	>
+	>For historical and archival purposes, the instructions are included here - but can be ignored in favour of using the above certificates setting:
+	> * Set the 'validateFingerprint' to the fingerprint value of the metadata issuing certificate
+	>   * SGAF: `D9:F7:F5:5B:F4:D6:9A:BC:3F:34:18:91:B0:B7:1A:FA:B9:93:DE:F1`
+	>     * To calculate the fignerprint yourself, download the metadata signing certificate and get the fingerprint value with:
+	>       `$ openssl x509 -fingerprint -noout -in metadata-cert.pem`
+
+* Edit config/config.php and add an extra entry into 'metadata.sources'
+	```
+	   array('type' => 'serialize', 'directory' => 'metadata/metarefresh-sgaf'),
+	```
+	
+* Now go with your browser to your SimpleSAMLphp page: https://sp.example.org/simplesaml/
+	* and go to the Configuration page (log in with the Administrator password).
+	* and from there to "Cron module information page"
+
+* Edit config/module_cron.php and change the secret 'key' from the default of 'secret'to a different password (to prevent potential abuse of the cron URL):
+	```
+					'key' => 'top-secret',
+	```
+	
+* Paste the hourly cron job entry (invoking curl to localhost) into root's crontab.:
+
+	```
+	01 * * * * curl --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1
+	```
+	
+	* (run "crontab -e" and paste the line into the editor)
+
+	> **Note - Invoking curl**
+	> 1. If you have changed the cron password as instructed above, the line would be different than shown here.
+	> 2. If your web server is running with a self-signed HTTPS certificate, you would need to tell curl to either trust the local host certificate, or switch off certificate checking altogether.
+	>     * Otherwise, with the --silent option, curl would just silently fail
+	>     * So use either
+	>     `01 * * * * curl --cacert /etc/pki/tls/certs/localhost.crt --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1 `
+	>     * or
+	>     `01 * * * * curl --insecure --silent "https://sp.example.org/simplesaml/module.php/cron/cron.php?key=secret&tag=hourly" > /dev/null 2>&1`
+	>     * And wait for a confirmation email to be sent to the technical contact email address after the cronjob runs at HH:01.
+
+	* You can force the job to run immediately by clicking on one of the hourly link at the bottom of the page (or pasting the cron-job URL into your browser - the GUI link gives more output).
+  * To see the output from the metadata refresh itself, go to https://sp.example.org/simplesaml/module.php/metarefresh/fetch.php
+
+* After confirming the cron job works (wait for up to an hour to receive a confirmation email to the SimpleSAMLphp technical contact email address), edit `config/module_cron.php` and to avoid getting a confirmation email each time the cron-job runs, set
+	* either `'debug_message' => FALSE,` (to suppress the confirmation debug message)
+	* or `'sendemail' => FALSE,` (to suppress all email messages from the cron module)
+	* However, they will have the same effect - as any error messages from metarefresh do not propagate to the cron module and are only visible in Apache error logs (`/var/log/httpd/ssl_error_log`)
+
+## Configure the SP to use the SGAF Discovery Service
+
+* Edit `config/authsources.php` and set `'discoURL'` to SGAF-Production: https://ds.sgaf.org.sg/discovery/DS':
+
+	```
+	                'discoURL' => 'https://ds.sgaf.org.sg/discovery/DS',
+	```
+
+## Configure Additional SGAF Attributes
+
+From the list of attributes used within Tuakiri and the list of Attributes supported by SimpleSAMLphp in the default configuration, the following need to be explicitly added:
+
+* auEduPersonSharedToken
+* homeOrganizationType
+* eduPersonAssurance
+
+* Create `attributemap/sgaf-attrs.php` with the following contents (adding on to what already exists in `attributemap/oid2name.php`)
+
+	```
+	<?php
+	$attributemap = array(
+					'urn:oid:1.3.6.1.4.1.25178.1.2.10' => 'schacHomeOrganizationType',
+					'urn:oid:1.3.6.1.4.1.5923.1.1.1.11' => 'eduPersonAssurance',
+					'urn:oid:1.3.6.1.4.1.27856.1.2.5' => 'auEduPersonSharedToken',
+	);      
+	?> 
+	```
+	
+* Edit `config/config-metarefresh.php` and add a reference to this file in the template for IdPs downloaded via metarefresh:
+
+	```
+	                                        'template' => array(
+	                                                'tags'  => array('sgaf'),
+	                                                'authproc' => array(
+	                                                        51 => array('class' => 'core:AttributeMap', 'oid2name', 'sgaf-attrs'),
+	                                                ),
+	                                        ),
+	```
+
+* To also configure friendly attribute names, add the following after the first line of dictionaries/attributes.definition.json (note that eduPersonAssurance already has an entry there, does not need to be duplicated)
+
+	```
+	        "attribute_schachomeorganizationtype": {
+	                "en": "Home organization type"
+	        },
+	        "attribute_auedupersonsharedtoken": {
+	                "en": "Shared token"
+	        },
+	```
+
+## Clean up SP configuration
+
+Remove (comment-out) pre-configured IdPs and SPs
+
+* Edit `metadata/saml20-idp-remote.php` - remove pre-configured openidp.feide.no
+* Edit `metadata/saml20-sp-remote.php` - remove pre-configured saml2sp.example.org and google.com
+* Edit `metadata/shib13-sp-remote.php` - remove pre-configured sp.shiblab.feide.no
+
+## Register
+
+The SGAF Federation Registry (FR) has in the initial setup only pre-configured support for Shibboleth SP implementation, not SimpleSAMLphp. Without the pre-configured support, it is necessary to enter all endpoints URLs manually. There is an ongoing project to add support to FR to support SimpleSAMLphp, until then, please use the Advanced Registration form as described in this section.
+
+As a reference point, the metadata for your SP can be accessed at https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp?output=xhtml
+
+For reference, please also see the attached image mapping SimpleSAMLphp metadata to Federation Registry form (credits: Bevan Rudge, University of Auckland).
+
+Access the Federation Registry at the correct URL for the respective federation:
+
+* SGAF: https://manager.sgaf.org.sg/federationregistry/
+
+Start registering a new SP
+
+* Enter your personal details
+* Select your organization (Create an Organization first if not already listed)
+* Enter the details about your SP (name, description, service URL)
+* Select Advanced Registration and enter the following information (drawing from your SP metadata and using the mapping as in the image above), replacing sp.example.org with the hostname of your SP:
+
+> **Entity Descriptor ID**: https://sp.example.org/simplesaml/module.php/saml/sp/metadata.php/default-sp
+> **Assertion Consuming Service (Post)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 0)
+> **Assertion Consuming Service (Artifact)**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp (Index: 2)
+>
+> **Single Logout Redirect Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+> **Single Logout SOAP Endpoint**: https://sp.example.org/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp
+>
+>
+> **Discovery Response**: https://sp.example.org/simplesaml/module.php/saml/sp/discoresp.php
+{.is-info}
+
+> Leave other fields blank!
+{.is-warning}
+
+* **Certificates**: paste in the contents of `cert/saml.crt`
+
+* **Attributes**: select the attributes needed by your SP (and give a reason for requesting each of the attributes)
+
+Review the SP registration form and submit it for approval.
+
 # ADFS/Others
 # Shibboleth v3 and SimpleSAMLPHP Service Providers
 
