@@ -117,18 +117,6 @@ The Shibboleth SP installations needs to be configured to map attributes receive
 	# chown apache.apache /opt/simplesamlphp/metadata/metarefresh-sgaf
 	```
 	
-	* Set SELinux context to give Apache RW access - if SELinux is enabled on your system
-
-		```
-		# chcon -t httpd_sys_rw_content_t /opt/simplesamlphp/metadata/metarefresh-sgaf/
-		```
-
-	* And record the context setting in the SELinux policy database so that it goes not get lost in a SELinux relabel
-
-		```
-		semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/metadata/metarefresh-sgaf(/.*)?'
-		```
-
 * Download the metadata signing certificate for the federation metadata into `/opt/simplesamlphp/cert/sgaf-metadata-cert.pem`:
 
 	```
@@ -214,7 +202,7 @@ The Shibboleth SP installations needs to be configured to map attributes receive
 	* or `'sendemail' => FALSE,` (to suppress all email messages from the cron module)
 	* However, they will have the same effect - as any error messages from metarefresh do not propagate to the cron module and are only visible in Apache error logs (`/var/log/httpd/ssl_error_log`)
 
-## Configure the SP to use the SGAF Discovery Service
+## Configure to use the SGAF Discovery Service
 
 * Edit `config/authsources.php` and set `'discoURL'` to SGAF-Production: https://ds.sgaf.org.sg/discovery/DS':
 
@@ -309,7 +297,14 @@ Start registering a new SP
 
 * **Attributes**: select the attributes needed by your SP (and give a reason for requesting each of the attributes)
 
-Review the SP registration form and submit it for approval.
+Review the SP registration form, submit it for approval and wait for a confirmation email.
+
+Follow [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting via the SGAF Proxy. 
+
+> **Note**
+> It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
+{.is-info}
+
 
 # ADFS/Others
 # Shibboleth v3 and SimpleSAMLPHP Service Providers
