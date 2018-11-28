@@ -63,6 +63,7 @@ The registration process is self-explanatory. The key points are:
 
 * **Step 5**: Select the attribute needed by the SP and mark which of them are **Requested** and if they are **Required**. For each attribute, give a good exaplanation for why the attribute is needed as it will be displayed to users as justification for why the information is being released.
 * **Step 6**: Click Submit and wait for a confirmation email.
+* **Step 7**: Follow [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting via the SGAF Proxy. 
 
 > **Note**
 > It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
