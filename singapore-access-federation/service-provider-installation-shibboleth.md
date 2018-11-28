@@ -42,7 +42,7 @@ Before starting to build and configure the Shibboleth Service Provider, assure t
 	# yum install shibboleth
 	```
 
-# Register into the SGAF
+# SGAF Registeration
 Installing a Shibboleth SP only becomes useful after registering the SP into the SGAF.
 
 The registration process is self-explanatory. The key points are:
