@@ -15,7 +15,6 @@
 * Service Provider Installation: SimpleSAMLphp - [Configuration](/singapore-access-federation/service-provider-installation-simplesamlphp#sgaf-configuration).
 * Service Provider Installation: SimpleSAMLphp - [Registration](/singapore-access-federation/service-provider-installation-simplesamlphp#sgaf-registration).
 # ADFS/Others
-# ADFS and Single-Metadata-Entity-Ingesting Service Providers
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
 
