@@ -106,7 +106,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	# semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
 	```
 
-# Configuration
+# SGAF Configuration
 ## Create Certificate Keypair
 > We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 {.is-warning}
