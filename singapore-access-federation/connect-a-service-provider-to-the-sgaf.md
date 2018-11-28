@@ -7,7 +7,7 @@
 > SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS
 {.is-danger}
 
-## Shibboleth Registration
+## Registration - Shibboleth
 
 * Navigate to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry) and select **Create a Service Provider**.
 * **Step 1**: Select your 'Organization' and enter a Name, Description and Service URL for the SP you are registering within the SGAF.
@@ -31,7 +31,7 @@
 > It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
 {.is-info}
 
-## Shibboleth Configuration
+## Configuration - Shibboleth
 Edit the `/etc/shibboleth/shibboleth2.xml` file:
 * Replace all instanaces of `sp.example.org` with your hostname
 * Within the `<Sessions>` element:
@@ -70,7 +70,7 @@ The Shibboleth SP installations needs to be configured to map attributes receive
 
 # SimpleSAMLphp (SSP)
 
-## SSP Configuration
+## Configuration - SSP
 
 > We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 {.is-warning}
@@ -252,7 +252,7 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 	        },
 	```
 
-## Clean up SP configuration
+## Clean Up Configuration
 
 Remove (comment-out) pre-configured IdPs and SPs
 
@@ -260,7 +260,7 @@ Remove (comment-out) pre-configured IdPs and SPs
 * Edit `metadata/saml20-sp-remote.php` - remove pre-configured saml2sp.example.org and google.com
 * Edit `metadata/shib13-sp-remote.php` - remove pre-configured sp.shiblab.feide.no
 
-## SSP Registration
+## Registration - SSP
 
 The SGAF Federation Registry (FR) has in the initial setup only pre-configured support for Shibboleth SP implementation, not SimpleSAMLphp. Without the pre-configured support, it is necessary to enter all endpoints URLs manually. There is an ongoing project to add support to FR to support SimpleSAMLphp, until then, please use the Advanced Registration form as described in this section.
 
