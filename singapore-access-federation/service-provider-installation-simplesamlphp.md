@@ -308,7 +308,7 @@ Remove (comment-out) pre-configured IdPs and SPs
 * Edit `metadata/saml20-sp-remote.php` - remove pre-configured saml2sp.example.org and google.com
 * Edit `metadata/shib13-sp-remote.php` - remove pre-configured sp.shiblab.feide.no
 
-# Register into the SGAF
+# SGAF Registration
 
 The SGAF Federation Registry (FR) has in the initial setup only pre-configured support for Shibboleth SP implementation, not SimpleSAMLphp. Without the pre-configured support, it is necessary to enter all endpoints URLs manually. There is an ongoing project to add support to FR to support SimpleSAMLphp, until then, please use the Advanced Registration form as described in this section.
 
