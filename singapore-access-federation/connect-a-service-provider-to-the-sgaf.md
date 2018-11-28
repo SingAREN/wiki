@@ -32,7 +32,10 @@
 {.is-info}
 
 ## Configuration - Shibboleth
-[this](/singapore-access-federation/service-provider-installation-simplesamlphp#configuring-sp)
+
+# SimpleSAMLphp
+
+[this](/service-provider-installation-simplesamlphp#configuring-sp)
 
 Follow [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting via the SGAF Proxy. 
 
