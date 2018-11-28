@@ -106,8 +106,8 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	# semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
 	```
 
-# Configure SimpleSAMLphp
-
+# Configuration
+## Create Certificate Keypair
 > We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 {.is-warning}
 
@@ -134,7 +134,8 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	                'privatekey' => 'saml.pem',
 	                'certificate' => 'saml.crt',
 	```
-# Loading the federation metadata
+
+## Loading the federation metadata
 * Enable and configure the `metarefresh` and `cron` modules:
 
 	```
@@ -249,7 +250,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	* or `'sendemail' => FALSE,` (to suppress all email messages from the cron module)
 	* However, they will have the same effect - as any error messages from metarefresh do not propagate to the cron module and are only visible in Apache error logs (`/var/log/httpd/ssl_error_log`)
 
-# Configure SSP to use the SGAF Discovery Service
+## Configure to use the SGAF Discovery Service
 
 * Edit `config/authsources.php` and set `'discoURL'` to SGAF-Production: https://ds.sgaf.org.sg/discovery/DS':
 
@@ -257,7 +258,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	                'discoURL' => 'https://ds.sgaf.org.sg/discovery/DS',
 	```
 
-# Configure Additional SGAF Attributes
+## Configure Additional SGAF Attributes
 
 From the list of attributes used within Tuakiri and the list of Attributes supported by SimpleSAMLphp in the default configuration, the following need to be explicitly added:
 
@@ -299,7 +300,7 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 	        },
 	```
 
-# Clean Up Configuration
+## Clean Up Configuration
 
 Remove (comment-out) pre-configured IdPs and SPs
 
