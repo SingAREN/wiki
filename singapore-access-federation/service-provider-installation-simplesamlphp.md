@@ -315,11 +315,7 @@ As a reference point, the metadata for your SP can be accessed at https://sp.exa
 
 For reference, please also see the attached image mapping SimpleSAMLphp metadata to Federation Registry form (credits: Bevan Rudge, University of Auckland).
 
-Access the Federation Registry at the correct URL for the respective federation:
-
-* SGAF: https://manager.sgaf.org.sg/federationregistry/
-
-Start registering a new SP
+Access the [SGAF Federation Registry](https://manager.sgaf.org.sg/federationregistry/) and start registering a new Service Provider
 
 * Enter your personal details
 * Select your organization (Create an Organization first if not already listed)
@@ -346,6 +342,11 @@ Start registering a new SP
 
 Review the SP registration form and submit it for approval.
 
+Follow [Connecting Service and ADFS Identity Providers to the Singapore Access Federation](https://www.singaren.net.sg/document/Connecting%20Service%20and%20ADFS%20Identity%20Providers%20to%20the%20SingAREN%20Access%20Federation.pdf) to enable your SP for IdPs connecting via the SGAF Proxy. 
+
+> **Note**
+> It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
+{.is-info}
 # Testing
 
 Test authentication by going to https://sp.example.org/simplesaml/module.php/core/authenticate.php?as=default-sp
