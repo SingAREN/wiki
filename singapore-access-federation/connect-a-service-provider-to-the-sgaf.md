@@ -2,12 +2,12 @@
 <!-- SUBTITLE: How to connect SAML 2.0 enabled Service Providers to the SGAF -->
 
 # Shibboleth v3
-## Registration
-
 > SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
 > SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
 > SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS
 {.is-danger}
+
+## Registration
 
 * Navigate to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry) and select **Create a Service Provider**.
 * **Step 1**: Select your 'Organization' and enter a Name, Description and Service URL for the SP you are registering within the SGAF.
