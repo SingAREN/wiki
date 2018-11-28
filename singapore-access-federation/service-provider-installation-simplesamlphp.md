@@ -135,7 +135,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	                'certificate' => 'saml.crt',
 	```
 
-## Loading the federation metadata
+## Load the SGAF Metadata
 * Enable and configure the `metarefresh` and `cron` modules:
 
 	```
