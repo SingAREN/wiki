@@ -2,7 +2,12 @@
 <!-- SUBTITLE: How to connect SAML 2.0 enabled Service Providers to the SGAF -->
 
 # Shibboleth v3
-## SGAF Registration
+## Registration
+
+> SGAF Local Metadata: https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml
+> SGAF Metadata Signing Certificate: https://ds.sgaf.org.sg/distribution/metadata/updated_metadata_cert.pem
+> SGAF Discovery Service: https://ds.sgaf.org.sg/discovery/DS
+{.is-danger}
 
 * Navigate to the [Federation Registry](https://manager.sgaf.org.sg/federationregistry) and select **Create a Service Provider**.
 * **Step 1**: Select your 'Organization' and enter a Name, Description and Service URL for the SP you are registering within the SGAF.
@@ -26,7 +31,7 @@
 > It is import to click on the link in the confirmation email that comes later - that makes you the administrator of this SP in the Federation Registry.
 {.is-info}
 
-## SGAF Configuration
+## Configuration
 Edit the `/etc/shibboleth/shibboleth2.xml` file:
 * Replace all instanaces of `sp.example.org` with your hostname
 * Within the `<Sessions>` element:
@@ -88,24 +93,6 @@ The Shibboleth SP installations needs to be configured to map attributes receive
 > **Note:** Your Service Provider will become active within the Singapore Access Federation 24 hours after approval.
 {.is-info}
 
-## `shibboleth2.xml` Configuration Snippet 
-```
-<ApplicationOverride id="virtualhome" entityID="https://vho.sgaf.singaren.net.sg/shibboleth" attributePrefix="AJP_">
-  <Sessions checkAddress="false" consistentAddress="false" handlerSSL="true" cookieProps="https">
-    <SSO discoveryProtocol="SAMLDS" ECP="false" discoveryURL="https://ds.sgaf.org.sg/discovery/DS">SAML2 SAML1</SSO>
-  </Sessions>
-
-  <MetadataProvider type="XML" url="https://ds.sgaf.org.sg/distribution/metadata/sgaf-metadata.xml" backingFilePath="virtualhome.metadata.xml" reloadInterval="1800">
-    <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
-    <MetadataFilter type="Signature" certificate="virtualhome/metadata.crt"/>
-  </MetadataProvider>
-
-  <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="virtualhome/attribute-map.xml" />
-  <AttributeResolver type="Query" subjectMatch="true"/>
-  <AttributeFilter type="XML" validate="true" path="virtualhome/attribute-policy.xml" />
-  <CredentialResolver type="File" key="virtualhome/sp.key" certificate="virtualhome/sp.crt" />
-</ApplicationOverride>
-```
 # ADFS and Single-Metadata-Entity-Ingesting Service Providers
 > Use SGAF Proxy Metadata: https://sgaf.singaren.net.sg/simplesaml/module.php/saml/sp/metadata.php/proxy-sp
 {.is-danger}
