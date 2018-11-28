@@ -106,7 +106,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	# semanage fcontext -a -t httpd_sys_rw_content_t '/opt/simplesamlphp/data(/.*)?'
 	```
 
-# Configuring SP
+# Configure SimpleSAMLphp
 
 > We will be using sp.example.org to refer to the hostname of your Service Provider - please substitute that with the actual hostname of your SP.
 {.is-warning}
@@ -249,7 +249,7 @@ Note that while this page uses Apache as the web server SimpleSAMLphp is deploye
 	* or `'sendemail' => FALSE,` (to suppress all email messages from the cron module)
 	* However, they will have the same effect - as any error messages from metarefresh do not propagate to the cron module and are only visible in Apache error logs (`/var/log/httpd/ssl_error_log`)
 
-# Configure the SP to use the SGAF Discovery Service
+# Configure SSP to use the SGAF Discovery Service
 
 * Edit `config/authsources.php` and set `'discoURL'` to SGAF-Production: https://ds.sgaf.org.sg/discovery/DS':
 
@@ -299,7 +299,7 @@ From the list of attributes used within Tuakiri and the list of Attributes suppo
 	        },
 	```
 
-# Clean up SP configuration
+# Clean Up Configuration
 
 Remove (comment-out) pre-configured IdPs and SPs
 
@@ -307,7 +307,7 @@ Remove (comment-out) pre-configured IdPs and SPs
 * Edit `metadata/saml20-sp-remote.php` - remove pre-configured saml2sp.example.org and google.com
 * Edit `metadata/shib13-sp-remote.php` - remove pre-configured sp.shiblab.feide.no
 
-# Register into Federation Registry
+# Register into the SGAF
 
 The SGAF Federation Registry (FR) has in the initial setup only pre-configured support for Shibboleth SP implementation, not SimpleSAMLphp. Without the pre-configured support, it is necessary to enter all endpoints URLs manually. There is an ongoing project to add support to FR to support SimpleSAMLphp, until then, please use the Advanced Registration form as described in this section.
 
