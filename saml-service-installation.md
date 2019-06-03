@@ -1,5 +1,5 @@
 <!-- TITLE: SAML Service Installation -->
-<!-- SUBTITLE: Guide to install the SAML Services application for the SGAF -->
+<!-- SUBTITLE: Guide on how to install the SAML Service Metadata Aggregator for the SGAF -->
 
 SAML Services is SAML2.0 Metadata Aggregator created by the Australian Access Federation (AAF). Used in conjunction with the AAF Discovery Service.
 
