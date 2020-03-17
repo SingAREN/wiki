@@ -6,6 +6,6 @@
 
 # Our Services
 * [eduroam](/eduroam)
-* [Database Mirroring](https://www.singaren.net.sg/dbmirror.php)
 * [Singapore Access Federation (SGAF)](/singapore-access-federation)
-* [FileSender SG](/filesender)
+* [FileSender SG](https://filesender.singaren.net.sg/filesender/)
+* [Database Mirroring](https://www.singaren.net.sg/dbmirror.php)
