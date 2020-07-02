@@ -14,10 +14,9 @@ SingAREN is the Roaming Operator (RO) for eduroam in Singapore and thus complies
 
 ## Technical - Official 
 * [Official eduroam Documentation](https://www.eduroam.org/support/eduroam-documentation/)
-* [On-Campus eduroam Deployment - Official GÉANT Wiki](https://wiki.geant.org/display/H2eduroam/How+to+deploy+eduroam+on-site+or+on+campus)
+* [On-Campus eduroam Deployment - Official GÉANT Wiki](https://wiki.geant.org/pages/viewpage.action?pageId=121346259)
 
 ## Technical - Additional 
-* [eduroam-US Administrator's Guide](https://www.eduroam.us/admin_guide)
 * [Configuring eduroam for Aruba Wireless Controller and ClearPass RADIUS](https://services.geant.net/sites/cbp/Knowledge_Base/Wireless/Documents/cbp-79_guide_to_configuring_eduroam_using_the_aruba_wireless_controller_and_clearpass.pdf)
 * [Using Windows NPS as RADIUS in eduroam](https://www.uninett.no/sites/default/files/imce/cbp-13_using-windows-nps-as-radius-in-eduroam_final.pdf)
 * [eduroam FreeRADIUS Docker Container](https://github.com/spgreen/eduroam-freeradius-docker)
