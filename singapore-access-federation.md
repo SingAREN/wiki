@@ -38,8 +38,8 @@ The **SGAF SAML Web Single Sign-On Technology Profile** defines a standard that 
 [SGAF Metadata Sources](https://ds.sgaf.org.sg/)
 
 ## Metadata Documents
-* [SGAF Metadata Registration Practice Statement](https://www.singaren.net.sg/document/SGAF-MRPS.pdf)
-* [SGAF SAML Web Single Sign-On Technology Profile](https://www.singaren.net.sg/document/SGAF-SAML-Web-SSO-Technology-Profile.pdf)
+* [SGAF Metadata Registration Practice Statement](https://raw.githubusercontent.com/SingAREN/SGAF/master/policy-documents/SGAF-MRPS.pdf)
+* [SGAF SAML Web Single Sign-On Technology Profile](https://raw.githubusercontent.com/SingAREN/SGAF/master/policy-documents/SGAF-SAML-Web-SSO-Technology-Profile.pdf)
 
 
 # Connecting to the SGAF
