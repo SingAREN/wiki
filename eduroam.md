@@ -23,7 +23,7 @@ SingAREN is the Roaming Operator (RO) for eduroam in Singapore and thus complies
 
 ## Miscellaneous 
 * [RADIUS Attribute Issues regarding RFC5580](http://www.eduroam.org/downloads/docs/advisory/eduroamOT-admin-advisory-004.pdf)
-* [eduroam service deployment by NTU/CITS](http://www.singaren.net.sg/library/newsroom/NTU-Eduroam.pdf)
+* [eduroam service deployment by NTU/CITS](http://archive.singaren.net.sg/library/newsroom/NTU-Eduroam.pdf)
 
 # Contact Us
 technical-support@singaren.net.sg
